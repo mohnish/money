@@ -1,35 +1,44 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
-gem 'rails', '4.0.3'
-gem 'mysql2'
 gem 'andand'
 gem 'awesome_print'
-gem 'better_logging'
-
-group :assets do
-  gem 'sass-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'turbolinks'
-end
-
+gem 'bcrypt'
+gem 'haml'
+gem 'haml-rails'
+gem 'jbuilder'
 gem 'jquery-rails'
-gem 'jbuilder', '~> 1.2'
+gem 'mysql2'
+gem 'rails', '4.1.0'
+gem 'sass-rails'
+gem 'uglifier'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'spring'
+  gem 'spring-commands-rspec'
+end
+
 group :test, :development do
-  gem 'pry'
-  gem 'pry-remote'
+  gem 'factory_girl_rails'
   gem 'guard'
-  gem 'guard-pow'
-  gem 'guard-rspec'
+  gem 'guard-rspec', require: false
+  gem 'pry-debugger'
+  gem 'pry-rails'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'terminal-notifier-guard'
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'mocha', require: false
-  gem 'factory_girl_rails', '~> 3.6.0'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end

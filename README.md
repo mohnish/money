@@ -1,24 +1,30 @@
 ## Expenses
 
-An app to manage my monthly expenses. Built on Rails 4.0.3 and Ruby 2.1.1
+An app to manage my monthly expenses. Built on Rails 4.1.0 and Ruby 2.1.1
 
-### Goals
+### Features
 
-- [TODO] Display expenses based on week, month, year and date range
-- [TODO] Display graphs showing the categories of expenditure
-- [TODO] Tag expenses
-- [TODO] Sort expenses based on amount spent, items purchased etc
+- [TODO]
+
+### Setup & Tests
+
+- [TODO]
+
+### Deploying
+
+- Heroku [TODO]
+- Others(??) [TODO]
 
 ### Technologies Used
 
-- Rails 4.0.3
+- Rails 4.1.0
 - Ruby 2.1.1
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2014 Mohnish Thallavajhula <i@mohni.sh>
+Copyright (c) 2014 Mohnish Thallavajhula &lt;i@mohni.sh&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
