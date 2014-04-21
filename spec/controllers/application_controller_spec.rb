@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApplicationController do
-  context '#current_user' do
+  describe '#current_user' do
     let(:user) { FactoryGirl.create :user }
 
     before do
@@ -10,6 +10,16 @@ describe ApplicationController do
 
     it 'returns the current user set in the session' do
       expect(controller.send(:current_user)).to eql(user)
+    end
+  end
+
+  describe '#logged_in?' do
+    before do
+      controller.stubs(:current_user).returns(build(:user))
+    end
+
+    it 'returns true when logged in' do
+      expect(controller.send(:logged_in?)).to be(true)
     end
   end
 end
