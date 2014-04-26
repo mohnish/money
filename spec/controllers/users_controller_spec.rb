@@ -27,7 +27,7 @@ describe UsersController do
         user = User.last
         expect(user.email).to eql(params[:user][:email])
         expect(user.unverified?).to be(true)
-        expect(response).to redirect_to('users/show')
+        expect(response).to redirect_to(assigns(:user))
       end
     end
 
@@ -95,7 +95,7 @@ describe UsersController do
 
     it 'returns http success' do
       expect { delete :destroy, { id: user.id } }.to change { User.count }.from(1).to(0)
-      expect(response).to be_success
+      expect(response).to redirect_to('users/new')
     end
   end
 

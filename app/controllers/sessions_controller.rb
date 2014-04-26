@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
     # render login form
+    @user = User.new
   end
 
   def create
@@ -17,5 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    redirect_to 'users/new'
   end
 end

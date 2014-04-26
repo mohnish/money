@@ -38,6 +38,7 @@ describe SessionsController do
     it 'deletes the user_id from session' do
       delete :destroy, { id: user.id }
       expect(session[:user_id]).to be_nil
+      expect(response).to redirect_to('users/new')
     end
   end
 end
