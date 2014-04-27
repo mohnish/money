@@ -11,4 +11,11 @@ require 'spec_helper'
 #   end
 # end
 describe UsersHelper do
+  describe '#get_initials' do
+    it 'returns the initials of a given name' do
+      expect(helper.get_initials("Mohnish Thallavajula")).to eql("MT")
+      expect(helper.get_initials("david heinemeier hansson")).to eql("DHH")
+      expect(helper.get_initials("james o'reilly")).to eql("JO")
+    end
+  end
 end
