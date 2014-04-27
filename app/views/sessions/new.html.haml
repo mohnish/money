@@ -1,6 +1,6 @@
 %h2 Sign In
 
-= form_for @user, html: { role: 'form' } do |f|
+= form_for @user, url: sessions_path, html: { role: 'form' } do |f|
   .form-group
     = f.label :email, 'Email address'
     = f.email_field :email, class: 'form-control', placeholder: 'Enter email'

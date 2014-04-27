@@ -95,7 +95,7 @@ describe UsersController do
 
     it 'returns http success' do
       expect { delete :destroy, { id: user.id } }.to change { User.count }.from(1).to(0)
-      expect(response).to redirect_to('users/new')
+      expect(response).to redirect_to('/users/new')
     end
   end
 
