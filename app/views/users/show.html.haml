@@ -1,4 +1,30 @@
-%h2 User Profile
+%h3 Profile
 
-= @user.name
-= @user.email
+%h5
+  Hello,
+  = get_initials(@user.name)
+
+- if flash.alert || flash.notice
+  %div
+    = flash.alert || flash.notice
+
+- @user.expenses.each do |expense|
+  %div
+    = expense.store
+    = expense.comment
+    = number_to_currency(expense.price)
+
+= form_for Expense.new, html: { role: 'form' } do |f|
+  .form-group
+    = f.label :store, 'Store'
+    = f.text_field :store, class: 'form-control', placeholder: 'Enter store name'
+
+  .form-group
+    = f.label :comment, 'Purchased Items'
+    = f.text_field :comment, class: 'form-control', placeholder: 'Enter purchased items'
+
+  .form-group
+    = f.label :price, 'Price'
+    = f.text_field :price, class: 'form-control', placeholder: 'Enter price'
+
+  %button{ type: 'submit', class: 'btn btn-default' } Add expense
