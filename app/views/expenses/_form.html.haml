@@ -1,0 +1,14 @@
+= form_for Expense.new, html: { id: 'expense-form', class:'expense-form', role: 'form' } do |f|
+  .form-group
+    = f.label :store, 'Store'
+    = f.text_field :store, class: 'form-control', placeholder: 'Enter store name'
+
+  .form-group
+    = f.label :comment, 'Purchased Items'
+    = f.text_field :comment, class: 'form-control', placeholder: 'Enter purchased items'
+
+  .form-group
+    = f.label :price, 'Price'
+    = f.text_field :price, class: 'form-control', placeholder: 'Enter price'
+
+  %button{ type: 'submit', class: 'btn btn-default' } Add expense
