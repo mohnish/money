@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.5'
 
 gem 'andand'
 gem 'awesome_print'
@@ -10,7 +10,7 @@ gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mysql2'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.8'
 gem 'sass-rails'
 gem 'uglifier'
 
@@ -36,7 +36,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'mocha', require: false
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails'
 end
 
 group :production do
