@@ -2,20 +2,23 @@
 
 An app to manage my monthly bills and expenses. Built on Rails 4.1.8 and Ruby 2.1.5
 
-### Features
+## Features
+
+- Add bills (recurring ones and one time)
+- Add expenses
+- Get reminders about bills
+- Reports. Neat graphs showing where your money went
+
+## Setup & Tests
 
 - [TODO]
 
-### Setup & Tests
-
-- [TODO]
-
-### Deploying
+## Deploying
 
 - Heroku [TODO]
 - Others(??) [TODO]
 
-### Technologies Used
+## Technologies Used
 
 - Rails 4.1.8
 - Ruby 2.1.5
