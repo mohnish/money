@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Expenses::Application.config.secret_key_base = 'be240010577674e45fba9290b78b48601a96dcacde43e227589772d0d3f79e361b538c2edce032c413e3f5401e8767c5e8860f3339b5252f99b6a208e7fe1806'
+Money::Application.config.secret_key_base = 'be240010577674e45fba9290b78b48601a96dcacde43e227589772d0d3f79e361b538c2edce032c413e3f5401e8767c5e8860f3339b5252f99b6a208e7fe1806'

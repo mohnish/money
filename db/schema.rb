@@ -12,34 +12,4 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20140416023449) do
-
-  create_table "expenses", force: true do |t|
-    t.decimal  "price",      precision: 8, scale: 2
-    t.string   "store"
-    t.string   "comment"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
-
-  create_table "tags", force: true do |t|
-    t.string   "name"
-    t.integer  "expense_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tags", ["expense_id"], name: "index_tags_on_expense_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.integer  "status",          default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end

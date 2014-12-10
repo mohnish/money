@@ -9,14 +9,14 @@ common: &common
 
 development:
   <<: *common
-  database: expenses_development
+  database: money_development
 
 test:
   <<: *common
-  database: expenses_test
+  database: money_test
 
 production:
-  database: expenses_production
+  database: money_production
   adapter: postgresql
   encoding: unicode
   pool: 5
