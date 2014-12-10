@@ -27,8 +27,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'guard'
   gem 'guard-rspec', require: false
-  gem 'pry-debugger'
-  gem 'pry-rails'
+  gem 'pry'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'terminal-notifier-guard'
 end
