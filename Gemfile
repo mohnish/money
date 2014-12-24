@@ -1,16 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
-gem 'andand'
+gem 'rails', '4.2.0'
 gem 'awesome_print'
 gem 'bcrypt'
 gem 'bootstrap-sass'
-gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mysql2'
-gem 'rails', '4.1.8'
 gem 'sass-rails'
 gem 'uglifier'
 
@@ -34,7 +32,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'mocha', require: false
   gem 'rspec-rails'
 end
 
