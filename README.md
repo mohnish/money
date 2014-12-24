@@ -15,7 +15,7 @@ An app to manage my monthly bills and expenses. Built on Rails 4.2.0 and Ruby 2.
 
 ## Deploying
 
-- Heroku [TODO]
+- Heroku [TODO: insert the deploy link for heroku here]
 - Others(??) [TODO]
 
 ## Technologies Used
