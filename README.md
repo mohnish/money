@@ -1,6 +1,6 @@
 # Money
 
-An app to manage my monthly bills and expenses. Built on Rails 4.1.8 and Ruby 2.1.5
+An app to manage my monthly bills and expenses. Built on Rails 4.2.0 and Ruby 2.1.5
 
 ## Features
 
@@ -20,7 +20,7 @@ An app to manage my monthly bills and expenses. Built on Rails 4.1.8 and Ruby 2.
 
 ## Technologies Used
 
-- Rails 4.1.8
+- Rails 4.2.0
 - Ruby 2.1.5
 
 ## License
