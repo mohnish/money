@@ -12,10 +12,6 @@ gem 'mysql2'
 gem 'sass-rails'
 gem 'uglifier'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
