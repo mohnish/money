@@ -20,15 +20,11 @@ end
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'guard'
+  gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'pry'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'terminal-notifier-guard'
-end
-
-group :test do
-  gem 'database_cleaner'
-  gem 'rspec-rails'
 end
 
 group :production do
