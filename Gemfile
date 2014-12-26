@@ -4,12 +4,8 @@ ruby '2.2.0'
 gem 'rails', '4.2.0'
 gem 'awesome_print'
 gem 'bcrypt'
-gem 'bootstrap-sass'
-gem 'haml-rails'
 gem 'jbuilder'
-gem 'jquery-rails'
 gem 'mysql2'
-gem 'sass-rails'
 gem 'uglifier'
 
 group :development do
