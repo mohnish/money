@@ -3,5 +3,4 @@ FactoryGirl.define do
     name 'home'
     image 'http://example.com/home.png'
   end
-
 end

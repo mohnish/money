@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227002758) do
+ActiveRecord::Schema.define(version: 20141227003236) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
     t.string   "image",      limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "repeat_intervals", force: :cascade do |t|
+    t.string   "interval",   limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
