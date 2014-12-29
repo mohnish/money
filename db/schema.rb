@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229070458) do
+ActiveRecord::Schema.define(version: 20141229071707) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -28,11 +28,14 @@ ActiveRecord::Schema.define(version: 20141229070458) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.boolean  "email",      limit: 1, default: false
-    t.boolean  "phone",      limit: 1, default: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.boolean  "email",      limit: 1
+    t.boolean  "sms",        limit: 1
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "payment_sources", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -71,5 +74,6 @@ ActiveRecord::Schema.define(version: 20141229070458) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "notifications", "users"
   add_foreign_key "payment_sources", "users"
 end
