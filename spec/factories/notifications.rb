@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :notification do
-    email true
-    phone false
+    email false
+    sms false
+    user
   end
 end
