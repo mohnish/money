@@ -1,0 +1,2 @@
+class DebitCard < PaymentSource
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227004154) do
+ActiveRecord::Schema.define(version: 20141229070458) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20141227004154) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
   end
+
+  create_table "payment_sources", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "type",       limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "payment_sources", ["user_id"], name: "index_payment_sources_on_user_id", using: :btree
 
   create_table "repeat_intervals", force: :cascade do |t|
     t.string   "interval",   limit: 255, null: false
@@ -61,4 +71,5 @@ ActiveRecord::Schema.define(version: 20141227004154) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "payment_sources", "users"
 end

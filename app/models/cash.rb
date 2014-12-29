@@ -1,0 +1,2 @@
+class Cash < PaymentSource
+end
