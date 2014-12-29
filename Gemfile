@@ -7,6 +7,7 @@ gem 'bcrypt'
 gem 'jbuilder'
 gem 'mysql2'
 gem 'uglifier'
+gem 'doorkeeper'
 
 group :development do
   gem 'spring'
