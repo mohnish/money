@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tag do
-    name 'la_boulange'
-    label 'la boulange'
+    name 'tea'
+    entity factory: :bill
   end
 end
