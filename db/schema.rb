@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229071707) do
+ActiveRecord::Schema.define(version: 20141229073540) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -22,10 +22,14 @@ ActiveRecord::Schema.define(version: 20141229071707) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "content",     limit: 65535
+    t.integer  "entity_id",   limit: 4
+    t.string   "entity_type", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
+
+  add_index "notes", ["entity_type", "entity_id"], name: "index_notes_on_entity_type_and_entity_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.boolean  "email",      limit: 1

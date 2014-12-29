@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :note do
-    content 'this is an awesome note'
+    content ""
+    entity factory: debit_card
   end
 end
