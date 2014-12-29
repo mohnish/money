@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229073540) do
+ActiveRecord::Schema.define(version: 20141229075349) do
+
+  create_table "bills", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.integer  "category_id",        limit: 4
+    t.integer  "repeat_interval_id", limit: 4
+    t.decimal  "amount",                         precision: 8, scale: 2
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+  end
+
+  add_index "bills", ["category_id"], name: "index_bills_on_category_id", using: :btree
+  add_index "bills", ["repeat_interval_id"], name: "index_bills_on_repeat_interval_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -78,6 +90,8 @@ ActiveRecord::Schema.define(version: 20141229073540) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "bills", "categories"
+  add_foreign_key "bills", "repeat_intervals"
   add_foreign_key "notifications", "users"
   add_foreign_key "payment_sources", "users"
 end
