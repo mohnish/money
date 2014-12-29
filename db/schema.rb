@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229075955) do
+ActiveRecord::Schema.define(version: 20141229080451) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -81,11 +81,14 @@ ActiveRecord::Schema.define(version: 20141229075955) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.string   "label",      limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.integer  "entity_id",   limit: 4
+    t.string   "entity_type", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
+
+  add_index "tags", ["entity_type", "entity_id"], name: "index_tags_on_entity_type_and_entity_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",            limit: 255
