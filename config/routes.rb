@@ -1,7 +1,7 @@
 Money::Application.routes.draw do
   use_doorkeeper
 
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     scope module: 'v1' do
       resources :bills, except: [:edit, :new]
       resources :tags, only: [:index, :create, :destroy]
