@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PaymentsController, :type => :controller do
+RSpec.describe Api::V1::PaymentsController do
 
   describe "GET index" do
     it "returns http success" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CategoriesController, :type => :controller do
+RSpec.describe Api::V1::CategoriesController do
 
   describe "GET index" do
     it "returns http success" do
