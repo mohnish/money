@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :bill do
+    user
     name "Food"
     category
     repeat_interval

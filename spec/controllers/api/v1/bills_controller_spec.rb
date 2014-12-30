@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BillsController do
+  render_views
 
   describe 'GET /api/v1/bills' do
     before do
@@ -8,7 +9,7 @@ RSpec.describe Api::V1::BillsController do
     end
 
     it 'returns the bills of a particular user' do
-      get :index
+      get :index, format: :json
       expect(response).to have_http_status(:success)
     end
   end

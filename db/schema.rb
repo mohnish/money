@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20141229174544) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name",               limit: 255
+    t.integer  "user_id",            limit: 4
     t.integer  "category_id",        limit: 4
     t.integer  "repeat_interval_id", limit: 4
     t.decimal  "amount",                         precision: 8, scale: 2
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141229174544) do
 
   add_index "bills", ["category_id"], name: "index_bills_on_category_id", using: :btree
   add_index "bills", ["repeat_interval_id"], name: "index_bills_on_repeat_interval_id", using: :btree
+  add_index "bills", ["user_id"], name: "index_bills_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -146,6 +148,7 @@ ActiveRecord::Schema.define(version: 20141229174544) do
 
   add_foreign_key "bills", "categories"
   add_foreign_key "bills", "repeat_intervals"
+  add_foreign_key "bills", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "payment_sources", "users"
   add_foreign_key "payments", "bills"
