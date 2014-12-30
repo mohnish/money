@@ -3,12 +3,14 @@ Money::Application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     scope module: 'v1' do
-      resources :bills, except: [:edit, :new]
-      resources :tags, only: [:index, :create, :destroy]
-      resources :categories, except: [:edit, :new]
-      resources :users, only: [:show, :create, :update, :destroy]
-      resources :payment_sources, except: [:edit, :new]
-      resources :payments, except: [:edit, :new]
+      resources :categories, only: [:index]
+      resources :users, only: [:show, :create, :update, :destroy] do
+        resources :bills, except: [:edit, :new] do
+          resources :tags, only: [:create, :destroy]
+          resources :payment_sources, except: [:edit, :new, :show]
+          resources :payments, only: [:create, :destroy]
+        end
+      end
     end
   end
 end
