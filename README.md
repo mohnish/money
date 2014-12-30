@@ -11,8 +11,10 @@ An app to manage my monthly bills and expenses.
 
 ## Development
 
-- [TODO]
-- [TODO: Specs]
+run the following commands
+- `bundle`
+- `bin/rake db:create db:migrate`
+- `bin/rspec`
 
 ## Deploying
 
