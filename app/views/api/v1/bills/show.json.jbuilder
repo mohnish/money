@@ -1,1 +1,1 @@
-json.extract! @bill, :id, :index, :show, :create, :update, :destroy, :created_at, :updated_at
+json.extract! @bill, :id, :name, :created_at, :updated_at

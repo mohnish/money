@@ -6,6 +6,7 @@ module Api
       end
 
       def show
+        @bill = Bill.last
       end
 
       def create
