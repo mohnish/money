@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20141229174544) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name",               limit: 255
+    t.datetime "next_due_date"
     t.integer  "user_id",            limit: 4
     t.integer  "category_id",        limit: 4
     t.integer  "repeat_interval_id", limit: 4

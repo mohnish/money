@@ -2,6 +2,7 @@ class CreateBills < ActiveRecord::Migration
   def change
     create_table :bills do |t|
       t.string :name
+      t.datetime :next_due_date
       t.references :user, index: true
       t.references :category, index: true
       t.references :repeat_interval, index: true
