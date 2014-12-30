@@ -2,6 +2,7 @@ module Api
   module V1
     class BillsController < BaseController
       def index
+        @bills = Bill.all
       end
 
       def show

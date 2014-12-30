@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :bill do
     name "Food"
-    category nil
-    repeat_interval nil
+    category
+    repeat_interval
     amount 9.99
   end
 end
