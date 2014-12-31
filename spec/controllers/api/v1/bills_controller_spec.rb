@@ -16,7 +16,7 @@ RSpec.describe Api::V1::BillsController do
     end
   end
 
-  describe 'GET /api/bills/:id' do
+  describe 'GET /api/bills/id' do
     let(:bill) { create :bill }
 
     it 'returns the requested bill' do
