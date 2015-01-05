@@ -1,18 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController do
+  render_views
 
-  describe "GET index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+  describe 'GET /users/id', focus: true do
+    context 'when a valid id is passed' do
+      let(:user) { create(:user) }
+
+      it 'returns the user details' do
+        get :show, { id: user.id, format: 'json' }
+        result = JSON.parse(response.body)
+        expect(response).to have_http_status(:success)
+        expect(result['id']).to be(user.id)
+      end
     end
-  end
 
-  describe "GET show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+    context 'when an invalid id is passed' do
+      it 'returns a 404' do
+        get :show, { id: 'invalid', format: 'json' }
+        expect(response).to have_http_status(:not_found)
+      end
     end
   end
 
