@@ -5,7 +5,6 @@ An app to manage my monthly bills and expenses.
 ## Features
 
 - Add bills (recurring ones and one time)
-- Add expenses
 - Get reminders about bills
 - Reports. Neat graphs showing where your money went
 
