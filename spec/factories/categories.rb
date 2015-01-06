@@ -7,6 +7,5 @@ FactoryGirl.define do
     sequence :label do |n|
       "categorylabel#{n}"
     end
-    image 'http://example.com/home.png'
   end
 end
