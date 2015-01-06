@@ -38,7 +38,7 @@ RSpec.describe Api::V1::UsersController do
     end
 
     context 'when invalid details are passed' do
-      context 'when the passed in details fail validations', focus: true do
+      context 'when the passed in details fail validations' do
         let(:invalid_params) do
           {
             format: 'json',
@@ -54,6 +54,9 @@ RSpec.describe Api::V1::UsersController do
         it 'returns errors with a 422 status code' do
           post :create, invalid_params
           expect(response).to have_http_status(:unprocessable_entity)
+          result = JSON.parse(response.body)
+          expect(result['errors']).not_to be_blank
+          expect(result['errors']['email_address']).to eql(['is invalid'])
         end
       end
 
@@ -62,8 +65,6 @@ RSpec.describe Api::V1::UsersController do
           {
             format: 'json',
             username: 'mohnish',
-            first_name: 'brad',
-            last_name: 'bond',
             email_address: 'mt@mt.cx',
             phone_number: '9879879870',
             password: 'test1234'
@@ -71,42 +72,99 @@ RSpec.describe Api::V1::UsersController do
         end
 
         it 'returns errors with a 422 status code' do
+          post :create, missing_params
           expect(response).to have_http_status(:unprocessable_entity)
+          result = JSON.parse(response.body)
+          expect(result['errors']).not_to be_blank
+          expect(result['errors']['first_name']).to eql(["can't be blank"])
+          expect(result['errors']['last_name']).to eql(["can't be blank"])
         end
       end
 
       context 'when details are reused by another user' do
+        let(:user) { create(:user) }
+
         let(:reused_params) do
           {
             format: 'json',
-            username: 'mohnish',
+            username: user.username,
             first_name: 'brad',
             last_name: 'bond',
-            email_address: 'mt@mt.cx',
+            email_address: user.email_address,
             phone_number: '9879879870',
             password: 'test1234'
           }
         end
 
         it 'returns errors with a 422 status code' do
+          post :create, reused_params
           expect(response).to have_http_status(:unprocessable_entity)
+          result = JSON.parse(response.body)
+          expect(result['errors']).not_to be_blank
+          expect(result['errors']['username']).to eql(['has already been taken'])
+          expect(result['errors']['email_address']).to eql(['has already been taken'])
         end
       end
     end
   end
 
-  describe "GET update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
+  describe 'PATCH /api/users/id' do
+    context 'when valid details are passed' do
+      let(:user) { create(:user) }
+
+      let(:valid_params) do
+        {
+          format: 'json',
+          id: user.id,
+          first_name: 'hrithik',
+          phone_number: '9848042928'
+        }
+      end
+
+      it 'updates the user with a 200 status code' do
+        patch :update, valid_params
+        expect(response).to have_http_status(:ok)
+        result = JSON.parse(response.body)
+        expect(result['errors']).to be_blank
+      end
+    end
+
+    context 'when invalid details are passed' do
+      let(:user) { create(:user) }
+      let(:user2) { create(:user) }
+
+      let(:invalid_params) do
+        {
+          format: 'json',
+          id: user.id,
+          username: user2.username,
+          phone_number: '9848042928'
+        }
+      end
+
+      it 'returns the errors with a 422 status code' do
+        patch :update, invalid_params
+        expect(response).to have_http_status(:unprocessable_entity)
+        result = JSON.parse(response.body)
+        expect(result['errors']).not_to be_blank
+        expect(result['errors']['username']).to eql(['has already been taken'])
+      end
     end
   end
 
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+  describe 'DELETE /api/users/id' do
+    let!(:user) { create(:user) }
+
+    let(:params) do
+      {
+        format: 'json',
+        id: user.id
+      }
+    end
+
+    it 'destroys the user record and returns 204' do
+      expect { delete :destroy, params }.to change{ User.count }.by(-1)
+      expect(response).to have_http_status(:no_content)
     end
   end
-
 end

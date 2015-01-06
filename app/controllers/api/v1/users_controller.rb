@@ -9,17 +9,24 @@ module Api
       def create
         @user = User.create(user_params)
 
-        if @user.valid?
-          render status: :created
-        else
-          render status: :unprocessable_entity
-        end
+        status = @user.valid? ? :created : :unprocessable_entity
+
+        render status: status
       end
 
       def update
+        @user = User.find_by(id: params[:id])
+        @user.update(user_params)
+
+        status = @user.valid? ? :ok : :unprocessable_entity
+
+        render status: status
       end
 
       def destroy
+        @user = User.find_by(id: params[:id])
+        @user.destroy
+        head status: :no_content
       end
 
       private
