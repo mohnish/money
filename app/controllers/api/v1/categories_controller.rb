@@ -2,18 +2,9 @@ module Api
   module V1
     class CategoriesController < BaseController
       def index
-      end
+        @categories = Category.all
 
-      def show
-      end
-
-      def create
-      end
-
-      def update
-      end
-
-      def destroy
+        render status: :ok
       end
     end
   end

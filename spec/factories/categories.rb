@@ -1,7 +1,12 @@
 FactoryGirl.define do
   factory :category do
-    name 'home'
-    label 'Home'
+    sequence :name do |n|
+      "categoryname#{n}"
+    end
+
+    sequence :label do |n|
+      "categorylabel#{n}"
+    end
     image 'http://example.com/home.png'
   end
 end
