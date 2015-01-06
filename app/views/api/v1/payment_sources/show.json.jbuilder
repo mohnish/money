@@ -1,1 +1,1 @@
-json.extract! @payment_source, :id, :index, :show, :create, :update, :destroy, :created_at, :updated_at
+json.partial! 'api/v1/payment_sources/show', payment_source: @payment_source

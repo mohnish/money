@@ -1,0 +1,1 @@
+json.extract! payment_source, :id, :name, :type

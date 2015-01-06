@@ -2,9 +2,8 @@ module Api
   module V1
     class PaymentSourcesController < BaseController
       def index
-      end
-
-      def show
+        # TODO: oauth
+        @payment_sources = PaymentSource.all
       end
 
       def create
