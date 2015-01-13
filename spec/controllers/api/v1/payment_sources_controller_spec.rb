@@ -13,4 +13,8 @@ RSpec.describe Api::V1::PaymentSourcesController do
       expect(response).to have_http_status(:ok)
     end
   end
+
+  describe 'GET /api/payment_sources/id' do
+
+  end
 end
