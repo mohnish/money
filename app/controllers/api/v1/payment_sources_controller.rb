@@ -7,7 +7,11 @@ module Api
       end
 
       def create
+        @payment_source = PaymentSource.create(payment_source_params)
 
+        status = @payment_source.valid? ? :created : :unprocessable_entity
+
+        render status: status
       end
 
       def update
@@ -15,6 +19,11 @@ module Api
 
       def destroy
       end
+
+      private
+        def payment_source_params
+          params.permit(:name, :type, :user_id)
+        end
     end
   end
 end
