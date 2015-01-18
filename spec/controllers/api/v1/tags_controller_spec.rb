@@ -1,26 +1,62 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::TagsController do
+  render_views
 
-  describe "GET index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+  describe 'POST /api/bills/bill_id/tags/' do
+    context 'when valid params are passed' do
+      let(:bill) { create(:bill) }
+      let(:params) do
+        {
+          format: 'json',
+          bill_id: bill.id,
+          name: 'food'
+        }
+      end
+
+      it 'creates a tag' do
+        post :create, params
+        expect(response).to have_http_status(:created)
+        expect(bill.reload.tags.size).to eql(1)
+      end
+    end
+
+    context 'when invalid params are passed' do
+      let(:bill) do
+        bill = create(:bill)
+        bill.tags.create name: 'food'
+        bill
+      end
+      let(:params) do
+        {
+          format: 'json',
+          bill_id: bill.id,
+          name: 'food'
+        }
+      end
+
+      it 'returns a 422' do
+        post :create, params
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(bill.reload.tags.size).to eql(1)
+        result = JSON.parse(response.body)
+        expect(result['errors']['name']).to eql(['has already been taken'])
+      end
     end
   end
 
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+  describe 'DELETE /api/bills/bill_id/tags/id' do
+    let!(:tag) { create(:tag) }
+    let(:params) do
+      {
+        id: tag.id,
+        format: 'json',
+        bill_id: tag.entity.id
+      }
+    end
+
+    it 'destroys the tag' do
+      expect { delete :destroy, params }.to change{ Tag.count }.by(-1)
     end
   end
-
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
