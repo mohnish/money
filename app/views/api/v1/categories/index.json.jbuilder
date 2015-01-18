@@ -1,1 +1,1 @@
-json.array! @categories, :id, :name, :label, :image
+json.array! @categories, :id, :name, :label

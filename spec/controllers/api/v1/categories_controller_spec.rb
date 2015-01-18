@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::CategoriesController do
   render_views
 
-  describe 'GET /api/categories' do
+  describe 'GET /api/categories', focus: true do
     let!(:categories) { create_list :category, 4 }
 
     it 'returns a list of ' do
