@@ -128,6 +128,7 @@ RSpec.describe Api::V1::PaymentSourcesController do
 
     it 'destroys the payment source' do
       expect { delete :destroy, params }.to change{ PaymentSource.count }.by(-1)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

@@ -57,6 +57,7 @@ RSpec.describe Api::V1::TagsController do
 
     it 'destroys the tag' do
       expect { delete :destroy, params }.to change{ Tag.count }.by(-1)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end
