@@ -2,7 +2,8 @@ module Api
   module V1
     class BillsController < BaseController
       def index
-        @bills = Bill.all
+        user = User.find_by(params[:user_id])
+        @bills = user.bills
       end
 
       def show
