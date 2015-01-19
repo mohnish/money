@@ -4,5 +4,4 @@ FactoryGirl.define do
     payment_source
     amount 9.99
   end
-
 end
