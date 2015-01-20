@@ -8,4 +8,8 @@ json.array! @bills do |bill|
   json.category do
     json.extract! bill.category, :id, :name, :label
   end
+
+  json.tags bill.tags do |tag|
+    json.extract! tag, :name
+  end
 end
