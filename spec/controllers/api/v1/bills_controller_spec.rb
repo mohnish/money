@@ -29,7 +29,7 @@ RSpec.describe Api::V1::BillsController do
     let(:bill) { create :bill }
 
     it 'returns the requested bill' do
-      get :show, params.merge(id: bill.id)
+      get :show, {}
       expect(response).to have_http_status(:success)
       result = JSON.parse(response.body)
       expect(result['id']).to eql(bill.id)
