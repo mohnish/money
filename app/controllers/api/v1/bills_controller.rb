@@ -7,7 +7,8 @@ module Api
       end
 
       def show
-        @bill = Bill.last
+        user = User.find_by(params[:user_id])
+        @bill = user.bills.find_by(params[:id])
       end
 
       def create

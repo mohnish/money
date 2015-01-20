@@ -10,6 +10,6 @@ json.array! @bills do |bill|
   end
 
   json.tags bill.tags do |tag|
-    json.extract! tag, :name
+    json.extract! tag, :id, :name
   end
 end
