@@ -17,7 +17,7 @@ RSpec.describe Api::V1::BillsController do
       }
     end
 
-    it 'returns the bills of a particular user', focus: true do
+    it 'returns the bills of a particular user' do
       get :index, params
       expect(response).to have_http_status(:success)
       result = JSON.parse(response.body)
