@@ -27,9 +27,9 @@ RSpec.describe Api::V1::BillsController do
 
   describe 'GET /api/bills/id', focus: true do
     let(:bill) do
-      # FIXME: 2 users shouldn't be created.
       bill = create(:bill_with_tags)
-      create(:payment, bill: bill)
+      payment_source = create(:payment_source, user: bill.user)
+      create(:payment, bill: bill, payment_source: payment_source)
       bill
     end
 
@@ -46,6 +46,7 @@ RSpec.describe Api::V1::BillsController do
       expect(response).to have_http_status(:success)
       result = JSON.parse(response.body)
       expect(result['id']).to eql(bill.id)
+      expect(result['payments'].size).to eql(1)
     end
   end
 end

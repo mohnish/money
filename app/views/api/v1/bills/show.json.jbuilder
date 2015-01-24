@@ -16,6 +16,6 @@ json.payments @bill.payments do |payment|
   json.extract! payment, :id, :amount
 
   json.payment_source do
-    json.name payment.payment_source.name
+    json.extract! payment.payment_source, :id, :name, :type
   end
 end
