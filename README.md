@@ -1,6 +1,6 @@
 # Money
 
-An app to manage my monthly bills and expenses.
+Money is an app to manage your bills and payments. It helps you reach your financial goals by showing you where you have been spending the most and where you can save.
 
 ## Features
 
@@ -24,6 +24,8 @@ run the following commands
 
 - Rails 4.2.0
 - Ruby 2.2.0
+- Backbone 1.1.2
+- Bootstrap 3.3.2
 
 ## License
 
