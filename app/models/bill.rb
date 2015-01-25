@@ -5,4 +5,18 @@ class Bill < ActiveRecord::Base
   has_many :tags, as: :entity
   has_many :payments
 
+  validates_presence_of :repeat_interval
+  validates_presence_of :next_due_date
+  validates_presence_of :category
+  validates_uniqueness_of :name
+  validates_presence_of :user
+  validates :amount, {
+      presence: {
+        message: 'please enter a valid amount'
+      },
+      numericality: {
+        message: 'please enter a valid number'
+      }
+  }
+
 end

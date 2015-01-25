@@ -25,7 +25,7 @@ RSpec.describe Api::V1::BillsController do
     end
   end
 
-  describe 'GET /api/bills/id', focus: true do
+  describe 'GET /api/bills/id' do
     let(:bill) do
       bill = create(:bill_with_tags)
       payment_source = create(:payment_source, user: bill.user)
@@ -47,6 +47,40 @@ RSpec.describe Api::V1::BillsController do
       result = JSON.parse(response.body)
       expect(result['id']).to eql(bill.id)
       expect(result['payments'].size).to eql(1)
+    end
+  end
+
+  describe 'POST /api/bills' do
+    context 'with valid data' do
+      let(:repeat_interval) { create(:repeat_interval) }
+      let(:category) { create(:category) }
+
+      let(:user) { create(:user) }
+
+      let(:params) do
+        time = 5.days.since
+
+        {
+          format: 'json',
+          user_id: user.id,
+          tags: ['phone', 'at&t'],
+          repeat_interval: repeat_interval.id,
+          next_due_date: "#{time.month}/#{time.day}/#{time.year}",
+          category: category.id,
+          amount: '176.50',
+          name: 'AT&T'
+        }
+      end
+
+      it 'creates a bill' do
+        post :create, params
+        expect(response).to have_http_status(:created)
+        result = JSON.parse(response.body)
+        expect(result['errors']).to be_blank
+      end
+    end
+
+    context 'with invalid data' do
     end
   end
 end
