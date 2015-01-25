@@ -5,9 +5,7 @@ RSpec.describe Api::V1::BillsController do
 
   describe 'GET /api/bills' do
     let(:user) do
-      user = create(:user)
-      create_list(:bill, 2, user: user)
-      user
+      create(:bill).user
     end
 
     let(:params) do
@@ -21,7 +19,7 @@ RSpec.describe Api::V1::BillsController do
       get :index, params
       expect(response).to have_http_status(:success)
       result = JSON.parse(response.body)
-      expect(result.size).to eql(2)
+      expect(result.size).to eql(1)
     end
   end
 

@@ -8,7 +8,7 @@ class Bill < ActiveRecord::Base
   validates_presence_of :repeat_interval
   validates_presence_of :next_due_date
   validates_presence_of :category
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, scope: :user
   validates_presence_of :user
   validates :amount, {
       presence: {
