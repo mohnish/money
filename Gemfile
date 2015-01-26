@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'uglifier'
 gem 'doorkeeper'
 gem 'jquery-rails'
+gem 'sass-rails'
 gem 'bootstrap-sass'
 
 group :development do
