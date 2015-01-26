@@ -8,6 +8,8 @@ gem 'jbuilder'
 gem 'mysql2'
 gem 'uglifier'
 gem 'doorkeeper'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
 
 group :development do
   gem 'spring'
