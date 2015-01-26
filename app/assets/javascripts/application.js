@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery2
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require underscore-min
 //= require backbone-min
 //= require_tree .
