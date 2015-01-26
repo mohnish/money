@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController do
   render_views
+  setup_doorkeeper
 
   describe 'GET /api/users/id' do
     context 'when a valid id is passed' do
-      let(:user) { create(:user) }
-
       it 'returns the user details' do
         get :show, { id: user.id, format: 'json' }
         result = JSON.parse(response.body)
@@ -82,8 +81,6 @@ RSpec.describe Api::V1::UsersController do
       end
 
       context 'when details are reused by another user' do
-        let(:user) { create(:user) }
-
         let(:reused_params) do
           {
             format: 'json',
@@ -110,8 +107,6 @@ RSpec.describe Api::V1::UsersController do
 
   describe 'PATCH /api/users/id' do
     context 'when valid details are passed' do
-      let(:user) { create(:user) }
-
       let(:valid_params) do
         {
           format: 'json',
@@ -130,7 +125,6 @@ RSpec.describe Api::V1::UsersController do
     end
 
     context 'when invalid details are passed' do
-      let(:user) { create(:user) }
       let(:user2) { create(:user) }
 
       let(:invalid_params) do
@@ -153,9 +147,7 @@ RSpec.describe Api::V1::UsersController do
   end
 
   describe 'DELETE /api/users/id' do
-    let!(:user) { create(:user) }
-
-    let(:params) do
+    let!(:params) do
       {
         format: 'json',
         id: user.id

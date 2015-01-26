@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::CategoriesController do
   render_views
+  setup_doorkeeper
 
   describe 'GET /api/categories' do
     let!(:categories) { create_list :category, 4 }

@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::TagsController do
   render_views
+  setup_doorkeeper
 
   describe 'POST /api/bills/bill_id/tags/' do
     context 'when valid params are passed' do
-      let(:bill) { create(:bill) }
+      let(:bill) { create(:bill, user: user) }
       let(:params) do
         {
           format: 'json',
@@ -23,7 +24,7 @@ RSpec.describe Api::V1::TagsController do
 
     context 'when invalid params are passed' do
       let(:bill) do
-        bill = create(:bill)
+        bill = create(:bill, user: user)
         bill.tags.create name: 'food'
         bill
       end
@@ -46,8 +47,11 @@ RSpec.describe Api::V1::TagsController do
   end
 
   describe 'DELETE /api/bills/bill_id/tags/id' do
-    let!(:tag) { create(:tag) }
-    let(:params) do
+    let!(:tag) do
+      create(:tag, entity: create(:bill, user: user))
+    end
+
+    let!(:params) do
       {
         id: tag.id,
         format: 'json',

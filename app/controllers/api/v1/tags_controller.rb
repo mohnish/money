@@ -1,21 +1,25 @@
 module Api
   module V1
     class TagsController < BaseController
+      before_action :doorkeeper_authorize!
+
       def create
-        @tag = Bill.find_by(id: params[:bill_id]).tags.create(tag_params)
+        @tag = current_bill.tags.create(tag_params)
 
-        status = @tag.valid? ? :created : :unprocessable_entity
-
-        render status: status
+        render status: (@tag.valid? ? :created : :unprocessable_entity)
       end
 
       def destroy
-        @tag = Tag.find_by(id: params[:id])
-        @tag.destroy
+        tag = current_bill.tags.find_by(id: params[:id])
+        tag.destroy
         head status: :no_content
       end
 
       private
+        def current_bill
+          current_user.bills.find_by(id: params[:bill_id])
+        end
+
         def tag_params
           params.permit(:name)
         end

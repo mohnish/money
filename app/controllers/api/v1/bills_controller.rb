@@ -1,15 +1,15 @@
 module Api
   module V1
     class BillsController < BaseController
-      before_action :retrieve_bill, only: [:show, :update, :destroy]
+      before_action :doorkeeper_authorize!
       before_action :update_bill, only: [:update]
 
       def index
-        user = User.find_by(params[:user_id])
-        @bills = user.bills
+        @bills = current_user.bills
       end
 
       def show
+        current_bill
       end
 
       def create
@@ -19,11 +19,11 @@ module Api
       end
 
       def update
-        render status: (@bill.valid? ? :ok : :unprocessable_entity)
+        render status: (current_bill.valid? ? :ok : :unprocessable_entity)
       end
 
       def destroy
-        @bill.destroy
+        current_bill.destroy
 
         head status: :no_content
       end
@@ -38,15 +38,14 @@ module Api
           update_params[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
 
           params[:tags].map do |tag|
-            @bill.tags.find_or_initialize_by(name: tag)
+            current_bill.tags.find_or_initialize_by(name: tag)
           end
 
-          @bill.update(update_params)
+          current_bill.update(update_params)
         end
 
-        def retrieve_bill
-          user = User.find_by(params[:user_id])
-          @bill = user.bills.find_by(params[:id])
+        def current_bill
+          @bill ||= current_user.bills.find_by(params[:id])
         end
 
         def parsed_date
@@ -55,9 +54,7 @@ module Api
         end
 
         def create_bill
-          user = User.find_by(id: params[:user_id])
-
-          user.bills.create do |bill|
+          current_user.bills.create do |bill|
             bill.amount = params[:amount]
             bill.name = params[:name]
             bill.next_due_date = parsed_date

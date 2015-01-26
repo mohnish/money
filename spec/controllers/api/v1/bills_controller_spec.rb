@@ -2,13 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::BillsController do
   render_views
+  setup_doorkeeper
 
   describe 'GET /api/bills' do
-    let(:user) do
-      create(:bill).user
-    end
-
     let(:params) do
+      create(:bill, user: user)
+
       {
         format: 'json',
         user_id: user.id
@@ -25,8 +24,8 @@ RSpec.describe Api::V1::BillsController do
 
   describe 'GET /api/bills/id' do
     let(:bill) do
-      bill = create(:bill_with_tags)
-      payment_source = create(:payment_source, user: bill.user)
+      bill = create(:bill_with_tags, user: user)
+      payment_source = create(:payment_source, user: user)
       create(:payment, bill: bill, payment_source: payment_source)
       bill
     end
@@ -35,7 +34,7 @@ RSpec.describe Api::V1::BillsController do
       {
         format: 'json',
         id: bill.id,
-        user_id: bill.user.id
+        user_id: user.id
       }
     end
 
@@ -52,8 +51,6 @@ RSpec.describe Api::V1::BillsController do
     context 'with valid data' do
       let(:repeat_interval) { create(:repeat_interval) }
       let(:category) { create(:category) }
-
-      let(:user) { create(:user) }
 
       let(:params) do
         time = 5.days.since
@@ -79,8 +76,6 @@ RSpec.describe Api::V1::BillsController do
     end
 
     context 'with invalid data' do
-      let(:user) { create(:user) }
-
       let(:params) do
         time = 5.days.since
 
@@ -105,7 +100,7 @@ RSpec.describe Api::V1::BillsController do
 
   describe 'PATCH /api/bills/id' do
     context 'with valid params' do
-      let(:bill) { create(:bill) }
+      let(:bill) { create(:bill, user: user) }
 
       let(:params) do
         time = 15.days.since
@@ -113,7 +108,7 @@ RSpec.describe Api::V1::BillsController do
         {
           format: 'json',
           id: bill.id,
-          user_id: bill.user.id,
+          user_id: user.id,
           tags: ['phone', 'google', 'test'],
           next_due_date: "#{time.month}/#{time.day}/#{time.year}",
           amount: '170.00',
@@ -133,13 +128,13 @@ RSpec.describe Api::V1::BillsController do
     end
 
     context 'with invalid params' do
-      let(:bill) { create(:bill) }
+      let(:bill) { create(:bill, user: user) }
 
       let(:params) do
         {
           format: 'json',
           id: bill.id,
-          user_id: bill.user.id,
+          user_id: user.id,
           tags: ['phone', 'google', 'test'],
           amount: 'asd',
           name: 'T-Mobile'
@@ -156,12 +151,10 @@ RSpec.describe Api::V1::BillsController do
   end
 
   describe 'DELETE /api/bills/id' do
-    let!(:bill) { create(:bill) }
-
-    let(:params) do
+    let!(:params) do
       {
         format: 'json',
-        id: bill.id
+        id: create(:bill, user: user).id
       }
     end
 

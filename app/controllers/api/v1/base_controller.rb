@@ -1,9 +1,10 @@
 module Api
   module V1
     class BaseController < ApplicationController
-      def current_user
-        # TODO: grab user form params
-      end
+      private
+        def current_user
+          @current_user ||= User.find_by(id: doorkeeper_token.resource_owner_id) if doorkeeper_token
+        end
     end
   end
 end

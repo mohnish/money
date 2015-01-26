@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::PaymentSourcesController do
   render_views
+  setup_doorkeeper
 
   describe 'GET /api/payment_sources' do
     let!(:payment_sources) do
-      user = create :user
       create_list :payment_source, 2, user: user
     end
 
@@ -19,8 +19,6 @@ RSpec.describe Api::V1::PaymentSourcesController do
 
   describe 'POST /api/payment_sources' do
     context 'when valid params are passed' do
-      let(:user) { create(:user) }
-
       let(:params) do
         {
           format: 'json',
@@ -37,31 +35,15 @@ RSpec.describe Api::V1::PaymentSourcesController do
     end
 
     context 'when invalid params are passed' do
-      context 'when params are missing' do
-        let(:params) do
-          {
-            format: 'json',
-            name: 'Visa 1234'
-          }
-        end
-
-        it 'returns a 422' do
-          post :create, params
-          expect(response).to have_http_status(:unprocessable_entity)
-          result = JSON.parse(response.body)
-          expect(result['errors']['user']).to eql(["can't be blank"])
-        end
-      end
-
       context 'when existing data is used' do
-        let(:credit_card) { create(:credit_card) }
+        let(:credit_card) { create(:credit_card, user: user) }
 
         let(:params) do
           {
             format: 'json',
             name: credit_card.name,
             type: 'CreditCard',
-            user_id: credit_card.user.id
+            user_id: user.id
           }
         end
 
@@ -77,12 +59,12 @@ RSpec.describe Api::V1::PaymentSourcesController do
 
   describe 'PATCH /api/payment_sources/id' do
     context 'when valid params are passed' do
-      let(:debit_card) { create(:debit_card) }
+      let(:debit_card) { create(:debit_card, user: user) }
       let(:params) do
         {
           format: 'json',
           name: 'US Bank ATM Card',
-          user_id: debit_card.user.id,
+          user_id: user.id,
           id: debit_card.id
         }
       end
@@ -97,13 +79,13 @@ RSpec.describe Api::V1::PaymentSourcesController do
     end
 
     context 'when invalid params are passed' do
-      let(:debit_card) { create(:debit_card) }
-      let(:debit_card2) { create(:debit_card, user: debit_card.user) }
+      let(:debit_card) { create(:debit_card, user: user) }
+      let(:debit_card2) { create(:debit_card, user: user) }
       let(:params) do
         {
           format: 'json',
           name: debit_card2.name,
-          user_id: debit_card.user.id,
+          user_id: user.id,
           id: debit_card.id
         }
       end
@@ -118,7 +100,7 @@ RSpec.describe Api::V1::PaymentSourcesController do
   end
 
   describe 'DELETE /api/payment_sources/id' do
-    let!(:debit_card) { create(:debit_card) }
+    let!(:debit_card) { create(:debit_card, user: user) }
     let(:params) do
       {
         id: debit_card.id,

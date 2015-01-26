@@ -2,18 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::PaymentsController do
   render_views
+  setup_doorkeeper
 
   describe 'POST /api/bills/bill_id/payments' do
     context 'when valid params are passed' do
-      let(:user) do
-        bill = create(:bill)
-        user = bill.user
-        create(:payment_source, user: user)
-        user
-      end
-
-      let(:bill) { user.bills.last }
-      let(:payment_source) { user.payment_sources.last }
+      let(:bill) { create(:bill, user: user) }
+      let(:payment_source) { create(:payment_source, user: user) }
 
       let(:params) do
         {
@@ -34,15 +28,8 @@ RSpec.describe Api::V1::PaymentsController do
     end
 
     context 'when invalid params are passed' do
-      let(:user) do
-        bill = create(:bill)
-        user = bill.user
-        create(:payment_source, user: user)
-        user
-      end
-
-      let(:bill) { user.bills.last }
-      let(:payment_source) { user.payment_sources.last }
+      let(:bill) { create(:bill, user: user) }
+      let(:payment_source) { create(:payment_source, user: user) }
 
       let(:params) do
         {
@@ -64,7 +51,12 @@ RSpec.describe Api::V1::PaymentsController do
 
   describe 'PATCH /api/bills/bill_id/payments/id' do
     context 'when valid params are passed' do
-      let(:payment) { create(:payment) }
+      let(:payment) do
+        bill = create(:bill, user: user)
+        payment_source = create(:payment_source, user: user)
+        create(:payment, payment_source: payment_source, bill: bill)
+      end
+
       let(:params) do
         {
           format: 'json',
@@ -84,7 +76,12 @@ RSpec.describe Api::V1::PaymentsController do
     end
 
     context 'when invalid params are passed' do
-      let(:payment) { create(:payment) }
+      let(:payment) do
+        bill = create(:bill, user: user)
+        payment_source = create(:payment_source, user: user)
+        create(:payment, payment_source: payment_source, bill: bill)
+      end
+
       let(:params) do
         {
           format: 'json',
@@ -104,7 +101,12 @@ RSpec.describe Api::V1::PaymentsController do
   end
 
   describe 'DELETE /api/bills/bill_id/payments/id' do
-    let!(:payment) { create(:payment) }
+    let!(:payment) do
+      bill = create(:bill, user: user)
+      payment_source = create(:payment_source, user: user)
+      create(:payment, payment_source: payment_source, bill: bill)
+    end
+
     let(:params) do
       {
         format: 'json',
