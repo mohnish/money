@@ -79,6 +79,27 @@ RSpec.describe Api::V1::BillsController do
     end
 
     context 'with invalid data' do
+      let(:user) { create(:user) }
+
+      let(:params) do
+        time = 5.days.since
+
+        {
+          format: 'json',
+          user_id: user.id,
+          next_due_date: "#{time.month}/#{time.day}/#{time.year}",
+          amount: '176.50',
+          name: 'AT&T',
+          tags: ['test', 'test1']
+        }
+      end
+
+      it 'returns a 422' do
+        post :create, params
+        expect(response).to have_http_status(:unprocessable_entity)
+        result = JSON.parse(response.body)
+        expect(result['errors']).not_to be_blank
+      end
     end
   end
 end
