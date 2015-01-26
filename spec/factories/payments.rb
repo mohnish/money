@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :payment do
-    bill
-    payment_source
     amount 9.99
+    payment_source
+    bill
   end
 end
