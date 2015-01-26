@@ -102,4 +102,72 @@ RSpec.describe Api::V1::BillsController do
       end
     end
   end
+
+  describe 'PATCH /api/bills/id' do
+    context 'with valid params' do
+      let(:bill) { create(:bill) }
+
+      let(:params) do
+        time = 15.days.since
+
+        {
+          format: 'json',
+          id: bill.id,
+          user_id: bill.user.id,
+          tags: ['phone', 'google', 'test'],
+          next_due_date: "#{time.month}/#{time.day}/#{time.year}",
+          amount: '170.00',
+          name: 'T-Mobile'
+        }
+      end
+
+      it 'updates the bill' do
+        patch :update, params
+        expect(response).to have_http_status(:ok)
+        result = JSON.parse(response.body)
+        bill.reload
+        expect(bill.name).to eql('T-Mobile')
+        expect(bill.amount).to eql(170.00)
+        expect(bill.tags.map(&:name)).to include('phone', 'google', 'test')
+      end
+    end
+
+    context 'with invalid params' do
+      let(:bill) { create(:bill) }
+
+      let(:params) do
+        {
+          format: 'json',
+          id: bill.id,
+          user_id: bill.user.id,
+          tags: ['phone', 'google', 'test'],
+          amount: 'asd',
+          name: 'T-Mobile'
+        }
+      end
+
+      it 'returns a 422' do
+        patch :update, params
+        expect(response).to have_http_status(:unprocessable_entity)
+        result = JSON.parse(response.body)
+        expect(result['errors']).not_to be_blank
+      end
+    end
+  end
+
+  describe 'DELETE /api/bills/id' do
+    let!(:bill) { create(:bill) }
+
+    let(:params) do
+      {
+        format: 'json',
+        id: bill.id
+      }
+    end
+
+    it 'destroys the bill record and returns 204' do
+      expect { delete :destroy, params }.to change{ Bill.count }.by(-1)
+      expect(response).to have_http_status(:no_content)
+    end
+  end
 end

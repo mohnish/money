@@ -1,35 +1,54 @@
 module Api
   module V1
     class BillsController < BaseController
+      before_action :retrieve_bill, only: [:show, :update, :destroy]
+      before_action :update_bill, only: [:update]
+
       def index
         user = User.find_by(params[:user_id])
         @bills = user.bills
       end
 
       def show
-        user = User.find_by(params[:user_id])
-        @bill = user.bills.find_by(params[:id])
       end
 
       def create
         @bill = create_bill
 
-        if @bill.valid?
-          status = :created
-        else
-          status = :unprocessable_entity
-        end
-
-        render status: status
+        render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
 
       def update
+        render status: (@bill.valid? ? :ok : :unprocessable_entity)
       end
 
       def destroy
+        @bill.destroy
+
+        head status: :no_content
       end
 
       private
+        def update_bill
+          update_params = {}
+          update_params[:amount] = params[:amount] if params[:amount]
+          update_params[:name] = params[:name] if params[:name]
+          update_params[:next_due_date] = parsed_date if params[:next_due_date]
+          update_params[:category] = Category.find_by(id: params[:category]) if params[:category]
+          update_params[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
+
+          params[:tags].map do |tag|
+            @bill.tags.find_or_initialize_by(name: tag)
+          end
+
+          @bill.update(update_params)
+        end
+
+        def retrieve_bill
+          user = User.find_by(params[:user_id])
+          @bill = user.bills.find_by(params[:id])
+        end
+
         def parsed_date
           month, day, year = params[:next_due_date].split('/').map(&:to_i)
           Time.zone.parse("#{day}/#{month}/#{year}") if Date.valid_date?(year, month, day)
