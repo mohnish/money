@@ -50,3 +50,21 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def setup_doorkeeper
+  # This is lazy loaded. So we don't have to worry about creating
+  # a new user everytime we hit an endpoint (even if the endpoint
+  # doesn't require a user - ex: POST /api/users/).
+  let(:user) { create(:user) }
+
+  let(:doorkeeper_token) do
+    double({
+      :acceptable? => true,
+      :resource_owner_id => user.id
+    })
+  end
+
+  before do
+    allow(controller).to receive(:doorkeeper_token) { doorkeeper_token }
+  end
+end
