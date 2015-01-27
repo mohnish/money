@@ -2,7 +2,6 @@ module Api
   module V1
     class BillsController < BaseController
       before_action :doorkeeper_authorize!
-      before_action :update_bill, only: [:update]
 
       def index
         @bills = current_user.bills
@@ -19,6 +18,7 @@ module Api
       end
 
       def update
+        update_bill
         render status: (current_bill.valid? ? :ok : :unprocessable_entity)
       end
 
