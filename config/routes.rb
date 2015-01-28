@@ -1,4 +1,8 @@
 Money::Application.routes.draw do
+  get 'signup' => 'welcome#signup'
+  get 'signin' => 'welcome#signin'
+  root 'welcome#signin'
+
   use_doorkeeper
 
   namespace :api, defaults: { format: 'json' } do
