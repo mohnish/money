@@ -12,17 +12,17 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'bootstrap-sass'
 
-group :development do
-  gem 'spring'
-  gem 'spring-commands-rspec'
-end
+gem 'sdoc', group: :doc
 
 group :test, :development do
   gem 'factory_girl_rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'guard'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
-  gem 'pry'
+  gem 'byebug'
+  gem 'web-console'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
