@@ -1,4 +1,4 @@
-MoneyRouter = Backbone.Router.extend({
+var MoneyRouter = Backbone.Router.extend({
   routes: {
     'bills': 'bills',
     'bills/:billId': 'bills',
@@ -32,5 +32,4 @@ MoneyRouter = Backbone.Router.extend({
 });
 
 new MoneyRouter();
-
 Backbone.history.start({ pushState: true });
