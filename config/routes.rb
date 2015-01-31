@@ -16,4 +16,6 @@ Money::Application.routes.draw do
       end
     end
   end
+
+  match '*path', to: 'welcome#signin', via: [:get]
 end
