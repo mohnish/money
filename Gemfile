@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'sdoc', group: :doc
 
 group :test, :development do
+  gem 'jasmine'
   gem 'factory_girl_rails'
   gem 'spring'
   gem 'spring-commands-rspec'
