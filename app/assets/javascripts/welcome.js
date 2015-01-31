@@ -1,4 +1,4 @@
 $(function() {
-  new MoneyRouter();
+  new DefaultRouter();
   Backbone.history.start({ pushState: true });
 });
