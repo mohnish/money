@@ -30,6 +30,3 @@ var MoneyRouter = Backbone.Router.extend({
     console.log('arguments:', arguments);
   }
 });
-
-new MoneyRouter();
-Backbone.history.start({ pushState: true });
