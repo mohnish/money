@@ -1,2 +1,35 @@
-%h1 Welcome#signup
-%p Find me in app/views/welcome/signup.html.haml
+
+%form.form-horizontal#signup-form
+  .form-group
+    %label.col-sm-2.control-label{ for: 'username' }
+      username
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'username', name: 'username', placeholder: 'username' }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'email-address' }
+      email address
+    .col-sm-10
+      %input.form-control{ type: 'email', id: 'email-address', name: 'email-address', placeholder: 'email address' }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'first-name' }
+      first name
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'first-name', name: 'first-name', placeholder: 'first name' }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'last-name' }
+      last name
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'last-name', name: 'last-name', placeholder: 'last name' }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'password' }
+      password
+    .col-sm-10
+      %input.form-control{ type: 'password', id: 'password', name: 'password', placeholder: 'password' }
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-primary{ type: 'submit' } sign up

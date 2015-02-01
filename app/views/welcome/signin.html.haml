@@ -1,2 +1,17 @@
-%h1 Welcome#signin
-%p Find me in app/views/welcome/signin.html.haml
+
+%form.form-horizontal#signin-form
+  .form-group
+    %label.col-sm-2.control-label{ for: 'username' }
+      username
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'username', name: 'username', placeholder: 'username' }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'password' }
+      password
+    .col-sm-10
+      %input.form-control{ type: 'password', id: 'password', name: 'password', placeholder: 'password' }
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-primary{ type: 'submit' } sign in
