@@ -14,4 +14,5 @@
 //= require bootstrap
 //= require underscore-min
 //= require backbone-min
+//= require money/init
 //= require_tree .

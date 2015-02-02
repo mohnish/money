@@ -1,4 +1,4 @@
-var DefaultRouter = Backbone.Router.extend({
+M.DefaultRouter = Backbone.Router.extend({
   routes: {
     'bills(/)': 'bills',
     'bills/:id': 'showBill',

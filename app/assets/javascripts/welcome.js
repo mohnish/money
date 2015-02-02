@@ -1,4 +1,6 @@
+
 $(function() {
-  new DefaultRouter();
+  new M.DefaultRouter();
+  new M.SignupView();
   Backbone.history.start({ pushState: true });
 });
