@@ -1,6 +1,13 @@
 M.SignupView = Backbone.View.extend({
   el: '#signup-form',
 
+  model: new M.User(),
+
+  initialize: function() {
+    this.listenTo(this.model, 'sync', this.handleSuccess);
+    this.listenTo(this.model, 'invalid', this.handleFail);
+  },
+
   events: {
     'submit': 'handleSubmit'
   },
@@ -8,28 +15,15 @@ M.SignupView = Backbone.View.extend({
   handleSubmit: function(e) {
     e.preventDefault();
 
-    var self = this;
     var props = this.serializeSignupForm(this.$el.serializeArray());
-    var user = new M.User(props);
+    this.model.set(props)
 
-    if (user.isValid({ checkPassword: true })) {
-      // this.setupJqXHR(user.save());
-      debugger
-      user.save({
-        success: self.handleSuccess,
-        error: self.handleFail
-      });
+    if (this.model.isValid({ checkPassword: true })) {
+      this.model.save();
       this.setValidationResponse('waiting...');
     } else {
-      this.setValidationResponse(user.validationError);
+      this.setValidationResponse(this.model.validationError);
     }
-  },
-
-  setupJqXHR: function(jqxhr) {
-    jqxhr
-      .done(this.handleDone)
-      .fail(this.handleFail)
-      .always(this.handleAlways);
   },
 
   serializeSignupForm: function(serializedArray) {
@@ -51,11 +45,6 @@ M.SignupView = Backbone.View.extend({
 
   handleFail: function(model, response, options) {
     debugger
-    var errorText = this.formatErrors();
-    this.setValidationResponse();
-  },
-
-  formatErrors: function(errorsObject) {
-    debugger
+    this.setValidationResponse(response.errors);
   }
 });
