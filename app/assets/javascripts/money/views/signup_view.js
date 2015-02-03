@@ -21,6 +21,7 @@ M.SignupView = M.BaseView.extend({
 
     if (this.model.isValid({ checkPassword: true })) {
       this.model.save();
+      // TODO: Replace this with a loader gif
       this.setValidationResponse('waiting...');
     } else {
       this.setValidationResponse(this.model.validationError);
@@ -31,15 +32,12 @@ M.SignupView = M.BaseView.extend({
     this.$('.validation-response').text(text);
   },
 
-  handleSuccess: function(model, response, options) {
-
-  },
-
   handleSync: function(model, response, options) {
-
+    this.setValidationResponse('profile successfully created');
   },
 
   handleError: function(model, response, options) {
-
+    var errors = this.formatErrors(response);
+    this.setValidationResponse(errors.join('\n'));
   }
 });
