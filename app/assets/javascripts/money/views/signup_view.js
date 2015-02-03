@@ -1,11 +1,12 @@
-M.SignupView = Backbone.View.extend({
+M.SignupView = M.BaseView.extend({
   el: '#signup-form',
 
   model: new M.User(),
 
   initialize: function() {
-    this.listenTo(this.model, 'sync', this.handleSuccess);
-    this.listenTo(this.model, 'invalid', this.handleFail);
+    this.listenTo(this.model, 'sync', this.handleSync);
+    this.listenTo(this.model, 'invalid', this.handleError);
+    this.listenTo(this.model, 'error', this.handleError);
   },
 
   events: {
@@ -15,7 +16,7 @@ M.SignupView = Backbone.View.extend({
   handleSubmit: function(e) {
     e.preventDefault();
 
-    var props = this.serializeForm(this.$el.serializeArray());
+    var props = this.createAttributesObject(this.$el.serializeArray());
     this.model.set(props)
 
     if (this.model.isValid({ checkPassword: true })) {
@@ -26,25 +27,19 @@ M.SignupView = Backbone.View.extend({
     }
   },
 
-  serializeForm: function(serializedArray) {
-    var props = {};
-    $.each(serializedArray, function(i, v) {
-      props[v['name']] = v['value'];
-    });
-    return props;
-  },
-
   setValidationResponse: function(text) {
     this.$('.validation-response').text(text);
   },
 
   handleSuccess: function(model, response, options) {
-    debugger
-    this.setValidationResponse('account successfully created!');
+
   },
 
-  handleFail: function(model, response, options) {
-    debugger
-    this.setValidationResponse(response.errors);
+  handleSync: function(model, response, options) {
+
+  },
+
+  handleError: function(model, response, options) {
+
   }
 });
