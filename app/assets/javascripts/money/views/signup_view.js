@@ -15,7 +15,7 @@ M.SignupView = Backbone.View.extend({
   handleSubmit: function(e) {
     e.preventDefault();
 
-    var props = this.serializeSignupForm(this.$el.serializeArray());
+    var props = this.serializeForm(this.$el.serializeArray());
     this.model.set(props)
 
     if (this.model.isValid({ checkPassword: true })) {
@@ -26,7 +26,7 @@ M.SignupView = Backbone.View.extend({
     }
   },
 
-  serializeSignupForm: function(serializedArray) {
+  serializeForm: function(serializedArray) {
     var props = {};
     $.each(serializedArray, function(i, v) {
       props[v['name']] = v['value'];
