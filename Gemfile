@@ -17,6 +17,7 @@ gem 'sdoc', group: :doc
 
 group :test, :development do
   gem 'jasmine'
+  gem 'guard-jasmine'
   gem 'factory_girl_rails'
   gem 'spring'
   gem 'spring-commands-rspec'
