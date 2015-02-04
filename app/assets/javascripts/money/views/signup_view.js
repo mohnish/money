@@ -3,10 +3,17 @@ M.SignupView = M.BaseView.extend({
 
   model: new M.User(),
 
+  templatePath: 'welcome/signup',
+
   initialize: function() {
     this.listenTo(this.model, 'sync', this.handleSync);
     this.listenTo(this.model, 'invalid', this.handleError);
     this.listenTo(this.model, 'error', this.handleError);
+  },
+
+  render: function() {
+    this.$el.html(this.template());
+    return this;
   },
 
   events: {

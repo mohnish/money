@@ -11,6 +11,8 @@ gem 'doorkeeper'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'haml_assets'
+gem 'ejs'
 gem 'bootstrap-sass'
 
 gem 'sdoc', group: :doc

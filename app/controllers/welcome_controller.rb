@@ -1,7 +1,4 @@
 class WelcomeController < ApplicationController
-  def signup
-  end
-
-  def signin
+  def index
   end
 end

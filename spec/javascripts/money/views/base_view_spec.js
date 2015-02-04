@@ -32,4 +32,10 @@ describe('M.SignupView', function() {
       expect(view.formatErrors(input)).toEqual(expected);
     });
   });
+
+  describe('#templatePath', function() {
+    it('returns welcome/signin (default template path)', function() {
+      expect(view.templatePath).toBe('welcome/signin');
+    });
+  });
 });
