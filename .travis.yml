@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 2.2.0
 bundler_args: --without osx
+before_script:
+  - bundle exec rake db:drop db:create db:schema:load --trace
+  - bundle exec rake db:test:prepare --trace
 script:
   - "bundle exec rspec"
   - "bundle exec rake jasmine:ci"
