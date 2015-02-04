@@ -1,4 +1,4 @@
-M.SignupView = M.BaseView.extend({
+M.SigninView = M.BaseView.extend({
   el: '#signin-form',
 
   model: new M.User(),
