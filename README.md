@@ -1,4 +1,5 @@
 # Money
+[![Build Status](https://magnum.travis-ci.com/mohnish/money.svg?token=oQio4yxdq7cNymw16DPn&branch=master)](https://magnum.travis-ci.com/mohnish/money)
 
 Money is an app to manage your bills and payments. It helps you reach your financial goals by showing you where you have been spending the most and where you can save.
 
