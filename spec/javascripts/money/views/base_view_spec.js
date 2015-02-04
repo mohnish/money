@@ -1,4 +1,4 @@
-describe('M.SignupView', function() {
+describe('M.BaseView', function() {
   var view;
 
   beforeEach(function() {
@@ -34,8 +34,26 @@ describe('M.SignupView', function() {
   });
 
   describe('#templatePath', function() {
-    it('returns welcome/signin (default template path)', function() {
-      expect(view.templatePath).toBe('welcome/signin');
+    it('returns welcome/index (default template path)', function() {
+      expect(view.templatePath).toBe('welcome/index');
+    });
+  });
+
+  describe('#template', function() {
+    describe('when templatePath is a function', function() {
+      it('returns the template', function() {
+        // TODO: this needs to be updated to either mock an elem
+        // or use a test template
+        expect(view.template()).toBeUndefined();
+      });
+    });
+
+    describe('when templatePath is a string', function() {
+      it('returns the template', function() {
+        // TODO: this needs to be updated to either mock an elem
+        // or use a test template
+        expect(view.template()).toBeUndefined();
+      });
     });
   });
 });
