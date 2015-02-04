@@ -12,7 +12,7 @@ M.SignupView = M.BaseView.extend({
   },
 
   render: function() {
-    this.$el.html(this.template());
+    $('#money').html(this.template());
     return this;
   },
 

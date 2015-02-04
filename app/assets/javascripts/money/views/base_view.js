@@ -12,7 +12,7 @@ M.BaseView = Backbone.View.extend({
       path = this.templatePath;
     }
 
-    JST[this.templatePathPrefix + path];
+    return JST[this.templatePathPrefix + path];
   },
 
   createAttributesObject: function(serializedArray) {
