@@ -1,6 +1,7 @@
 language: ruby
 rvm:
   - 2.2.0
+bundler_args: --without osx
 script:
-  - "bundle exec rspec"
-  - "bundle exec jasmine"
+  - "bin/rspec"
+  - "bin/rake jasmine:ci"

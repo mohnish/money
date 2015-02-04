@@ -26,7 +26,10 @@ group :test, :development do
   gem 'guard-rspec', require: false
   gem 'byebug'
   gem 'web-console'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
+
+group :osx do
+  gem 'rb-fsevent'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
 end
