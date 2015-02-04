@@ -1,7 +1,5 @@
 Money::Application.routes.draw do
-  get 'signup' => 'welcome#signup'
-  get 'signin' => 'welcome#signin'
-  root 'welcome#signin'
+  root 'welcome#index'
 
   use_doorkeeper
 
@@ -17,5 +15,5 @@ Money::Application.routes.draw do
     end
   end
 
-  match '*path', to: 'welcome#signin', via: [:get]
+  match '*path', to: 'welcome#index', via: [:get]
 end
