@@ -15,6 +15,7 @@ run the following commands
 - `bundle`
 - `bin/rake db:create db:migrate`
 - `bin/rspec`
+- `bin/rake jasmine:ci`
 
 ## Deploying
 
