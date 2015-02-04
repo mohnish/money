@@ -14,6 +14,7 @@ Money is an app to manage your bills and payments. It helps you reach your finan
 run the following commands
 - `bundle`
 - `bin/rake db:create db:migrate`
+- `bin/rake db:test:prepare`
 - `bin/rspec`
 - `bin/rake jasmine:ci`
 
