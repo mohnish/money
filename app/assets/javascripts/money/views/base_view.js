@@ -1,4 +1,16 @@
 M.BaseView = Backbone.View.extend({
+  templatePath: 'welcome/signin',
+
+  templatePathPrefix: 'money/templates/',
+
+  template: function() {
+    if (typeof templatePath == 'function') {
+      JST[templatePathPrefix + templatePath()];
+    } else {
+      JST[templatePathPrefix + templatePath];
+    }
+  },
+
   createAttributesObject: function(serializedArray) {
     var props = {};
     $.each(serializedArray, function(i, v) {

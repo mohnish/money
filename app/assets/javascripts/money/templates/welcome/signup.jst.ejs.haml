@@ -1,0 +1,42 @@
+
+%form.form-horizontal#signup-form
+  %p.validation-response
+  .form-group
+    %label.col-sm-2.control-label{ for: 'username' }
+      username*
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'username', name: 'username', placeholder: 'username', required: true }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'email-address' }
+      email address*
+    .col-sm-10
+      %input.form-control{ type: 'email', id: 'email-address', name: 'email_address', placeholder: 'email address', required: true }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'phone-number' }
+      phone number
+    .col-sm-10
+      %input.form-control{ type: 'number', id: 'phone-number', name: 'phone_number', placeholder: 'phone number' }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'first-name' }
+      first name*
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'first-name', name: 'first_name', placeholder: 'first name', required: true }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'last-name' }
+      last name*
+    .col-sm-10
+      %input.form-control{ type: 'text', id: 'last-name', name: 'last_name', placeholder: 'last name', required: true }
+
+  .form-group
+    %label.col-sm-2.control-label{ for: 'password' }
+      password*
+    .col-sm-10
+      %input.form-control{ type: 'password', id: 'password', name: 'password', placeholder: 'password', required: true }
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-primary{ type: 'submit' } sign up
