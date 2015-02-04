@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe WelcomeController do
-  describe 'GET /signup' do
-    it 'renders the signup form' do
-      get :signup
+  describe 'GET /' do
+    it 'renders index template' do
+      get :index
       expect(response).to have_http_status(:ok)
-      expect(response).to render_template(:signup)
+      expect(response).to render_template(:index)
     end
   end
 
-  describe 'GET /signin' do
-    it 'render the signin form' do
-      get :signin
+  describe 'POST /' do
+    it 'renders index template' do
+      post :index
       expect(response).to have_http_status(:ok)
-      expect(response).to render_template(:signin)
+      expect(response).to render_template(:index)
     end
   end
 end
