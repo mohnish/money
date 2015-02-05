@@ -3,6 +3,14 @@ M.BaseView = Backbone.View.extend({
 
   templatePathPrefix: 'money/templates/',
 
+  setPageTitle: function(currentPageTitle) {
+    if (currentPageTitle) {
+      document.title = currentPageTitle + ' | Money';
+    } else {
+      document.title = 'Money';
+    }
+  },
+
   template: function() {
     var path;
 
