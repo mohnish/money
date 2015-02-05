@@ -12,11 +12,13 @@ M.User = Backbone.Model.extend({
   },
 
   validate: function(attrs, options) {
-    if (options.checkPassword && _.isEmpty(attrs.password)) return 'password is invalid';
-    if (_.isEmpty(attrs.username)) return 'username is invalid';
-    if (_.isEmpty(attrs.email_address)) return 'email address is invalid';
-    if (_.isEmpty(attrs.first_name)) return 'first name is invalid';
-    if (_.isEmpty(attrs.last_name)) return 'last name is invalid';
-    if (!_.isEmpty(attrs.phone_number) && !(/^[1-9]\d{9}$/).test(attrs.phone_number)) return 'phone number is invalid';
+    var errors = [];
+    if (_.isEmpty(attrs.username)) errors.push('username is invalid');
+    if (_.isEmpty(attrs.email_address)) errors.push('email address is invalid');
+    if (_.isEmpty(attrs.first_name)) errors.push('first name is invalid');
+    if (_.isEmpty(attrs.last_name)) errors.push('last name is invalid');
+    if (options.checkPassword && _.isEmpty(attrs.password)) errors.push('password is invalid');
+    if (!_.isEmpty(attrs.phone_number) && !(/^[1-9]\d{9}$/).test(attrs.phone_number)) errors.push('phone number is invalid');
+    if (!_.isEmpty(errors)) return errors;
   }
 });
