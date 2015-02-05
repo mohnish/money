@@ -25,7 +25,7 @@ M.SignupView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#signup-form').serializeArray());
-    this.model.set(props)
+    this.model.set(props);
 
     if (this.model.isValid({ checkPassword: true })) {
       this.model.save();
@@ -36,21 +36,7 @@ M.SignupView = M.BaseView.extend({
     }
   },
 
-  setValidationResponse: function(text, type) {
-    // TODO: use the `type` add a class to the input
-    this.$('.validation-response').text(text);
-  },
-
   handleSync: function(model, response, options) {
     this.setValidationResponse('profile successfully created', 'success');
-  },
-
-  handleError: function(model, response, options) {
-    var errors = this.formatErrors(response);
-    this.setValidationResponse(errors.join(' '), 'error');
-  },
-
-  handleInvalid: function(model, response, options) {
-    this.setValidationResponse(response.join(' '), 'error');
   }
 });

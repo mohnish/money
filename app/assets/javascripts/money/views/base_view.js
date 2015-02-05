@@ -36,5 +36,21 @@ M.BaseView = Backbone.View.extend({
       // TODO: See if this is the fastest way
       return field + ' ' + errorText;
     });
+  },
+
+  handleError: function(model, response, options) {
+    var errors = this.formatErrors(response);
+    this.setValidationResponse(errors.join(' '), 'error');
+  },
+
+  handleInvalid: function(model, response, options) {
+    this.setValidationResponse(response.join(' '), 'error');
+  },
+
+  setValidationResponse: function(text, type) {
+    // TODO: use the `type` add a class to the input
+    // and pass in a selector to dynamically choose the element
+    // to set the errors onto
+    this.$('.validation-response').text(text);
   }
 });
