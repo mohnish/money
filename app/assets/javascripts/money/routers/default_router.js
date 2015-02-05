@@ -20,7 +20,7 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   signup: function() {
-    var signupView = new M.SignupView({ el: '#signup-form' });
+    var signupView = new M.SignupView();
     signupView.render();
   },
 
