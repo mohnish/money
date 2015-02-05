@@ -39,7 +39,7 @@ describe('M.BaseView', function() {
     });
   });
 
-  describe('#template', function() {
+  xdescribe('#template', function() {
     describe('when templatePath is a function', function() {
       it('returns the template', function() {
         // TODO: this needs to be updated to either mock an elem
