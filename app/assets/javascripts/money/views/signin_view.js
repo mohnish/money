@@ -22,9 +22,8 @@ M.SigninView = M.BaseView.extend({
   },
 
   // overriding base view's format errors
-  formatErrors: function(response) {
-    var jsonResponse = response.responseJSON;
-    return ['invalid username/password.', jsonResponse.error_description];
+  formatErrors: function() {
+    return ['invalid username/password combination.'];
   },
 
   handleSubmit: function(e) {
@@ -43,6 +42,7 @@ M.SigninView = M.BaseView.extend({
   },
 
   handleSync: function(model, response, options) {
-    this.setValidationResponse('profile successfully created', 'success');
+    // TODO: this should redirect to the profile page
+    this.setValidationResponse('successfully logged in', 'success');
   }
 });
