@@ -21,6 +21,12 @@ M.SigninView = M.BaseView.extend({
     'submit': 'handleSubmit'
   },
 
+  // overriding base view's format errors
+  formatErrors: function(response) {
+    var jsonResponse = response.responseJSON;
+    return ['invalid username/password.', jsonResponse.error_description];
+  },
+
   handleSubmit: function(e) {
     e.preventDefault();
 

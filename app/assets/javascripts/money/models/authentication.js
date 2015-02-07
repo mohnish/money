@@ -2,7 +2,6 @@ M.Authentication = Backbone.Model.extend({
   defaults: {
     username: '',
     password: '',
-    access_token: '',
     grant_type: 'password'
   },
 
