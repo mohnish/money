@@ -3,7 +3,7 @@ module Api
     class UsersController < BaseController
       before_action :doorkeeper_authorize!, except: [:create]
 
-      def show
+      def me
         current_user
       end
 
