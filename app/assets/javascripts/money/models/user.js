@@ -1,6 +1,11 @@
 
 M.User = Backbone.Model.extend({
-  url: '/api/users',
+  urlRoot: '/api/users',
+
+  sync: function(method, model, options) {
+    if ('read' == method) options.url = '/api/users/me'
+    return Backbone.sync(method, model, options);
+  },
 
   defaults: {
     username: '',
@@ -20,5 +25,15 @@ M.User = Backbone.Model.extend({
     if (options.checkPassword && _.isEmpty(attrs.password)) errors.push('password is invalid');
     if (!_.isEmpty(attrs.phone_number) && !(/^[1-9]\d{9}$/).test(attrs.phone_number)) errors.push('phone number is invalid');
     if (!_.isEmpty(errors)) return errors;
+  },
+
+  removePassword: function() {
+    this.set({ password: '' });
+    return this;
+  },
+
+  destroyExistingToken: function() {
+    localStorage.removeItem('access_token');
+    return this;
   }
 });

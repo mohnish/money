@@ -1,5 +1,5 @@
 M.SignupView = M.BaseView.extend({
-  el: '#money',
+  className: 'signup',
 
   model: new M.User(),
 
@@ -12,8 +12,8 @@ M.SignupView = M.BaseView.extend({
   },
 
   render: function() {
-    this.setPageTitle('Signup');
-    this.$el.html(this.template());
+    this.setPageTitle('signup');
+    $('#money').html(this.$el.html(this.template()));
     return this;
   },
 
@@ -25,6 +25,7 @@ M.SignupView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#signup-form').serializeArray());
+    this.model.destroyExistingToken();
     this.model.set(props);
 
     if (this.model.isValid({ checkPassword: true })) {
@@ -37,6 +38,7 @@ M.SignupView = M.BaseView.extend({
   },
 
   handleSync: function(model, response, options) {
-    this.setValidationResponse('profile successfully created', 'success');
+    this.trigger('signup:success');
+    return this;
   }
 });

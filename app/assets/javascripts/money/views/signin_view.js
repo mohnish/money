@@ -1,5 +1,5 @@
 M.SigninView = M.BaseView.extend({
-  el: '#money',
+  className: 'signin',
 
   model: new M.Authentication(),
 
@@ -12,8 +12,8 @@ M.SigninView = M.BaseView.extend({
   },
 
   render: function() {
-    this.setPageTitle('Signin');
-    this.$el.html(this.template());
+    this.setPageTitle('signin');
+    $('#money').html(this.$el.html(this.template()));
     return this;
   },
 
@@ -30,11 +30,11 @@ M.SigninView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#signin-form').serializeArray());
+    this.model.destroyExistingToken();
     this.model.set(props);
 
-    if (this.model.isValid()) {
+    if (this.model.isValid({ checkPassword: true })) {
       this.model.save();
-      // TODO: Replace this with a loader gif
       this.setValidationResponse('waiting...');
     } else {
       this.setValidationResponse(this.model.validationError);
@@ -42,7 +42,8 @@ M.SigninView = M.BaseView.extend({
   },
 
   handleSync: function(model, response, options) {
-    // TODO: this should redirect to the profile page
-    this.setValidationResponse('successfully logged in', 'success');
+    this.model.persistTokenLocally();
+    this.model.removePassword();
+    this.trigger('signin:success');
   }
 });
