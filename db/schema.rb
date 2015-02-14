@@ -117,10 +117,14 @@ ActiveRecord::Schema.define(version: 20141229174544) do
   add_index "payments", ["payment_source_id"], name: "index_payments_on_payment_source_id", using: :btree
 
   create_table "repeat_intervals", force: :cascade do |t|
-    t.string   "interval",   limit: 255, null: false
-    t.string   "label",      limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "years",      limit: 4,   default: 0, null: false
+    t.integer  "months",     limit: 4,   default: 0, null: false
+    t.integer  "weeks",      limit: 4,   default: 0, null: false
+    t.integer  "days",       limit: 4,   default: 0, null: false
+    t.string   "interval",   limit: 255,             null: false
+    t.string   "label",      limit: 255,             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "tags", force: :cascade do |t|
