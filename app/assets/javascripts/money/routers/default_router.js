@@ -1,4 +1,7 @@
 M.DefaultRouter = Backbone.Router.extend({
+  initialize: function() {
+  },
+
   routes: {
     '': 'signin',
     'signin': 'signin',
@@ -8,20 +11,35 @@ M.DefaultRouter = Backbone.Router.extend({
     'categories(/)': 'categories',
     'payment_sources(/)': 'paymentSources',
     'payment_sources/:id': 'showPaymentSource',
-    'payments(/)': 'payments',
-    'payments/:id': 'showPayment',
+    'bills/:billId/payments(/)': 'payments',
+    'bills/:billId/payments/:id': 'showPayment',
+    'bills/:billId/tags(/)': 'tags',
     'tags(/)': 'tags',
-    'users/:id': 'showUser'
+    'profile': 'profile'
+  },
+
+  transition: function(currentView, newView) {
+    // FIXME: implement this
   },
 
   signin: function() {
     var signinView = new M.SigninView();
     signinView.render();
+
+    this.listenTo(signinView, 'signin:success', function() {
+      signinView.remove();
+      this.navigate('/profile', { trigger: true });
+    });
   },
 
   signup: function() {
     var signupView = new M.SignupView();
     signupView.render();
+
+    this.listenTo(signupView, 'signup:success', function() {
+      signupView.remove();
+      this.navigate('/signin', { trigger: true });
+    });
   },
 
   bills: function() {
@@ -37,14 +55,17 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   paymentSources: function() {
-    console.log('paymentSources');
+    var paymentSources = new M.PaymentSources();
+    var paymentSourcesView = new M.PaymentSourcesView({
+      collection: paymentSources
+    });
   },
 
   showPaymentSource: function(id) {
     console.log('showPaymentSource:', id);
   },
 
-  payments: function() {
+  payments: function(billId) {
     console.log('payments');
   },
 
@@ -56,7 +77,7 @@ M.DefaultRouter = Backbone.Router.extend({
     console.log('tags');
   },
 
-  showUser: function(id) {
-    console.log('showUser');
+  profile: function(username) {
+    var profileView = new M.ProfileView();
   }
 });

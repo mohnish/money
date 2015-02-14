@@ -9,9 +9,11 @@ M.BaseView = Backbone.View.extend({
     } else {
       document.title = 'Money';
     }
+
+    return this;
   },
 
-  template: function() {
+  template: function(data) {
     var path;
 
     if (_.isFunction(this.templatePath)) {
@@ -20,7 +22,7 @@ M.BaseView = Backbone.View.extend({
       path = this.templatePath;
     }
 
-    return JST[this.templatePathPrefix + path];
+    return JST[this.templatePathPrefix + path](data);
   },
 
   createAttributesObject: function(serializedArray) {
@@ -36,6 +38,10 @@ M.BaseView = Backbone.View.extend({
       // TODO: See if this is the fastest way
       return field + ' ' + errorText;
     });
+  },
+
+  handleSync: function(model, response, options) {
+    throw new Error('FIXME: implement handleSync in the subclass');
   },
 
   handleError: function(model, response, options) {
