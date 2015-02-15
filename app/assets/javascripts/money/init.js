@@ -28,5 +28,5 @@ M.greetings = [
   'ni hau',
   'nay hoh',
   'halo'
-]
+];
 // TODO: Add analytics here

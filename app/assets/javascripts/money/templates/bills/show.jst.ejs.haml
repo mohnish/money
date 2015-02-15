@@ -1,0 +1,7 @@
+id: <%= id %>
+name: <%= name %>
+next_due_date: <%= next_due_date %>
+amount: <%= amount %>
+category: <%= category.label %>
+repeat_interval: <%= repeat_interval.label %>
+tags: <%- _.pluck(tags, 'name') %>

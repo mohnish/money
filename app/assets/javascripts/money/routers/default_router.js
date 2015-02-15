@@ -43,7 +43,10 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   bills: function() {
-    console.log('bills');
+    var bills = new M.Bills();
+    var billsView = new M.BillsView({
+      collection: bills
+    });
   },
 
   showBill: function(id) {
