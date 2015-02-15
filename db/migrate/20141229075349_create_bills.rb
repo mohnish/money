@@ -2,6 +2,7 @@ class CreateBills < ActiveRecord::Migration
   def change
     create_table :bills do |t|
       t.string :name
+      t.integer :status, default: 0
       t.datetime :next_due_date
       t.references :user, index: true
       t.references :category, index: true

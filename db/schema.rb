@@ -15,13 +15,14 @@ ActiveRecord::Schema.define(version: 20141229174544) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name",               limit: 255
+    t.integer  "status",             limit: 4,                           default: 0
     t.datetime "next_due_date"
     t.integer  "user_id",            limit: 4
     t.integer  "category_id",        limit: 4
     t.integer  "repeat_interval_id", limit: 4
     t.decimal  "amount",                         precision: 8, scale: 2
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
   end
 
   add_index "bills", ["category_id"], name: "index_bills_on_category_id", using: :btree
