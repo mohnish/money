@@ -9,7 +9,8 @@ Dir.chdir APP_ROOT do
   system "bundle check || bundle"
 
   puts "\n== Preparing database =="
-  system "bin/rake db:setup"
+  system "bin/rake db:reset"
+  # system "bin/rake db:setup"
 
   puts "\n== Preparing test database =="
   system "bin/rake db:create RAILS_ENV=test"
