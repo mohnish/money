@@ -15,4 +15,5 @@
 //= require underscore-min
 //= require backbone-min
 //= require money/init
+//= require_directory ./money/models
 //= require_tree .
