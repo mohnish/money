@@ -1,4 +1,6 @@
 
 M.PaymentSources = Backbone.Collection.extend({
-  url: '/api/payment_sources'
+  url: '/api/payment_sources',
+
+  model: M.PaymentSource
 });
