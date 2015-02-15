@@ -31,7 +31,7 @@ M.PaymentSourcesView = M.BaseView.extend({
     this.render();
   },
 
-  handleError: function() {
-    console.log('handle error in payment_sources view');
+  handleError: function(collection, response, options) {
+    $('#money').text(response.status + ' ' + response.statusText);
   }
 });

@@ -31,7 +31,7 @@ M.BillsView = M.BaseView.extend({
     this.render();
   },
 
-  handleError: function() {
-    console.log('handle error in profile view');
+  handleError: function(collection, response, options) {
+    $('#money').text(response.status + ' ' + response.statusText);
   }
 });
