@@ -6,7 +6,8 @@ M.Bill = Backbone.Model.extend({
     amount: '',
     repeat_interval: 1,
     tags: [],
-    category: ''
+    category: '',
+    payments: []
   },
 
   validate: function(attrs, options) {
