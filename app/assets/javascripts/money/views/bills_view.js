@@ -2,9 +2,9 @@
 M.BillsView = M.BaseView.extend({
   className: 'bills',
 
-  tagName: 'ul',
+  collection: new M.Bills(),
 
-  templatePath: 'bills/index',
+  tagName: 'ul',
 
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.handleSync);
@@ -13,18 +13,15 @@ M.BillsView = M.BaseView.extend({
   },
 
   render: function() {
-    var _this = this;
-
-    this.collection.each(function(model) {
-      var billView = new M.BillView({ model: model });
-      _this.$el.append(billView.render().el);
-    });
-
-    // FIXME: This needs to point to a user-data css id or
-    // something like that
+    this.collection.each(this.appendBill, this);
     $('#money').html(this.el);
 
     return this;
+  },
+
+  appendBill: function(bill) {
+    var billView = new M.BillView({ model: bill });
+    this.$el.append(billView.render().el);
   },
 
   handleSync: function() {

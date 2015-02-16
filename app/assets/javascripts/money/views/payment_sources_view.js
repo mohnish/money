@@ -4,6 +4,8 @@ M.PaymentSourcesView = M.BaseView.extend({
 
   tagName: 'ul',
 
+  collection: new M.PaymentSources(),
+
   templatePath: 'payment_sources/index',
 
   initialize: function() {

@@ -18,15 +18,11 @@ M.DefaultRouter = Backbone.Router.extend({
     'profile': 'profile'
   },
 
-  transition: function(currentView, newView) {
-    // FIXME: implement this
-  },
-
   signin: function() {
     var signinView = new M.SigninView();
     signinView.render();
 
-    this.listenTo(signinView, 'signin:success', function() {
+    this.listenTo(signinView, 'm:signin:success', function() {
       signinView.remove();
       this.navigate('/profile', { trigger: true });
     });
@@ -43,14 +39,16 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   bills: function() {
-    var bills = new M.Bills();
-    var billsView = new M.BillsView({
-      collection: bills
+    var billsView = new M.BillsView();
+
+    this.listenTo(billsView, 'm:show:bill', function(id) {
+      billsView.remove();
+      this.navigate('/bills/' + id, { trigger: true });
     });
   },
 
   showBill: function(id) {
-    console.log('showBill:', id);
+
   },
 
   categories: function() {
@@ -58,10 +56,7 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   paymentSources: function() {
-    var paymentSources = new M.PaymentSources();
-    var paymentSourcesView = new M.PaymentSourcesView({
-      collection: paymentSources
-    });
+    var paymentSourcesView = new M.PaymentSourcesView();
   },
 
   showPaymentSource: function(id) {
@@ -82,5 +77,10 @@ M.DefaultRouter = Backbone.Router.extend({
 
   profile: function(username) {
     var profileView = new M.ProfileView();
+
+    this.listenTo(profileView, 'm:show:bills', function(bill) {
+      profileView.remove();
+      this.navigate('/bills', { trigger: true });
+    });
   }
 });

@@ -20,6 +20,7 @@ $(function() {
     return customSync;
   })(Backbone.sync);
 
+  M.dispatcher = _.clone(Backbone.Events);
   var router = new M.DefaultRouter();
   Backbone.history.start({ pushState: true });
 });
