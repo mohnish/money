@@ -4,13 +4,7 @@ M.BillView = M.BaseView.extend({
 
   tagName: 'li',
 
-  events: {
-    'click': 'show'
-  },
-
-  attributes: function() {
-    return { 'data-id': this.model.get('id') }
-  },
+  events: {},
 
   templatePath: 'bills/show',
 

@@ -6,6 +6,12 @@ M.BillsView = M.BaseView.extend({
 
   tagName: 'ul',
 
+  templatePath: 'bills/index',
+
+  events: {
+    'click .condensed-bill': 'showBill'
+  },
+
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.handleSync);
     this.listenTo(this.collection, 'error', this.handleError);
@@ -13,15 +19,10 @@ M.BillsView = M.BaseView.extend({
   },
 
   render: function() {
-    this.collection.each(this.appendBill, this);
+    this.$el.html(this.template({ bills: this.collection.toJSON() }));
     $('#money').html(this.el);
 
     return this;
-  },
-
-  appendBill: function(bill) {
-    var billView = new M.BillView({ model: bill });
-    this.$el.append(billView.render().el);
   },
 
   handleSync: function() {
@@ -30,5 +31,9 @@ M.BillsView = M.BaseView.extend({
 
   handleError: function(collection, response, options) {
     $('#money').text(response.status + ' ' + response.statusText);
+  },
+
+  showBill: function(e) {
+    this.trigger('m:show:bill', e.target.dataset.id);
   }
 });
