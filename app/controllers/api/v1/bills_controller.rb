@@ -45,7 +45,7 @@ module Api
         end
 
         def current_bill
-          @bill ||= current_user.bills.find_by(params[:id])
+          @bill ||= current_user.bills.find_by(id: params[:id])
         end
 
         def parsed_date
