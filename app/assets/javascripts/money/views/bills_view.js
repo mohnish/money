@@ -10,7 +10,7 @@ M.BillsView = M.BaseView.extend({
 
   events: {
     'click .condensed-bill': 'showBill',
-    'submit #create-bill-form': 'showAlert'
+    'submit #create-bill-form': 'handleSubmit'
   },
 
   initialize: function() {
@@ -40,13 +40,11 @@ M.BillsView = M.BaseView.extend({
     this.trigger('m:show:bill', e.target.dataset.id);
   },
 
-  showAlert: function(e) {
+  handleSubmit: function(e) {
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
-    debugger
     var newBill = this.collection.create(props, { wait: true });
-    debugger
 
     if (newBill.isValid()) {
       this.setValidationResponse('waiting...');
