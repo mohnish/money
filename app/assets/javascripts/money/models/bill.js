@@ -10,6 +10,10 @@ M.Bill = Backbone.Model.extend({
     payments: []
   },
 
+  url: function() {
+    return '/api/bills/' + this.get('id');
+  },
+
   validate: function(attrs, options) {
     var errors = [];
 

@@ -4,4 +4,9 @@ next_due_date: <%= next_due_date %>
 amount: <%= amount %>
 category: <%= category.label %>
 repeat_interval: <%= repeat_interval.label %>
-tags: <%- _.pluck(tags, 'name') %>
+tags: <%= _.pluck(tags, 'name') %>
+payments: <% _.each(payments, function(payment) { %>
+  payment id: <%= payment.id %>
+  payment amount: <%= payment.amount %>
+  payment source: <%= payment.payment_source.name %> (<%= payment.payment_source.type %>)
+<% }); %>

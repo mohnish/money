@@ -48,7 +48,13 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   showBill: function(id) {
+    var bill = new M.Bill({ id: id });
+    var billView = new M.BillView({ model: bill });
 
+    this.listenTo(billView, 'm:show:bills', function() {
+      billView.remove();
+      this.navigate('/bills', { trigger: true });
+    });
   },
 
   categories: function() {

@@ -1,6 +1,6 @@
 
 M.Bills = Backbone.Collection.extend({
-  url: 'api/bills',
+  url: '/api/bills',
 
   model: M.Bill
 });
