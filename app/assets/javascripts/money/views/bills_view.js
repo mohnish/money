@@ -9,7 +9,8 @@ M.BillsView = M.BaseView.extend({
   templatePath: 'bills/index',
 
   events: {
-    'click .condensed-bill': 'showBill'
+    'click .condensed-bill': 'showBill',
+    'submit #create-bill-form': 'showAlert'
   },
 
   initialize: function() {
@@ -21,6 +22,8 @@ M.BillsView = M.BaseView.extend({
   render: function() {
     this.$el.html(this.template({ bills: this.collection.toJSON() }));
     $('#money').html(this.el);
+    this.populateCategories();
+    this.populateRepeatIntervals();
 
     return this;
   },
@@ -35,5 +38,30 @@ M.BillsView = M.BaseView.extend({
 
   showBill: function(e) {
     this.trigger('m:show:bill', e.target.dataset.id);
+  },
+
+  showAlert: function(e) {
+    e.preventDefault();
+
+    var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
+    debugger
+    var newBill = this.collection.create(props, { wait: true });
+    debugger
+
+    if (newBill.isValid()) {
+      this.setValidationResponse('waiting...');
+    } else {
+      this.setValidationResponse(newBill.validationError);
+    }
+  },
+
+  populateCategories: function() {
+    var categoriesView = new M.CategoriesView();
+    categoriesView.render();
+  },
+
+  populateRepeatIntervals: function() {
+    var repeatIntervalsView = new M.RepeatIntervalsView();
+    repeatIntervalsView.render();
   }
 });

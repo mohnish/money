@@ -1,0 +1,9 @@
+<%
+  _.each(categories, function(category) {
+%>
+<option class='category' value='<%= category.id %>' data-category-name='<%= category.name %>'>
+<%= category.label %>
+</option>
+<%
+  });
+%>

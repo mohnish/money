@@ -9,6 +9,7 @@ Money::Application.routes.draw do
       resources :users, only: [:create, :update, :destroy]
       resources :payment_sources, only: [:index, :create, :update, :destroy]
       resources :categories, only: [:index]
+      resources :repeat_intervals, only: [:index]
       resources :bills, except: [:edit, :new] do
         resources :tags, only: [:create, :destroy]
         resources :payments, only: [:create, :update, :destroy]

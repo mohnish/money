@@ -11,11 +11,21 @@ M.Bill = Backbone.Model.extend({
   },
 
   url: function() {
-    return '/api/bills/' + this.get('id');
+    if (this.isNew()) {
+      return '/api/bills';
+    } else {
+      return '/api/bills/' + this.get('id');
+    }
   },
 
   validate: function(attrs, options) {
     var errors = [];
+
+    if(_.isEmpty(attrs.name)) errors.push('bill name is invalid');
+    if(_.isEmpty(attrs.next_due_date)) errors.push('next due date is invalid');
+    if(_.isEmpty(attrs.amount)) errors.push('amount is invalid');
+    if(_.isEmpty(attrs.repeat_interval)) errors.push('repeat interval is invalid');
+    if(_.isEmpty(attrs.category)) errors.push('category name is invalid');
 
     if (!_.isEmpty(errors)) return errors;
   }

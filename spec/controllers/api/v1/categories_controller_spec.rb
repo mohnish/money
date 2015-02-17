@@ -7,7 +7,7 @@ RSpec.describe Api::V1::CategoriesController do
   describe 'GET /api/categories' do
     let!(:categories) { create_list :category, 4 }
 
-    it 'returns a list of ' do
+    it 'returns a list of categories' do
       get :index, { format: 'json' }
       expect(response).to have_http_status(:ok)
       result = JSON.parse(response.body)
