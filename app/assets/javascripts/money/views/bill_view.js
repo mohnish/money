@@ -2,8 +2,6 @@
 M.BillView = M.BaseView.extend({
   className: 'bill',
 
-  tagName: 'li',
-
   events: {},
 
   templatePath: 'bills/show',
