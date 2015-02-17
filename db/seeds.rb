@@ -61,7 +61,7 @@ user = User.create({
   first_name: 'James',
   last_name: 'Bond',
   email_address: 'jamesbond@example.com',
-  username: 'bond007',
+  username: 'bond',
   avatar: 'http://i.imgur.com/4fWZN.jpg',
   phone_number: '9809809801',
   password: 'test1234'
