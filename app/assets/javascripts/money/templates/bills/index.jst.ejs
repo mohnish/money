@@ -66,20 +66,16 @@
   </div>
 </form>
 
-
-<% _.each(bills, function(bill) { %>
-<li class='condensed-bill' data-id='<%= bill.id %>'>
-  id: <%= bill.id %>
-  name: <%= bill.name %>
-  next_due_date: <%= bill.next_due_date %>
-  amount: <%= bill.amount %>
-  category: <%= bill.category.label %>
-  repeat_interval: <%= bill.repeat_interval.label %>
-  tags: <%- _.pluck(bill.tags, 'name') %>
-</li>
-<% }); %>
-
-
-
-
-
+<ul class="condensed-bills">
+  <% _.each(bills, function(bill) { %>
+  <li class='condensed-bill' data-id='<%= bill.id %>'>
+    id: <%= bill.id %>
+    name: <%= bill.name %>
+    next_due_date: <%= bill.next_due_date %>
+    amount: <%= bill.amount %>
+    category: <%= bill.category.label %>
+    repeat_interval: <%= bill.repeat_interval.label %>
+    tags: <%- _.pluck(bill.tags, 'name') %>
+  </li>
+  <% }); %>
+</ul>

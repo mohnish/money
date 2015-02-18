@@ -4,8 +4,6 @@ M.BillsView = M.BaseView.extend({
 
   collection: new M.Bills(),
 
-  tagName: 'ul',
-
   templatePath: 'bills/index',
 
   events: {
@@ -44,7 +42,7 @@ M.BillsView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
-    // FIXME: CONVERT date format and tags to array here
+    props = this.formatParams(props);
     var newBill = this.collection.create(props, { wait: true });
 
     if (newBill.isValid()) {
@@ -62,5 +60,19 @@ M.BillsView = M.BaseView.extend({
   populateRepeatIntervals: function() {
     var repeatIntervalsView = new M.RepeatIntervalsView();
     repeatIntervalsView.render();
+  },
+
+  // "yyyy-mm-dd" => "mm/dd/yyyy"
+  formatDate: function(date) {
+    var val = date.split('-');
+    return val.concat([val.shift()]).join('/');
+  },
+
+  // format date: "yyyy-mm-dd" => "mm/dd/yyyy"
+  // format tags: "one, two, three" => ["one", "two", "three"]
+  formatParams: function(props) {
+    props.next_due_date = this.formatDate(props.next_due_date);
+    props.tags = props.tags.split(',');
+    return props;
   }
 });
