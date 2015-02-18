@@ -2,8 +2,8 @@
 
 categories = Category.create([
   {
-    name: 'tv',
-    label: 'TV'
+    name: 'tv_video',
+    label: 'TV & Video'
   },
   {
     name: 'health_fitness',
@@ -16,10 +16,126 @@ categories = Category.create([
   {
     name: 'food_drinks',
     label: 'Food & Drinks'
+  },
+  {
+    name: 'home_rent',
+    label: 'Mortgage, Rent & Home'
+  },
+  {
+    name: 'car',
+    label: 'Car'
+  },
+  {
+    name: 'insurance',
+    label: 'Insurance'
+  },
+  {
+    name: 'phone',
+    label: 'Phone'
+  },
+  {
+    name: 'medical',
+    label: 'Medical'
+  },
+  {
+    name: 'internet',
+    label: 'Internet'
+  },
+  {
+    name: 'electric_utility',
+    label: 'Electric & Utility'
+  },
+  {
+    name: 'gas',
+    label: 'Gas'
+  },
+  {
+    name: 'water',
+    label: 'Water'
+  },
+  {
+    name: 'trash',
+    label: 'Trash'
+  },
+  {
+    name: 'computer',
+    label: 'Computer'
+  },
+  {
+    name: 'baby_childcare',
+    label: 'Baby & Childcare'
+  },
+  {
+    name: 'gym_sports',
+    label: 'Gym & Sports'
+  },
+  {
+    name: 'subscription',
+    label: 'Subscription'
+  },
+  {
+    name: 'education_loans',
+    label: 'School & Education'
+  },
+  {
+    name: 'furniture',
+    label: 'Furniture'
+  },
+  {
+    name: 'appliance',
+    label: 'Appliance'
+  },
+  {
+    name: 'landscaping_lawn',
+    label: 'Landscaping & Lawn'
+  },
+  {
+    name: 'security_alarm',
+    label: 'Security & Alarm'
+  },
+  {
+    name: 'donations',
+    label: 'Donations'
+  },
+  {
+    name: 'legal',
+    label: 'Legal'
+  },
+  {
+    name: 'business_travel',
+    label: 'Business & Travel'
+  },
+  {
+    name: 'mail_post_office_box',
+    label: 'Mail & Post Office Box'
+  },
+  {
+    name: 'locker_deposit_box',
+    label: 'Locker & Deposit Box'
+  },
+  {
+    name: 'shopping',
+    label: 'Shopping'
+  },
+  {
+    name: 'ticket',
+    label: 'Ticket'
+  },
+  {
+    name: 'taxes_general',
+    label: 'Taxes & General'
   }
 ])
 
 repeat_intervals = RepeatInterval.create([
+  {
+    years: 0,
+    months: 0,
+    weeks: 0,
+    days: 0,
+    interval: 'one_time',
+    label: 'Never'
+  },
   {
     years: 0,
     months: 1,
@@ -47,18 +163,18 @@ repeat_intervals = RepeatInterval.create([
   {
     years: 0,
     months: 0,
-    weeks: 0,
-    days: 1,
-    interval: '1_day',
-    label: 'Daily'
+    weeks: 2,
+    days: 0,
+    interval: '2_week',
+    label: 'Bimonthly'
   },
   {
     years: 0,
     months: 0,
     weeks: 0,
-    days: 0,
-    interval: 'one_time',
-    label: 'Never'
+    days: 1,
+    interval: '1_day',
+    label: 'Daily'
   }
 ])
 
@@ -118,7 +234,7 @@ gym_bill = user.bills.create({
   next_due_date: 15.days.since,
   amount: 49.99,
   repeat_interval: repeat_intervals.first, # monthly
-  category: categories.second # health_fitness
+  category: categories.select {|cat| cat.name == 'gym_sports'}.first
 })
 
 gym_bill_tags = gym_bill.tags.create([
