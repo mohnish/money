@@ -44,6 +44,7 @@ M.BillsView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
+    // FIXME: CONVERT date format and tags to array here
     var newBill = this.collection.create(props, { wait: true });
 
     if (newBill.isValid()) {
