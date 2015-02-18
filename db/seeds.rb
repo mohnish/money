@@ -51,6 +51,14 @@ repeat_intervals = RepeatInterval.create([
     days: 1,
     interval: '1_day',
     label: 'Daily'
+  },
+  {
+    years: 0,
+    months: 0,
+    weeks: 0,
+    days: 0,
+    interval: 'one_time',
+    label: 'Never'
   }
 ])
 
