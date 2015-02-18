@@ -67,9 +67,7 @@
 </form>
 
 
-<%
-  _.each(bills, function(bill) {
-%>
+<% _.each(bills, function(bill) { %>
 <li class='condensed-bill' data-id='<%= bill.id %>'>
   id: <%= bill.id %>
   name: <%= bill.name %>
@@ -79,9 +77,7 @@
   repeat_interval: <%= bill.repeat_interval.label %>
   tags: <%- _.pluck(bill.tags, 'name') %>
 </li>
-<%
-  });
-%>
+<% }); %>
 
 
 

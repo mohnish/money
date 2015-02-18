@@ -8,7 +8,7 @@ $(function() {
         options.contentType = 'application/json';
         options.data = options.data || {};
         if (model && _.contains(['create', 'update', 'patch'], method)) {
-          JSON.stringify(_.extend(options.data, { access_token: accessToken }, model.toJSON()));
+          options.data = JSON.stringify(options.attrs || _.extend({ access_token: accessToken }, model.toJSON()));
         } else {
           _.extend(options.data, { access_token: accessToken });
         }
