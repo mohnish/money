@@ -68,7 +68,7 @@ M.BillsView = M.BaseView.extend({
     return val.concat([val.shift()]).join('/');
   },
 
-  // format date: "yyyy-mm-dd" => "mm/dd/yyyy"
+  // format next_due_date: "yyyy-mm-dd" => "mm/dd/yyyy"
   // format tags: "one, two, three" => ["one", "two", "three"]
   formatParams: function(props) {
     props.next_due_date = this.formatDate(props.next_due_date);
