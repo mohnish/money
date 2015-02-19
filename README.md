@@ -16,6 +16,13 @@ run the following commands
 - `bin/rspec` - run tests
 - `bin/rake jasmine:ci` - runs js tests
 
+## Running the app
+
+from the application root, run
+- `bin/rails s`
+
+This will start the server @ http://localhost:3000/
+
 ## Deploying
 
 - Heroku [TODO: insert the deploy link for heroku here]
