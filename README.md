@@ -11,7 +11,7 @@ Money is an app to manage your bills and payments. It helps you reach your finan
 
 ## Development
 
-run the following commands
+from the application root, run the following commands
 - `bin/setup` - sets up the app
 - `bin/rspec` - run tests
 - `bin/rake jasmine:ci` - runs js tests
