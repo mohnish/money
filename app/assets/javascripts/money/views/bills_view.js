@@ -8,6 +8,7 @@ M.BillsView = M.BaseView.extend({
 
   events: {
     'click .condensed-bill': 'showBill',
+    'click #profile': 'showProfile',
     'submit #create-bill-form': 'handleSubmit'
   },
 
@@ -74,5 +75,11 @@ M.BillsView = M.BaseView.extend({
     props.next_due_date = this.formatDate(props.next_due_date);
     props.tags = props.tags.split(',');
     return props;
+  },
+
+  showProfile: function(e) {
+    e.preventDefault();
+
+    this.trigger('m:show:profile');
   }
 });

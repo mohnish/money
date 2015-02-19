@@ -5,6 +5,10 @@ M.ProfileView = M.BaseView.extend({
 
   templatePath: 'users/me',
 
+  events: {
+    'click #show-bills': 'showBills',
+  },
+
   initialize: function() {
     this.listenTo(this.model, 'sync', this.handleSync);
     this.listenTo(this.model, 'error', this.handleError);
@@ -23,5 +27,11 @@ M.ProfileView = M.BaseView.extend({
 
   handleError: function() {
     console.log('handle error in profile view');
+  },
+
+  showBills: function(e) {
+    e.preventDefault();
+
+    this.trigger('m:show:bills');
   }
 });
