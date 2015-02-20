@@ -2,7 +2,7 @@ Doorkeeper.configure do
   orm :active_record
 
   resource_owner_from_credentials do
-    User.find_by(username: params[:username]).try(:authenticate, params[:password])
+    User.find_by(username: params[:username].downcase).try(:authenticate, params[:password])
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.

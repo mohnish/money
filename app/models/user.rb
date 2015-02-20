@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
     presence: true,
     length: { maximum: 12, minimum: 2 }
   }
+
+  def username=(value)
+    self[:username] = value.downcase
+  end
 end
