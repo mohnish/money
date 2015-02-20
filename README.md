@@ -23,6 +23,10 @@ from the application root, run
 
 This will start the server @ http://localhost:3000/
 
+If you had run the `bin/setup` earlier, you'll have access to
+seed data and you can use username: `bond` and password: `test1234`
+to login to the app.
+
 ## Deploying
 
 - Heroku [TODO: insert the deploy link for heroku here]
