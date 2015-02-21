@@ -27,13 +27,8 @@ M.DefaultRouter = Backbone.Router.extend({
     'signup': 'signup',
     'bills(/)': 'bills',
     'bills/:id': 'showBill',
-    'categories(/)': 'categories',
     'payment_sources(/)': 'paymentSources',
-    'payment_sources/:id': 'showPaymentSource',
     'bills/:billId/payments(/)': 'payments',
-    'bills/:billId/payments/:id': 'showPayment',
-    'bills/:billId/tags(/)': 'tags',
-    'tags(/)': 'tags',
     'profile': 'profile'
   },
 
@@ -57,28 +52,12 @@ M.DefaultRouter = Backbone.Router.extend({
     new M.BillView({ model: bill });
   },
 
-  categories: function() {
-    console.log('categories:');
-  },
-
   paymentSources: function() {
     new M.PaymentSourcesView();
   },
 
-  showPaymentSource: function(id) {
-    console.log('showPaymentSource:', id);
-  },
-
   payments: function(billId) {
     console.log('payments');
-  },
-
-  showPayment: function(id) {
-    console.log('showPayment:', id);
-  },
-
-  tags: function() {
-    console.log('tags');
   },
 
   profile: function(username) {
