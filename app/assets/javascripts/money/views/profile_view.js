@@ -31,7 +31,7 @@ M.ProfileView = M.BaseView.extend({
 
   showBills: function(e) {
     e.preventDefault();
-
-    this.trigger('m:show:bills');
+    this.model.clear();
+    M.dispatcher.trigger('m:show:bills');
   }
 });

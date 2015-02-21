@@ -1,5 +1,16 @@
 M.DefaultRouter = Backbone.Router.extend({
   initialize: function() {
+    this.listenTo(M.dispatcher, 'm:show:bills', function() {
+      this.navigate('/bills', { trigger: true });
+    });
+
+    this.listenTo(M.dispatcher, 'm:show:bill', function(id) {
+      this.navigate('/bills/' + id, { trigger: true });
+    });
+
+    this.listenTo(M.dispatcher, 'm:show:profile', function() {
+      this.navigate('/profile', { trigger: true });
+    });
   },
 
   routes: {
@@ -40,31 +51,11 @@ M.DefaultRouter = Backbone.Router.extend({
 
   bills: function() {
     var billsView = new M.BillsView();
-
-    this.listenTo(billsView, 'm:show:bill', function(id) {
-      billsView.remove();
-      this.navigate('/bills/' + id, { trigger: true });
-    });
-
-    this.listenTo(billsView, 'm:show:profile', function() {
-      billsView.remove();
-      this.navigate('/profile', { trigger: true });
-    });
   },
 
   showBill: function(id) {
     var bill = new M.Bill({ id: id });
     var billView = new M.BillView({ model: bill });
-
-    this.listenTo(billView, 'm:show:bills', function() {
-      billView.remove();
-      this.navigate('/bills', { trigger: true });
-    });
-
-    this.listenTo(billView, 'm:show:profile', function() {
-      billView.remove();
-      this.navigate('/profile', { trigger: true });
-    });
   },
 
   categories: function() {
@@ -93,10 +84,5 @@ M.DefaultRouter = Backbone.Router.extend({
 
   profile: function(username) {
     var profileView = new M.ProfileView();
-
-    this.listenTo(profileView, 'm:show:bills', function() {
-      profileView.remove();
-      this.navigate('/bills', { trigger: true });
-    });
   }
 });

@@ -29,4 +29,7 @@ M.greetings = [
   'nay hoh',
   'halo'
 ];
+
+M.dispatcher = _.clone(Backbone.Events);
+
 // TODO: Add analytics here
