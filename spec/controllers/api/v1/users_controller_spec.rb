@@ -4,10 +4,10 @@ RSpec.describe Api::V1::UsersController do
   render_views
   setup_doorkeeper
 
-  describe 'GET /api/users/id' do
+  describe 'GET /api/users/me' do
     context 'when a valid id is passed' do
       it 'returns the user details' do
-        get :show, { id: user.id, format: 'json' }
+        get :me, { format: 'json' }
         result = JSON.parse(response.body)
         expect(response).to have_http_status(:success)
         expect(result['id']).to be(user.id)
