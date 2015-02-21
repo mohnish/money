@@ -5,10 +5,6 @@ M.Bills = Backbone.Collection.extend({
   model: M.Bill,
 
   initialize: function() {
-    this.listenTo(M.dispatcher, 'm:reset:bills', this.clear);
-  },
-
-  clear: function(e) {
-    this.reset();
+    this.listenTo(M.dispatcher, 'm:reset:bills', this.reset);
   }
 });

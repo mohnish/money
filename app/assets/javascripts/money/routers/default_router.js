@@ -11,6 +11,14 @@ M.DefaultRouter = Backbone.Router.extend({
     this.listenTo(M.dispatcher, 'm:show:profile', function() {
       this.navigate('/profile', { trigger: true });
     });
+
+    this.listenTo(M.dispatcher, 'm:signup:success', function() {
+      this.navigate('/signin', { trigger: true });
+    });
+
+    this.listenTo(M.dispatcher, 'm:signin:success', function() {
+      this.navigate('/profile', { trigger: true });
+    });
   },
 
   routes: {
@@ -32,30 +40,21 @@ M.DefaultRouter = Backbone.Router.extend({
   signin: function() {
     var signinView = new M.SigninView();
     signinView.render();
-
-    this.listenTo(signinView, 'm:signin:success', function() {
-      signinView.remove();
-      this.navigate('/profile', { trigger: true });
-    });
   },
 
   signup: function() {
     var signupView = new M.SignupView();
     signupView.render();
-
-    this.listenTo(signupView, 'signup:success', function() {
-      signupView.remove();
-      this.navigate('/signin', { trigger: true });
-    });
   },
 
   bills: function() {
-    var billsView = new M.BillsView();
+    M.dispatcher.trigger('m:reset:bills');
+    new M.BillsView();
   },
 
   showBill: function(id) {
     var bill = new M.Bill({ id: id });
-    var billView = new M.BillView({ model: bill });
+    new M.BillView({ model: bill });
   },
 
   categories: function() {
@@ -63,7 +62,7 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   paymentSources: function() {
-    var paymentSourcesView = new M.PaymentSourcesView();
+    new M.PaymentSourcesView();
   },
 
   showPaymentSource: function(id) {
@@ -83,6 +82,6 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   profile: function(username) {
-    var profileView = new M.ProfileView();
+    new M.ProfileView();
   }
 });

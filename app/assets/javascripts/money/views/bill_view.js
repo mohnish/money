@@ -35,7 +35,6 @@ M.BillView = M.BaseView.extend({
   showBills: function(e) {
     e.preventDefault();
     this.model.clear();
-    M.dispatcher.trigger('m:reset:bills');
     M.dispatcher.trigger('m:show:bills');
   }
 });

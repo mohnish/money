@@ -75,7 +75,6 @@ M.BillsView = M.BaseView.extend({
 
   showProfile: function(e) {
     e.preventDefault();
-    M.dispatcher.trigger('m:reset:bills');
     M.dispatcher.trigger('m:show:profile');
   }
 });

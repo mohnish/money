@@ -16,7 +16,6 @@ M.CondensedBillView = M.BaseView.extend({
   },
 
   showBill: function(e) {
-    M.dispatcher.trigger('m:reset:bills');
     M.dispatcher.trigger('m:show:bill', this.model.get('id'));
   }
 });

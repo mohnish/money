@@ -38,7 +38,6 @@ M.SignupView = M.BaseView.extend({
   },
 
   handleSync: function(model, response, options) {
-    this.trigger('signup:success');
-    return this;
+    M.dispatcher.trigger('m:signup:success');
   }
 });

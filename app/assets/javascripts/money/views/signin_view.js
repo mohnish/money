@@ -44,6 +44,6 @@ M.SigninView = M.BaseView.extend({
   handleSync: function(model, response, options) {
     this.model.persistTokenLocally();
     this.model.removePassword();
-    this.trigger('m:signin:success');
+    M.dispatcher.trigger('m:signin:success');
   }
 });
