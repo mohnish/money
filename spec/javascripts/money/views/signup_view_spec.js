@@ -7,7 +7,7 @@ describe('M.SignupView', function() {
 
   describe('#el', function() {
     it('returns the el', function() {
-      expect(view.$el.selector).toBe('#money');
+      expect(view.$el.prop('class')).toBe('signup');
     });
   });
 });
