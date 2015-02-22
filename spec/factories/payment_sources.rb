@@ -21,13 +21,5 @@ FactoryGirl.define do
 
       type "CreditCard"
     end
-
-    factory :cash do
-      sequence :name do |n|
-        "Cash #{n}"
-      end
-
-      type "Cash"
-    end
   end
 end

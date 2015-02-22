@@ -2,7 +2,7 @@
 M.PaymentSource = Backbone.Model.extend({
   defaults: {
     name: '',
-    type: 'Cash'
+    type: 'CreditCard'
   },
 
   validate: function(attrs, options) {
