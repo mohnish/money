@@ -19,6 +19,11 @@ M.DefaultRouter = Backbone.Router.extend({
     this.listenTo(M.dispatcher, 'm:signin:success', function() {
       this.navigate('/profile', { trigger: true });
     });
+
+    this.listenTo(M.dispatcher, 'm:signout:user', function() {
+      localStorage.removeItem('access_token');
+      this.navigate('', { trigger: true });
+    });
   },
 
   routes: {

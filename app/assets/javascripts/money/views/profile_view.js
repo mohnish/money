@@ -7,6 +7,7 @@ M.ProfileView = M.BaseView.extend({
 
   events: {
     'click #show-bills': 'showBills',
+    'click #signout': 'signout'
   },
 
   initialize: function() {
@@ -27,11 +28,5 @@ M.ProfileView = M.BaseView.extend({
 
   handleError: function() {
     console.log('handle error in profile view');
-  },
-
-  showBills: function(e) {
-    e.preventDefault();
-    this.model.clear();
-    M.dispatcher.trigger('m:show:bills');
   }
 });

@@ -8,7 +8,8 @@ M.BillsView = M.BaseView.extend({
 
   events: {
     'click #profile': 'showProfile',
-    'submit #create-bill-form': 'handleSubmit'
+    'submit #create-bill-form': 'handleSubmit',
+    'click #signout': 'signout'
   },
 
   initialize: function() {

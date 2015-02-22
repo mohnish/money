@@ -8,7 +8,8 @@ M.BillView = M.BaseView.extend({
 
   events: {
     'click #profile': 'showProfile',
-    'click #show-bills': 'showBills'
+    'click #show-bills': 'showBills',
+    'click #signout': 'signout'
   },
 
   initialize: function() {
@@ -31,11 +32,5 @@ M.BillView = M.BaseView.extend({
     e.preventDefault();
 
     M.dispatcher.trigger('m:show:profile');
-  },
-
-  showBills: function(e) {
-    e.preventDefault();
-    this.model.clear();
-    M.dispatcher.trigger('m:show:bills');
   }
 });

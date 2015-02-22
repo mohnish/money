@@ -58,5 +58,16 @@ M.BaseView = Backbone.View.extend({
     // and pass in a selector to dynamically choose the element
     // to set the errors onto
     this.$('.validation-response').text(text);
+  },
+
+  signout: function(e) {
+    e.preventDefault();
+    M.dispatcher.trigger('m:signout:user');
+  },
+
+  showBills: function(e) {
+    e.preventDefault();
+    this.model.clear();
+    M.dispatcher.trigger('m:show:bills');
   }
 });

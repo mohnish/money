@@ -8,6 +8,10 @@ M.PaymentSourcesView = M.BaseView.extend({
 
   templatePath: 'payment_sources/index',
 
+  events: {
+    'click #signout': 'signout'
+  },
+
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.handleSync);
     this.listenTo(this.collection, 'error', this.handleError);
