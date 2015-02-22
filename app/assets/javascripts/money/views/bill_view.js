@@ -17,6 +17,7 @@ M.BillView = M.BaseView.extend({
   },
 
   render: function() {
+    this.setPageTitle(this.model.get('name'));
     this.$el.html(this.template(this.model.toJSON()));
     $('#money').html(this.el);
     return this;

@@ -19,6 +19,7 @@ M.BillsView = M.BaseView.extend({
   },
 
   render: function() {
+    this.setPageTitle('bills');
     this.$el.html(this.template());
     $('#money').html(this.el);
     this.populateCategories();
