@@ -35,7 +35,6 @@ M.BaseView = Backbone.View.extend({
 
   formatErrors: function(response) {
     return $.map(response.responseJSON.errors, function(errorText, field) {
-      // TODO: See if this is the fastest way
       return field + ' ' + errorText;
     });
   },
