@@ -35,5 +35,12 @@ M.User = Backbone.Model.extend({
   destroyExistingToken: function() {
     localStorage.removeItem('access_token');
     return this;
+  },
+
+  memberSince: function() {
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var joiningDate = new Date(this.get('member_since'));
+    var month = months[joiningDate.getMonth()];
+    return month + joiningDate.getDate() + ', ' + joiningDate.getFullYear();
   }
 });

@@ -6,6 +6,7 @@ M.ProfileView = M.BaseView.extend({
   templatePath: 'users/me',
 
   events: {
+    'click #show-payment-sources': 'showCards',
     'click #show-bills': 'showBills',
     'click #signout': 'signout'
   },

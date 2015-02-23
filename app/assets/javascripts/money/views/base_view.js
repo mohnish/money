@@ -66,7 +66,16 @@ M.BaseView = Backbone.View.extend({
 
   showBills: function(e) {
     e.preventDefault();
-    this.model.clear();
     M.dispatcher.trigger('m:show:bills');
+  },
+
+  showProfile: function(e) {
+    e.preventDefault();
+    M.dispatcher.trigger('m:show:profile');
+  },
+
+  showCards: function(e) {
+    e.preventDefault();
+    M.dispatcher.trigger('m:show:payment_sources');
   }
 });
