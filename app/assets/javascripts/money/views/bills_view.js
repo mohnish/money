@@ -7,8 +7,9 @@ M.BillsView = M.BaseView.extend({
   templatePath: 'bills/index',
 
   events: {
-    'click #profile': 'showProfile',
+    'click #show-payment-sources': 'showCards',
     'submit #create-bill-form': 'handleSubmit',
+    'click #profile': 'showProfile',
     'click #signout': 'signout'
   },
 
@@ -20,7 +21,7 @@ M.BillsView = M.BaseView.extend({
   },
 
   render: function() {
-    this.setPageTitle('bills');
+    this.setPageTitle('your bills');
     this.$el.html(this.template());
     $('#money').html(this.el);
     this.populateCategories();
@@ -28,11 +29,12 @@ M.BillsView = M.BaseView.extend({
     return this;
   },
 
-  addBill: function(model) {
-    var condensedBill = new M.CondensedBillView({ model: model });
-    this.$('.condensed-bills').append(condensedBill.render().el);
+  addBill: function(bill) {
+    var condensedBillView = new M.CondensedBillView({ model: bill });
+    this.$('.condensed-bills').append(condensedBillView.render().el);
   },
 
+  // FIXME: this needs to be replaced with better error handling
   handleError: function(collection, response, options) {
     $('#money').text(response.status + ' ' + response.statusText);
   },
@@ -45,7 +47,7 @@ M.BillsView = M.BaseView.extend({
     var newBill = this.collection.create(props, { wait: true });
 
     if (newBill.isValid()) {
-      this.setValidationResponse('waiting...');
+      this.setValidationResponse('');
     } else {
       this.setValidationResponse(newBill.validationError);
     }
@@ -73,10 +75,5 @@ M.BillsView = M.BaseView.extend({
     props.next_due_date = this.formatDate(props.next_due_date);
     props.tags = props.tags.split(',');
     return props;
-  },
-
-  showProfile: function(e) {
-    e.preventDefault();
-    M.dispatcher.trigger('m:show:profile');
   }
 });

@@ -7,8 +7,9 @@ M.BillView = M.BaseView.extend({
   templatePath: 'bills/show',
 
   events: {
-    'click #profile': 'showProfile',
+    'click #show-payment-sources': 'showCards',
     'click #show-bills': 'showBills',
+    'click #profile': 'showProfile',
     'click #signout': 'signout'
   },
 
@@ -26,11 +27,5 @@ M.BillView = M.BaseView.extend({
 
   handleSync: function() {
     this.render();
-  },
-
-  showProfile: function(e) {
-    e.preventDefault();
-
-    M.dispatcher.trigger('m:show:profile');
   }
 });
