@@ -16,6 +16,12 @@ M.User = Backbone.Model.extend({
     avatar: ''
   },
 
+  toJSON: function() {
+    var attrs = _.clone(this.attributes);
+    attrs.memberSince = this.memberSince();
+    return attrs;
+  },
+
   validate: function(attrs, options) {
     var errors = [];
     if (_.isEmpty(attrs.username)) errors.push('username is invalid');
@@ -41,6 +47,6 @@ M.User = Backbone.Model.extend({
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var joiningDate = new Date(this.get('member_since'));
     var month = months[joiningDate.getMonth()];
-    return month + joiningDate.getDate() + ', ' + joiningDate.getFullYear();
+    return month + ' ' + joiningDate.getDate() + ', ' + joiningDate.getFullYear();
   }
 });
