@@ -17,9 +17,7 @@ M.User = Backbone.Model.extend({
   },
 
   toJSON: function() {
-    var attrs = _.clone(this.attributes);
-    attrs.memberSince = this.memberSince();
-    return attrs;
+    return _.extend({ memberSince: this.memberSince() }, this.attributes);
   },
 
   validate: function(attrs, options) {
