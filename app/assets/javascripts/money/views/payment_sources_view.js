@@ -1,43 +1,47 @@
 
 M.PaymentSourcesView = M.BaseView.extend({
-  className: 'payment-sources',
-
-  tagName: 'ul',
+  className: 'manage-payment-sources',
 
   collection: new M.PaymentSources(),
 
   templatePath: 'payment_sources/index',
 
   events: {
+    'submit #create-payment-source': 'handleSubmit',
+    'click #show-bills': 'showBills',
+    'click #profile': 'showProfile',
     'click #signout': 'signout'
   },
 
   initialize: function() {
-    this.listenTo(this.collection, 'sync', this.handleSync);
+    this.listenTo(this.collection, 'add', this.addPaymentSource);
     this.listenTo(this.collection, 'error', this.handleError);
+    this.render();
     this.collection.fetch();
   },
 
   render: function() {
-    var _this = this;
-
-    this.collection.each(function(model) {
-      var paymentSourceView = new M.PaymentSourceView({ model: model });
-      _this.$el.append(paymentSourceView.render().el);
-    });
-
-    // FIXME: This needs to point to a user-data css id or
-    // something like that
+    this.setPageTitle('your cards');
+    this.$el.html(this.template());
     $('#money').html(this.el);
-
     return this;
   },
 
-  handleSync: function() {
-    this.render();
+  addPaymentSource: function(paymentSource) {
+    var paymentSourceView = new M.PaymentSourceView({ model: paymentSource });
+    this.$('.payment-sources').append(paymentSourceView.render().el);
   },
 
-  handleError: function(collection, response, options) {
-    $('#money').text(response.status + ' ' + response.statusText);
+  handleSubmit: function(e) {
+    e.preventDefault();
+
+    var props = this.createAttributesObject(this.$('#create-payment-source').serializeArray());
+    var newPaymentSource = this.collection.create(props, { wait: true });
+
+    if (newPaymentSource.isValid()) {
+      this.setValidationResponse('');
+    } else {
+      this.setValidationResponse(newPaymentSource.validationError);
+    }
   }
 });

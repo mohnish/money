@@ -8,6 +8,10 @@ M.DefaultRouter = Backbone.Router.extend({
       this.navigate('/bills/' + id, { trigger: true });
     });
 
+    this.listenTo(M.dispatcher, 'm:show:payment_sources', function() {
+      this.navigate('/cards', { trigger: true });
+    });
+
     this.listenTo(M.dispatcher, 'm:show:profile', function() {
       this.navigate('/profile', { trigger: true });
     });
@@ -32,7 +36,7 @@ M.DefaultRouter = Backbone.Router.extend({
     'signup': 'signup',
     'bills(/)': 'bills',
     'bills/:id': 'showBill',
-    'payment_sources(/)': 'paymentSources',
+    'cards(/)': 'paymentSources',
     'bills/:billId/payments(/)': 'payments',
     'profile': 'profile'
   },
@@ -58,6 +62,7 @@ M.DefaultRouter = Backbone.Router.extend({
   },
 
   paymentSources: function() {
+    M.dispatcher.trigger('m:reset:payment_sources');
     new M.PaymentSourcesView();
   },
 
