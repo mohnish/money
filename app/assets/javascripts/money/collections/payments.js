@@ -1,6 +1,8 @@
 
 M.Payments = Backbone.Collection.extend({
-  url: '/api/payments',
+  url: function() {
+    return '/api/bills/' + this.billId + '/payments';
+  },
 
   model: M.Payment,
 

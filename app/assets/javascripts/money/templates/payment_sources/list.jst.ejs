@@ -1,0 +1,4 @@
+
+<% _.each(payment_sources, function(payment_source) { %>
+<option value="<%= payment_source.id %>"><%= payment_source.name %> (<%= payment_source.type %>)</option>
+<% }); %>

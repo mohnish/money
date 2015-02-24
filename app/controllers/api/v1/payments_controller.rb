@@ -3,6 +3,11 @@ module Api
     class PaymentsController < BaseController
       before_action :doorkeeper_authorize!
 
+      def index
+        @payments = current_bill.payments
+        render status: :ok
+      end
+
       def create
         @payment = current_bill.payments.create(payment_params)
 

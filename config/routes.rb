@@ -12,7 +12,7 @@ Money::Application.routes.draw do
       resources :repeat_intervals, only: [:index]
       resources :bills, except: [:edit, :new] do
         resources :tags, only: [:create, :destroy]
-        resources :payments, only: [:create, :update, :destroy]
+        resources :payments, only: [:index, :create, :update, :destroy]
       end
     end
   end
