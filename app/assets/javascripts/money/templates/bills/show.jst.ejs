@@ -3,14 +3,15 @@
 <a class="btn btn-default" id="show-payment-sources" href="/cards" role="button">cards</a>
 <a class="btn btn-default" id="signout" href="/" role="button">signout</a>
 
-<div>
+<div id="bill-details">
   id: <%= id %>
   name: <%= name %>
   next_due_date: <%= next_due_date %>
   amount: <%= amount %>
   category: <%= category.label %>
   repeat_interval: <%= repeat_interval.label %>
-  tags: <%= _.pluck(tags, 'name') %>
+  tags: <%= _.pluck(tags, 'name').join(', ') %>
 </div>
 
-<div id="manage-payments"></div>
+<div id="manage-payments">
+</div>

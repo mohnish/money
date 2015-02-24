@@ -58,6 +58,7 @@ M.DefaultRouter = Backbone.Router.extend({
 
   showBill: function(id) {
     M.dispatcher.trigger('m:reset:payment_sources');
+    M.dispatcher.trigger('m:reset:payments');
     var bill = new M.Bill({ id: id });
     new M.BillView({ model: bill });
   },
