@@ -14,7 +14,7 @@ class Bill < ActiveRecord::Base
         message: 'please enter a valid amount'
       },
       numericality: {
-        message: 'please enter a valid number'
+        message: 'please enter a valid amount'
       }
   }
 
