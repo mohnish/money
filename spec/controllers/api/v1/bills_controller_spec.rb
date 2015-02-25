@@ -43,7 +43,6 @@ RSpec.describe Api::V1::BillsController do
       expect(response).to have_http_status(:success)
       result = JSON.parse(response.body)
       expect(result['id']).to eql(bill.id)
-      expect(result['payments'].size).to eql(1)
     end
   end
 

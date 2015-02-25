@@ -95,7 +95,7 @@ RSpec.describe Api::V1::PaymentsController do
         patch :update, params
         expect(response).to have_http_status(:unprocessable_entity)
         result = JSON.parse(response.body)
-        expect(result['errors']).to be_blank
+        expect(result['errors']).not_to be_blank
       end
     end
   end

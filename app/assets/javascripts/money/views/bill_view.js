@@ -20,9 +20,7 @@ M.BillView = M.BaseView.extend({
     this.setPageTitle(this.model.get('name'));
     this.$el.html(this.template(this.model.toJSON()));
     $('#money').html(this.el);
-    var payments = new M.Payments();
-    payments.billId = this.model.get('id');
-    var paymentsView = new M.PaymentsView({ collection: payments });
+    new M.PaymentsView({ collection: this.model.payments });
     return this;
   },
 

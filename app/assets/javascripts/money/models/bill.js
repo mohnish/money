@@ -10,6 +10,9 @@ M.Bill = Backbone.Model.extend({
   },
 
   initialize: function() {
+    this.payments = new M.Payments();
+    this.payments.url = '/api/bills/' + this.get('id') + '/payments';
+
     // this is to avoid https://github.com/jashkenas/backbone/issues/1845
     // we basically propagate the error from the model to the
     // collection and let the collection view handle the error

@@ -24,7 +24,7 @@ module Api
 
         @payment ||= Payment.new
 
-        if @payment.persisted? && @payment.valid?
+        if @payment.valid? && @payment.persisted?
           status = :ok
         else
           status = :unprocessable_entity
