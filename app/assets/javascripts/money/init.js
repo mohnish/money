@@ -1,7 +1,7 @@
 
 window.M = window.M || {};
-
-M.greetings = [
+M.Utils = {};
+M.Utils.greetings = [
   'నమస్కారం',
   'bonjour',
   'hola',
