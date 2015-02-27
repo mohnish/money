@@ -38,7 +38,7 @@ M.SigninView = M.BaseView.extend({
       this.model.save();
       this.setValidationResponse('waiting...');
     } else {
-      this.setValidationResponse(this.model.validationError);
+      this.setValidationResponse(this.model.validationError, 'danger');
     }
   },
 

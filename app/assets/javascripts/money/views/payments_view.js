@@ -37,9 +37,9 @@ M.PaymentsView = M.BaseView.extend({
     var payment = this.collection.create(props, { wait: true });
 
     if (payment.isValid()) {
-      this.setValidationResponse('');
+      this.setValidationResponse('waiting...');
     } else {
-      this.setValidationResponse(payment.validationError);
+      this.setValidationResponse(payment.validationError, 'danger');
     }
   }
 });

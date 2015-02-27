@@ -1,30 +1,5 @@
-M.BaseView = Backbone.View.extend({
-  templatePath: 'welcome/index',
 
-  templatePathPrefix: 'money/templates/',
-
-  setPageTitle: function(currentPageTitle) {
-    if (currentPageTitle) {
-      document.title = currentPageTitle + ' | Money';
-    } else {
-      document.title = 'Money';
-    }
-
-    return this;
-  },
-
-  template: function(data) {
-    var path;
-
-    if (_.isFunction(this.templatePath)) {
-      path = this.templatePath();
-    } else {
-      path = this.templatePath;
-    }
-
-    return JST[this.templatePathPrefix + path](data);
-  },
-
+M.BaseView = M.AbstractView.extend({
   createAttributesObject: function(serializedArray) {
     var props = {};
     $.each(serializedArray, function(i, v) {
@@ -45,18 +20,16 @@ M.BaseView = Backbone.View.extend({
 
   handleError: function(model, response, options) {
     var errors = this.formatErrors(response);
-    this.setValidationResponse(errors.join(' '), 'error');
+    this.setValidationResponse(errors.join(', '), 'danger');
   },
 
   handleInvalid: function(model, response, options) {
-    this.setValidationResponse(response.join(' '), 'error');
+    this.setValidationResponse(response.join(', '), 'danger');
   },
 
-  setValidationResponse: function(text, type) {
-    // TODO: use the `type` add a class to the input
-    // and pass in a selector to dynamically choose the element
-    // to set the errors onto
-    this.$('.validation-response').text(text);
+  setValidationResponse: function(message, type) {
+    var options = { el: '.validation-response', type: (type || 'info'), message: message };
+    new M.AlertsView(options);
   },
 
   signout: function(e) {
@@ -77,5 +50,15 @@ M.BaseView = Backbone.View.extend({
   showCards: function(e) {
     e.preventDefault();
     M.dispatcher.trigger('m:show:payment_sources');
+  },
+
+  showSignin: function(e) {
+    e.preventDefault();
+    M.dispatcher.trigger('m.show:signin');
+  },
+
+  showSignup: function(e) {
+    e.preventDefault();
+    M.dispatcher.trigger('m.show:signup');
   }
 });

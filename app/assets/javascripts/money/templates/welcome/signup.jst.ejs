@@ -1,65 +1,79 @@
-<form id="signup-form" class="form-horizontal">
-  <p class="validation-response"></p>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="username">
-      username*
-    </label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="username" name="username" placeholder="username" required />
-    </div>
-  </div>
+<div class="header">
+  <nav>
+    <ul class="nav nav-pills pull-right">
+      <li id="show-signup" role="presentation" class="active"><a href="/signup">sign up</a></li>
+      <li id="show-signin" role="presentation"><a href="/">sign in</a></li>
+    </ul>
+  </nav>
+  <h2 class="text-muted">money</h2>
+</div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="email-address">
-      email address*
-    </label>
-    <div class="col-sm-10">
-      <input class="form-control" type="email" id="email-address" name="email_address" placeholder="email address" required />
-    </div>
-  </div>
+<div class="container">
+  <form id="signup-form" class="form-horizontal">
+    <div class="validation-response"></div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="phone-number">
-      phone number
-    </label>
-    <div class="col-sm-10">
-      <input class="form-control" type="tel" id="phone-number" name="phone_number" placeholder="phone number" />
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="username">
+        username*
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="username" name="username" placeholder="username" required />
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="first-name">
-      first name*
-    </label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="first-name" name="first_name" placeholder="first name" required />
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="email-address">
+        email address*
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="email" id="email-address" name="email_address" placeholder="email address" required />
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="last-name">
-      last name*
-    </label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="last-name" name="last_name" placeholder="last name" required />
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="phone-number">
+        phone number
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="tel" id="phone-number" name="phone_number" placeholder="phone number"required />
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="password">
-      password*
-    </label>
-    <div class="col-sm-10">
-      <input class="form-control" type="password" id="password" name="password" placeholder="password" required />
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="first-name">
+        first name*
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="first-name" name="first_name" placeholder="first name" required />
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button class="btn btn-primary" type="submit">
-        sign up
-      </button>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="last-name">
+        last name*
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="last-name" name="last_name" placeholder="last name" required />
+      </div>
     </div>
-  </div>
-</form>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="password">
+        password*
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="password" id="password" name="password" placeholder="password" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" type="submit">
+          sign up
+        </button>
+      </div>
+    </div>
+  </form>
+
+</div>

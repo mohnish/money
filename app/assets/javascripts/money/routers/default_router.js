@@ -1,5 +1,13 @@
 M.DefaultRouter = Backbone.Router.extend({
   initialize: function() {
+    this.listenTo(M.dispatcher, 'm:show:signin', function() {
+      this.navigate('/', { trigger: true });
+    });
+
+    this.listenTo(M.dispatcher, 'm:show:signup', function() {
+      this.navigate('/signup', { trigger: true });
+    });
+
     this.listenTo(M.dispatcher, 'm:show:bills', function() {
       this.navigate('/bills', { trigger: true });
     });

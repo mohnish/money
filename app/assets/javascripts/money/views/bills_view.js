@@ -47,9 +47,9 @@ M.BillsView = M.BaseView.extend({
     var newBill = this.collection.create(props, { wait: true });
 
     if (newBill.isValid()) {
-      this.setValidationResponse('');
+      this.setValidationResponse('waiting...');
     } else {
-      this.setValidationResponse(newBill.validationError);
+      this.setValidationResponse(newBill.validationError, 'danger');
     }
   },
 

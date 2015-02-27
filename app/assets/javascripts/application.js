@@ -16,4 +16,10 @@
 //= require backbone-min
 //= require money/init
 //= require_directory ./money/models
+//= require_directory ./money/collections
+//= require_directory ./money/templates
+//= require money/views/abstract_view
+//= require money/views/base_view
+//= require_directory ./money/views
+//= require_directory ./money/routers
 //= require_tree .

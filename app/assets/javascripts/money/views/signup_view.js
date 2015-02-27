@@ -1,3 +1,4 @@
+
 M.SignupView = M.BaseView.extend({
   className: 'signup',
 
@@ -18,7 +19,9 @@ M.SignupView = M.BaseView.extend({
   },
 
   events: {
-    'submit': 'handleSubmit'
+    'submit': 'handleSubmit',
+    'click #show-signup': 'showSignup',
+    'click #show-signin': 'showSignin'
   },
 
   handleSubmit: function(e) {
@@ -30,10 +33,7 @@ M.SignupView = M.BaseView.extend({
 
     if (this.model.isValid({ checkPassword: true })) {
       this.model.save();
-      // TODO: Replace this with a loader gif
       this.setValidationResponse('waiting...');
-    } else {
-      this.setValidationResponse(this.model.validationError);
     }
   },
 
