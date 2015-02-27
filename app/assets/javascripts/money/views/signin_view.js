@@ -39,8 +39,6 @@ M.SigninView = M.BaseView.extend({
     if (this.model.isValid({ checkPassword: true })) {
       this.model.save();
       this.setValidationResponse('waiting...');
-    } else {
-      this.setValidationResponse(this.model.validationError, 'danger');
     }
   },
 

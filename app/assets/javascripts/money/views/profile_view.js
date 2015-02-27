@@ -3,7 +3,7 @@ M.ProfileView = M.BaseView.extend({
 
   model: new M.User(),
 
-  templatePath: 'users/me',
+  templatePath: 'users/profile',
 
   events: {
     'click #show-payment-sources': 'showCards',
