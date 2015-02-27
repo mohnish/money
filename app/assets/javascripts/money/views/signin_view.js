@@ -18,7 +18,9 @@ M.SigninView = M.BaseView.extend({
   },
 
   events: {
-    'submit': 'handleSubmit'
+    'submit': 'handleSubmit',
+    'click #show-signup': 'showSignup',
+    'click #show-signin': 'showSignin'
   },
 
   // overriding base view's format errors

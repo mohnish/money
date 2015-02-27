@@ -54,11 +54,11 @@ M.BaseView = M.AbstractView.extend({
 
   showSignin: function(e) {
     e.preventDefault();
-    M.dispatcher.trigger('m.show:signin');
+    M.dispatcher.trigger('m:show:signin');
   },
 
   showSignup: function(e) {
     e.preventDefault();
-    M.dispatcher.trigger('m.show:signup');
+    M.dispatcher.trigger('m:show:signup');
   }
 });
