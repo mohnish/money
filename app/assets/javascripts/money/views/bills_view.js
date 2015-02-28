@@ -17,6 +17,7 @@ M.BillsView = M.BaseView.extend({
   initialize: function() {
     this.listenTo(this.collection, 'add', this.addBill);
     this.listenTo(this.collection, 'error', this.handleError);
+    this.listenTo(this.collection, 'invalid', this.handleInvalid);
     this.render();
     this.collection.fetch();
   },
@@ -49,8 +50,6 @@ M.BillsView = M.BaseView.extend({
 
     if (newBill.isValid()) {
       this.setValidationResponse('waiting...');
-    } else {
-      this.setValidationResponse(newBill.validationError, 'danger');
     }
   },
 

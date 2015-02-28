@@ -19,6 +19,10 @@ M.Bill = Backbone.Model.extend({
     this.on('error', function(model, response, options) {
       this.collection.trigger('error', model, response, options);
     });
+
+    this.on('invalid', function(model, response, options) {
+      this.collection.trigger('invalid', model, response, options);
+    });
   },
 
   url: function() {
