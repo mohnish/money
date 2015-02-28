@@ -20,8 +20,8 @@ M.SignupView = M.BaseView.extend({
 
   events: {
     'submit': 'handleSubmit',
-    'click #show-signup': 'showSignup',
-    'click #show-signin': 'showSignin'
+    'click .show-signup': 'showSignup',
+    'click .show-signin': 'showSignin'
   },
 
   handleSubmit: function(e) {

@@ -19,8 +19,8 @@ M.SigninView = M.BaseView.extend({
 
   events: {
     'submit': 'handleSubmit',
-    'click #show-signup': 'showSignup',
-    'click #show-signin': 'showSignin'
+    'click .show-signup': 'showSignup',
+    'click .show-signin': 'showSignin'
   },
 
   // overriding base view's format errors
@@ -32,7 +32,6 @@ M.SigninView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#signin-form').serializeArray());
-    // TODO: Make this base view's responsibility (destroying the token)
     this.model.destroyExistingToken();
     this.model.set(props);
 
