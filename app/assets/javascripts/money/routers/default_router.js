@@ -34,6 +34,7 @@ M.DefaultRouter = Backbone.Router.extend({
 
     this.listenTo(M.dispatcher, 'm:signout:user', function() {
       localStorage.removeItem('access_token');
+      localStorage.removeItem('username');
       this.navigate('', { trigger: true });
     });
   },
