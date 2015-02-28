@@ -17,6 +17,7 @@ M.PaymentSourcesView = M.BaseView.extend({
   initialize: function() {
     this.listenTo(this.collection, 'add', this.addPaymentSource);
     this.listenTo(this.collection, 'error', this.handleError);
+    this.listenTo(this.collection, 'invalid', this.handleInvalid);
     this.render();
     this.collection.fetch();
   },
@@ -37,12 +38,10 @@ M.PaymentSourcesView = M.BaseView.extend({
     e.preventDefault();
 
     var props = this.createAttributesObject(this.$('#create-payment-source').serializeArray());
-    var newPaymentSource = this.collection.create(props, { wait: true });
+    var paymentSource = this.collection.create(props, { wait: true });
 
-    if (newPaymentSource.isValid()) {
+    if (paymentSource.isValid()) {
       this.setValidationResponse('waiting...');
-    } else {
-      this.setValidationResponse(newPaymentSource.validationError, 'danger');
     }
   }
 });
