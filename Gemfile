@@ -10,6 +10,7 @@ gem 'uglifier'
 gem 'doorkeeper'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'font-awesome-sass'
 gem 'ejs'
 gem 'bootstrap-sass'
 

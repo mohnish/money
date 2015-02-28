@@ -72,6 +72,8 @@ GEM
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     ffi (1.9.6)
+    font-awesome-sass (4.3.1)
+      sass (~> 3.2)
     formatador (0.2.5)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
@@ -252,6 +254,7 @@ DEPENDENCIES
   doorkeeper
   ejs
   factory_girl_rails
+  font-awesome-sass
   guard
   guard-jasmine
   guard-rspec
