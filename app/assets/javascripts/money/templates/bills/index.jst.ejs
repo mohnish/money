@@ -1,6 +1,53 @@
-<a class="btn btn-default" href="/profile" id="profile" role="button">profile</a>
-<a class="btn btn-default" id="show-payment-sources" href="/cards" role="button">cards</a>
-<a class="btn btn-default" id="signout" href="/" role="button">signout</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand show-profile" href="/profile">
+        <i class="fa fa-usd"></i> money
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="show-profile" href="/profile">
+            <i class="fa fa-user"></i>
+            <%= localStorage.getItem('username') %>
+          </a>
+        </li>
+        <li class="active">
+          <a class="show-bills" href="/bills">
+            <i class="fa fa-money"></i> bills
+          </a>
+        </li>
+        <li>
+          <a class="show-payment-sources" href="/cards">
+            <i class="fa fa-credit-card"></i> cards
+          </a>
+        </li>
+      </ul>
+
+      <p class="navbar-text navbar-right">
+        <a class="navbar-link signout" href="/">
+          <i class="fa fa-sign-out"></i> signout
+        </a>
+      </p>
+
+      <p class="navbar-text navbar-right">
+        signed in as <a href="/profile" class="navbar-link show-profile">
+          <strong>
+            <%= localStorage.getItem('username') %>
+          </strong>
+        </a>
+      </p>
+    </div>
+  </div>
+</nav>
 
 <form id="create-bill-form" class="form-horizontal">
   <p class="validation-response"></p>
