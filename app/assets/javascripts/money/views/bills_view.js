@@ -7,10 +7,11 @@ M.BillsView = M.BaseView.extend({
   templatePath: 'bills/index',
 
   events: {
-    'click #show-payment-sources': 'showCards',
     'submit #create-bill-form': 'handleSubmit',
-    'click #profile': 'showProfile',
-    'click #signout': 'signout'
+    'click .show-payment-sources': 'showCards',
+    'click .show-profile': 'showProfile',
+    'click .show-bills': 'showBills',
+    'click .signout': 'signout'
   },
 
   initialize: function() {

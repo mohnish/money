@@ -5,10 +5,10 @@ M.BillView = M.BaseView.extend({
   templatePath: 'bills/show',
 
   events: {
-    'click #show-payment-sources': 'showCards',
-    'click #show-bills': 'showBills',
-    'click #profile': 'showProfile',
-    'click #signout': 'signout'
+    'click .show-payment-sources': 'showCards',
+    'click .show-profile': 'showProfile',
+    'click .show-bills': 'showBills',
+    'click .signout': 'signout'
   },
 
   initialize: function() {
