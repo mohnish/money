@@ -6,9 +6,10 @@ M.ProfileView = M.BaseView.extend({
   templatePath: 'users/profile',
 
   events: {
-    'click #show-payment-sources': 'showCards',
-    'click #show-bills': 'showBills',
-    'click #signout': 'signout'
+    'click .show-payment-sources': 'showCards',
+    'click .show-profile': 'showProfile',
+    'click .show-bills': 'showBills',
+    'click .signout': 'signout'
   },
 
   initialize: function() {
@@ -19,6 +20,7 @@ M.ProfileView = M.BaseView.extend({
 
   render: function() {
     this.setPageTitle(this.model.get('username'));
+    this.setUsername();
     $('#money').html(this.$el.html(this.template(this.model.toJSON())));
     return this;
   },
@@ -29,5 +31,9 @@ M.ProfileView = M.BaseView.extend({
 
   handleError: function() {
     console.log('handle error in profile view');
+  },
+
+  setUsername: function() {
+    localStorage.setItem('username', this.model.get('username'));
   }
 });

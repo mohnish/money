@@ -32,6 +32,10 @@ M.BaseView = M.AbstractView.extend({
     new M.AlertsView(options);
   },
 
+  getUsername: function() {
+    return localStorage.getItem('username');
+  },
+
   signout: function(e) {
     e.preventDefault();
     M.dispatcher.trigger('m:signout:user');
