@@ -11,6 +11,7 @@ M.PaymentsView = M.BaseView.extend({
   initialize: function() {
     this.listenTo(this.collection, 'add', this.addPayment);
     this.listenTo(this.collection, 'error', this.handleError);
+    this.listenTo(this.collection, 'invalid', this.handleInvalid);
     this.render();
     this.collection.fetch();
   },
@@ -38,8 +39,6 @@ M.PaymentsView = M.BaseView.extend({
 
     if (payment.isValid()) {
       this.setValidationResponse('waiting...');
-    } else {
-      this.setValidationResponse(payment.validationError, 'danger');
     }
   }
 });
