@@ -44,7 +44,7 @@ to login to the app.
 
 (The MIT License)
 
-Copyright (c) 2014 Mohnish Thallavajhula &lt;i@mohni.sh&gt;
+Copyright (c) 2015 Mohnish Thallavajhula &lt;i@mohni.sh&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
