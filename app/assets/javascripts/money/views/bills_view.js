@@ -23,7 +23,7 @@ M.BillsView = M.BaseView.extend({
   },
 
   render: function() {
-    this.setPageTitle('your bills');
+    this.setPageTitle('bills');
     this.$el.html(this.template());
     $('#money').html(this.el);
     this.populateCategories();
@@ -47,10 +47,6 @@ M.BillsView = M.BaseView.extend({
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
     props = this.formatParams(props);
     var newBill = this.collection.create(props, { wait: true });
-
-    if (newBill.isValid()) {
-      this.setValidationResponse('waiting...');
-    }
   },
 
   populateCategories: function() {

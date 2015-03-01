@@ -1,6 +1,6 @@
 
 M.PaymentSourceView = M.BaseView.extend({
-  className: 'payment-source',
+  className: 'payment-source list-group-item',
 
   templatePath: 'payment_sources/show',
 

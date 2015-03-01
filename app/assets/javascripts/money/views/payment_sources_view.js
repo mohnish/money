@@ -23,7 +23,7 @@ M.PaymentSourcesView = M.BaseView.extend({
   },
 
   render: function() {
-    this.setPageTitle('your cards');
+    this.setPageTitle('cards');
     this.$el.html(this.template());
     $('#money').html(this.el);
     return this;
@@ -39,9 +39,5 @@ M.PaymentSourcesView = M.BaseView.extend({
 
     var props = this.createAttributesObject(this.$('#create-payment-source').serializeArray());
     var paymentSource = this.collection.create(props, { wait: true });
-
-    if (paymentSource.isValid()) {
-      this.setValidationResponse('waiting...');
-    }
   }
 });

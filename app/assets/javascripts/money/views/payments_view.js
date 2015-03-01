@@ -36,9 +36,5 @@ M.PaymentsView = M.BaseView.extend({
     e.preventDefault();
     var props = this.createAttributesObject(this.$('#create-payment').serializeArray());
     var payment = this.collection.create(props, { wait: true });
-
-    if (payment.isValid()) {
-      this.setValidationResponse('waiting...');
-    }
   }
 });
