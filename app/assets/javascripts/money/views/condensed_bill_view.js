@@ -1,10 +1,14 @@
 
 M.CondensedBillView = M.BaseView.extend({
-  className: 'condensed-bill',
+  className: 'condensed-bill list-group-item',
 
   templatePath: 'bills/condensed',
 
-  tagName: 'li',
+  tagName: 'a',
+
+  attributes: function() {
+    return { href: '/bills/' + this.model.get('id') };
+  },
 
   events: {
     'click': 'showBill'
@@ -16,6 +20,7 @@ M.CondensedBillView = M.BaseView.extend({
   },
 
   showBill: function(e) {
+    e.preventDefault();
     M.dispatcher.trigger('m:show:bill', this.model.get('id'));
   }
 });

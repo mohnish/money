@@ -1,7 +1,30 @@
-id: <%= id %>
-name: <%= name %>
-next_due_date: <%= next_due_date %>
-amount: <%= amount %>
-category: <%= category.label %>
-repeat_interval: <%= repeat_interval.label %>
-tags: <%- _.pluck(tags, 'name').join(', ') %>
+<span class="badge">
+  $<%= amount %>
+</span>
+
+<h4 class="list-group-item-heading">
+  <%= name %>
+</h4>
+
+<span class="label label-primary">
+  <%= category.label %>
+</span>
+
+<div class="list-group-item-text">
+  <p>
+    Due on:
+    <strong>
+      <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
+    </strong>
+  </p>
+
+  <p>
+    Repeats: <%= repeat_interval.label %>
+  </p>
+
+  <p>
+    <%= _.map(tags, function(tag) {
+      return '<mark><i class="fa fa-tag"></i> ' + tag.name + '</mark>';
+    }).join(' ') %>
+  </p>
+</div>

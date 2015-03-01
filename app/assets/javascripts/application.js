@@ -14,6 +14,7 @@
 //= require bootstrap
 //= require underscore-min
 //= require backbone-min
+//= require moment.min
 //= require money/init
 //= require_directory ./money/models
 //= require_directory ./money/collections
