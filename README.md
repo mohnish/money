@@ -29,7 +29,8 @@ to login to the app.
 
 ## Deploying
 
-- Heroku [TODO: insert the deploy link for heroku here]
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 - Others [TODO]
 
 ## Technologies Used
