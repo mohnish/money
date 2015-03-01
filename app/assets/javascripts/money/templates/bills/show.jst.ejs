@@ -50,13 +50,37 @@
 </nav>
 
 <div id="bill-details">
-  id: <%= id %>
-  name: <%= name %>
-  next_due_date: <%= next_due_date %>
-  amount: <%= amount %>
-  category: <%= category.label %>
-  repeat_interval: <%= repeat_interval.label %>
-  tags: <%= _.pluck(tags, 'name').join(', ') %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= name %></h3>
+  </div>
+  <div class="panel-body">
+    <span class="badge">
+      $<%= amount %>
+    </span>
+
+    <span class="label label-primary">
+      <%= category.label %>
+    </span>
+
+    <p>
+      Due on:
+      <strong>
+        <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
+      </strong>
+    </p>
+
+    <p>
+      Repeats: <%= repeat_interval.label %>
+    </p>
+
+    <p>
+      <%= _.map(tags, function(tag) {
+        return '<mark><i class="fa fa-tag"></i> ' + tag.name + '</mark>';
+      }).join(' ') %>
+    </p>
+  </div>
+</div>
 </div>
 
 <div id="manage-payments">

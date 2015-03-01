@@ -2,7 +2,7 @@
 M.PaymentView = M.BaseView.extend({
   tagName: 'li',
 
-  className: 'payment',
+  className: 'payment list-group-item',
 
   templatePath: 'payments/show',
 

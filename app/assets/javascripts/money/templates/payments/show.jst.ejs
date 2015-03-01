@@ -1,7 +1,18 @@
 
-payment id: <%= id %>
-payment amount: <%= amount %>
-payment date: <%= payment_date %>
-card id: <%= payment_source.id %>
-card name: <%= payment_source.name %>
-card type: <%= payment_source.type %>
+<span class="badge">
+  $<%= amount %>
+</span>
+
+<p>
+  Paid on:
+  <strong>
+    <%= moment(payment_date).format("dddd, MMMM Do YYYY") %>
+  </strong>
+</p>
+
+<i class="fa fa-credit-card"></i>
+<%= payment_source.name %>
+
+<span class="label label-primary">
+  <%= payment_source.type.replace('Card', '') %>
+</span>
