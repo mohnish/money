@@ -36,7 +36,7 @@ to login to the app.
 ## Technologies Used
 
 - Rails 4.2.0
-- Ruby 2.2.0
+- Ruby 2.2.1
 - Backbone 1.1.2
 - Bootstrap 3.3.2
 
