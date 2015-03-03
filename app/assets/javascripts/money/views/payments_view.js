@@ -5,6 +5,7 @@ M.PaymentsView = M.BaseView.extend({
   templatePath: 'payments/index',
 
   events: {
+    'click #toggle-create-payment-form': 'toggleForm',
     'submit #create-payment': 'handleSubmit'
   },
 
@@ -36,5 +37,10 @@ M.PaymentsView = M.BaseView.extend({
     e.preventDefault();
     var props = this.createAttributesObject(this.$('#create-payment').serializeArray());
     var payment = this.collection.create(props, { wait: true });
+  },
+
+  toggleForm: function(e) {
+    e.preventDefault();
+    this.$('#create-payment').toggle('slow');
   }
 });
