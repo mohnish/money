@@ -3,28 +3,16 @@
 </span>
 
 <h4 class="list-group-item-heading">
+<i class="fa fa-<%- M.IconMap[category.name] %>"></i>
   <%= name %>
 </h4>
 
-<span class="label label-primary">
-  <%= category.label %>
-</span>
-
 <div class="list-group-item-text">
-  <p>
-    Due on:
-    <strong>
-      <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
-    </strong>
-  </p>
+  <span>
+    <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
+  </span>
 
-  <p>
-    Repeats: <%= repeat_interval.label %>
-  </p>
-
-  <p>
-    <%= _.map(tags, function(tag) {
-      return '<mark><i class="fa fa-tag"></i> ' + tag.name + '</mark>';
-    }).join(' ') %>
-  </p>
+  <span class="gray">
+    (repeats <%= repeat_interval.label %>)
+  </span>
 </div>
