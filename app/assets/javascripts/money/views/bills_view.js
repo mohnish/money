@@ -10,6 +10,7 @@ M.BillsView = M.BaseView.extend({
     'click #toggle-create-bill-form': 'toggleForm',
     'submit #create-bill-form': 'handleSubmit',
     'click .show-payment-sources': 'showCards',
+    'change #repeat-intervals': 'togglePaymentSourceSelection',
     'click .show-profile': 'showProfile',
     'click .show-bills': 'showBills',
     'click .signout': 'signout'
@@ -29,6 +30,7 @@ M.BillsView = M.BaseView.extend({
     $('#money').html(this.el);
     this.populateCategories();
     this.populateRepeatIntervals();
+    this.populatePaymentSources();
     return this;
   },
 
@@ -60,6 +62,11 @@ M.BillsView = M.BaseView.extend({
     repeatIntervalsView.render();
   },
 
+  populatePaymentSources: function() {
+    var paymentSourcesListView = new M.PaymentSourcesListView();
+    this.$('#payment-source-id').html(paymentSourcesListView.render().el);
+  },
+
   // "yyyy-mm-dd" => "mm/dd/yyyy"
   formatDate: function(date) {
     var val = date.split('-');
@@ -77,5 +84,17 @@ M.BillsView = M.BaseView.extend({
   toggleForm: function(e) {
     e.preventDefault();
     this.$('#create-bill-form').toggle('slow');
+  },
+
+  togglePaymentSourceSelection: function(e) {
+    e.preventDefault();
+    var $paymentSourceEl = $(e.target);
+    var interval = $paymentSourceEl.find(':selected').data('interval');
+    if ('one_time' == interval) {
+      this.$('.select-card-form-group').show('slow');
+    }
+    // else {
+    //   if () this.$('.select-card-form-group').hide('slow');
+    // }
   }
 });
