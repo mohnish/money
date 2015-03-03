@@ -2,7 +2,7 @@
 window.M = window.M || {};
 M.dispatcher = _.clone(Backbone.Events);
 M.Utils = {};
-M.Utils.greetings = [
+M.Utils.Greetings = [
   'నమస్కారం',
   'bonjour',
   'servus',
