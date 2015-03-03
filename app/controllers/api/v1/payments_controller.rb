@@ -4,7 +4,7 @@ module Api
       before_action :doorkeeper_authorize!
 
       def index
-        @payments = current_bill.payments
+        @payments = current_bill.payments.order('created_at desc')
         render status: :ok
       end
 

@@ -4,7 +4,7 @@ module Api
       before_action :doorkeeper_authorize!
 
       def index
-        @categories = Category.all
+        @categories = Category.all.order('name')
 
         render status: :ok
       end
