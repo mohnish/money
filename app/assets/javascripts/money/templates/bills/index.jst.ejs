@@ -37,17 +37,11 @@
           <i class="fa fa-sign-out"></i> signout
         </a>
       </p>
-
-      <p class="navbar-text navbar-right">
-        signed in as <a href="/profile" class="navbar-link show-profile">
-          <strong>
-            <%= localStorage.getItem('username') %>
-          </strong>
-        </a>
-      </p>
     </div>
   </div>
 </nav>
+
+<a id="toggle-create-bill-form" class="btn btn-default" href="#" role="button">create bill</a>
 
 <form id="create-bill-form" class="form-horizontal">
   <div class="validation-response"></div>

@@ -7,6 +7,7 @@ M.BillsView = M.BaseView.extend({
   templatePath: 'bills/index',
 
   events: {
+    'click #toggle-create-bill-form': 'toggleForm',
     'submit #create-bill-form': 'handleSubmit',
     'click .show-payment-sources': 'showCards',
     'click .show-profile': 'showProfile',
@@ -71,5 +72,10 @@ M.BillsView = M.BaseView.extend({
     props.next_due_date = this.formatDate(props.next_due_date);
     props.tags = props.tags.split(',');
     return props;
+  },
+
+  toggleForm: function(e) {
+    e.preventDefault();
+    this.$('#create-bill-form').toggle('slow');
   }
 });
