@@ -8,11 +8,10 @@
 </h4>
 
 <div class="list-group-item-text">
-  <span>
-    Due on: <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
-  </span>
+  Due on:
+  <strong>
+    <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
+  </strong>
 
-  <span class="gray">
-    (repeats <%= repeat_interval.label %>)
-  </span>
+  <span class="gray">(repeats:</span> <strong><%= repeat_interval.label %></strong> <span class="gray">)</span>
 </div>
