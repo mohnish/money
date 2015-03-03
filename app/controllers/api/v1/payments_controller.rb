@@ -10,7 +10,6 @@ module Api
 
       def create
         @payment = current_bill.payments.create(payment_params)
-
         render status: (@payment.valid? ? :created : :unprocessable_entity)
       end
 

@@ -5,7 +5,6 @@ module Api
 
       def index
         @categories = Category.all.order('name')
-
         render status: :ok
       end
     end
