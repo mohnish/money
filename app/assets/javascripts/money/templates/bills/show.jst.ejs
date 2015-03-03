@@ -56,14 +56,14 @@
     </span>
 
     <p>
-      Due on:
+      <span class="gray">Due on:</span>
       <strong>
         <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
       </strong>
     </p>
 
     <p>
-      Repeats: <%= repeat_interval.label %>
+      <span class="gray">Repeats:</span> <strong><%= repeat_interval.label %></strong>
     </p>
 
     <p>
