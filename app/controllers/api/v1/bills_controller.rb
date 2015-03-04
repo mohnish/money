@@ -13,7 +13,6 @@ module Api
 
       def create
         @bill = create_bill
-
         render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
 
@@ -24,7 +23,6 @@ module Api
 
       def destroy
         current_bill.destroy
-
         head status: :no_content
       end
 

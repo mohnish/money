@@ -5,7 +5,6 @@ module Api
 
       def index
         @repeat_intervals = RepeatInterval.all
-
         render status: :ok
       end
     end

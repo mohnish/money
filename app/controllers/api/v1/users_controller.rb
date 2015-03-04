@@ -9,13 +9,11 @@ module Api
 
       def create
         @current_user = User.create(user_params)
-
         render status: (@current_user.valid? ? :created : :unprocessable_entity)
       end
 
       def update
         current_user.update(user_params)
-
         render status: (current_user.valid? ? :ok : :unprocessable_entity)
       end
 

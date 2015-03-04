@@ -9,15 +9,12 @@ module Api
 
       def create
         @payment_source = current_user.payment_sources.create(payment_source_params)
-
         status = @payment_source.valid? ? :created : :unprocessable_entity
-
         render status: status
       end
 
       def update
         current_payment_source.update(payment_source_params)
-
         render status: current_payment_source.valid? ? :ok : :unprocessable_entity
       end
 

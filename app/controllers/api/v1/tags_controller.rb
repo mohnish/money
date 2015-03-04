@@ -5,7 +5,6 @@ module Api
 
       def create
         @tag = current_bill.tags.create(tag_params)
-
         render status: (@tag.valid? ? :created : :unprocessable_entity)
       end
 

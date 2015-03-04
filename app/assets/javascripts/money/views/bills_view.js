@@ -92,9 +92,8 @@ M.BillsView = M.BaseView.extend({
     var interval = $paymentSourceEl.find(':selected').data('interval');
     if ('one_time' == interval) {
       this.$('.select-card-form-group').show('slow');
+    } else {
+      this.$('.select-card-form-group').hide('slow');
     }
-    // else {
-    //   if () this.$('.select-card-form-group').hide('slow');
-    // }
   }
 });
