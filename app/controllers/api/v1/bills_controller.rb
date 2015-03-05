@@ -4,7 +4,7 @@ module Api
       before_action :doorkeeper_authorize!
 
       def index
-        @bills = current_user.bills.order('next_due_date desc')
+        @bills = current_user.bills.order('next_due_date')
       end
 
       def show
@@ -12,7 +12,7 @@ module Api
       end
 
       def create
-        @bill = create_bill
+        @bill = current_user.create_bill params
         render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
 
@@ -31,7 +31,7 @@ module Api
           update_params = {}
           update_params[:amount] = params[:amount] if params[:amount]
           update_params[:name] = params[:name] if params[:name]
-          update_params[:next_due_date] = parsed_date if params[:next_due_date]
+          update_params[:next_due_date] = params[:next_due_date] if params[:next_due_date]
           update_params[:category] = Category.find_by(id: params[:category]) if params[:category]
           update_params[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
 
@@ -44,25 +44,6 @@ module Api
 
         def current_bill
           @bill ||= current_user.bills.find_by(id: params[:id])
-        end
-
-        def parsed_date
-          month, day, year = params[:next_due_date].split('/').map(&:to_i)
-          Time.zone.parse("#{day}/#{month}/#{year}") if Date.valid_date?(year, month, day)
-        end
-
-        def create_bill
-          current_user.bills.create do |bill|
-            bill.amount = params[:amount]
-            bill.name = params[:name]
-            bill.next_due_date = parsed_date
-            bill.repeat_interval = RepeatInterval.find_by(id: params[:repeat_interval])
-            bill.category = Category.find_by(id: params[:category])
-
-            params[:tags].map do |tag|
-              bill.tags.find_or_initialize_by(name: tag)
-            end
-          end
         end
     end
   end
