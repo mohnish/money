@@ -16,7 +16,12 @@ RSpec.describe Payment do
     end
 
     context 'when the bill is recurring' do
-      let(:payment) { create(:payment) }
+      let(:payment) do
+        payment = create(:payment)
+        payment.bill.next_due_date = Time.zone.now
+        payment.save!
+        payment
+      end
 
       it 'updates the bills due date' do
         payment.update_bill_attributes

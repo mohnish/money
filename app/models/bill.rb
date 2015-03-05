@@ -22,7 +22,7 @@ class Bill < ActiveRecord::Base
 
   def update_next_due_date
     return if repeat_interval.one_time?
-    update(next_due_date: repeat_interval.calculate_next_due_date(Time.zone.now))
+    update(next_due_date: repeat_interval.calculate_next_due_date(next_due_date))
   end
 
   # input format: '03/23/2015'
