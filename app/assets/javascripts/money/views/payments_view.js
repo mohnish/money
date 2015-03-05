@@ -37,6 +37,10 @@ M.PaymentsView = M.BaseView.extend({
     e.preventDefault();
     var props = this.createAttributesObject(this.$('#create-payment').serializeArray());
     var payment = this.collection.create(props, { wait: true });
+
+    payment.on('sync', function(e) {
+      this.$('#create-payment')[0].reset();
+    }, this);
   },
 
   toggleForm: function(e) {

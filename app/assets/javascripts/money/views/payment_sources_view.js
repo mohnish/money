@@ -39,5 +39,9 @@ M.PaymentSourcesView = M.BaseView.extend({
 
     var props = this.createAttributesObject(this.$('#create-payment-source').serializeArray());
     var paymentSource = this.collection.create(props, { wait: true });
+
+    paymentSource.on('sync', function(e) {
+      this.$('#create-payment-source')[0].reset();
+    }, this);
   }
 });
