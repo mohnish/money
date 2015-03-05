@@ -27,6 +27,7 @@ group :test, :development do
   gem 'guard-rspec', require: false
   gem 'byebug'
   gem 'web-console'
+  gem 'benchmark-ips'
 end
 
 group :osx do
