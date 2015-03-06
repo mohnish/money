@@ -11,6 +11,10 @@ Money is an app to manage your bills and payments. It helps you reach your finan
 
 ## Development
 
+Before you continue, make sure you have the correct version of
+Ruby installed on your machine. For Ruby installation information,
+please refer to the `docs/installing_ruby.md` file.
+
 from the application root, run the following commands
 - `bin/setup` - sets up the app
 - `bin/rspec` - run tests
