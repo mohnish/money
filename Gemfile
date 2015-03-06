@@ -14,8 +14,6 @@ gem 'font-awesome-sass'
 gem 'ejs'
 gem 'bootstrap-sass'
 
-gem 'sdoc', group: :doc
-
 group :test, :development do
   gem 'jasmine'
   gem 'guard-jasmine'
