@@ -5,6 +5,7 @@ Money::Application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     scope module: 'v1' do
+      get 'reports/index'
       get '/users/me', to: 'users#me'
       resources :users, only: [:create, :update, :destroy]
       resources :payment_sources, only: [:index, :create, :update, :destroy]
