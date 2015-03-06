@@ -22,7 +22,6 @@ M.EditBillView = M.BaseView.extend({
 
   handleSubmit: function(e) {
     e.preventDefault();
-
     var props = this.createAttributesObject(this.$('#edit-bill-form').serializeArray());
     props = this.formatParams(props);
     this.model.save(props);
