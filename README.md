@@ -31,8 +31,6 @@ to login to the app.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-- Others [TODO]
-
 ## Technologies Used
 
 - Rails 4.2.0

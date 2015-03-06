@@ -42,6 +42,7 @@ GEM
       json
     awesome_print (1.6.1)
     bcrypt (3.1.9)
+    benchmark-ips (2.1.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.3)
@@ -180,7 +181,6 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    rdoc (4.2.0)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -208,9 +208,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    sdoc (0.4.1)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
     shellany (0.0.1)
     slop (3.6.0)
     spring (1.2.0)
@@ -249,6 +246,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bcrypt
+  benchmark-ips
   bootstrap-sass
   byebug
   doorkeeper
@@ -269,7 +267,6 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails
   sass-rails
-  sdoc
   spring
   spring-commands-rspec
   terminal-notifier

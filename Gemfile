@@ -14,8 +14,6 @@ gem 'font-awesome-sass'
 gem 'ejs'
 gem 'bootstrap-sass'
 
-gem 'sdoc', group: :doc
-
 group :test, :development do
   gem 'jasmine'
   gem 'guard-jasmine'
@@ -27,6 +25,7 @@ group :test, :development do
   gem 'guard-rspec', require: false
   gem 'byebug'
   gem 'web-console'
+  gem 'benchmark-ips'
 end
 
 group :osx do

@@ -3,8 +3,8 @@ rvm:
   - 2.2.1
 bundler_args: --without osx
 before_script:
-  - bundle exec rake db:drop db:create db:schema:load --trace
-  - bundle exec rake db:test:prepare --trace
+  - bin/rake db:setup --trace
+  - bin/rake db:test:prepare --trace
 script:
-  - "bundle exec rspec"
-  - "bundle exec rake jasmine:ci"
+  - bin/rspec
+  - bin/rake jasmine:ci

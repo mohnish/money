@@ -29,4 +29,20 @@ class User < ActiveRecord::Base
   def username=(value)
     self[:username] = value.downcase
   end
+
+  def create_bill params
+    repeat_interval = RepeatInterval.find_by(id:  params[:repeat_interval])
+
+    bills.create do |bill|
+      bill.amount = params[:amount]
+      bill.name = params[:name]
+      bill.next_due_date = params[:next_due_date]
+      bill.repeat_interval = repeat_interval
+      bill.category = Category.find_by(id: params[:category])
+      bill.payments.new(payment_source_id: params[:payment_source_id], amount: params[:amount]) if repeat_interval.try(:one_time?)
+      params[:tags].map do |tag|
+        bill.tags.find_or_initialize_by(name: tag)
+      end
+    end
+  end
 end

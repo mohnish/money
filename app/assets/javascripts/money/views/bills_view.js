@@ -50,6 +50,10 @@ M.BillsView = M.BaseView.extend({
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
     props = this.formatParams(props);
     var newBill = this.collection.create(props, { wait: true });
+
+    newBill.on('sync', function(e) {
+      this.$('#create-bill-form')[0].reset();
+    }, this);
   },
 
   populateCategories: function() {
