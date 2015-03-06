@@ -22,10 +22,18 @@ M.BillView = M.BaseView.extend({
     this.setPageTitle(this.model.get('name'));
     this.$el.html(this.template(this.model.toJSON()));
     $('#money').html(this.el);
-    this.model.payments.reset();
+    if (this.editBillView) this.resetView();
     new M.PaymentsView({ collection: this.model.payments });
-    if (this.editBillView) this.delegateEvents();
     return this;
+  },
+
+  resetView: function() {
+    // TODO: if the payments of available, instead of resetting
+    // them, it'd be nicer to just reuse them. for that to happen,
+    // the payments_view should be updated to check if the payments
+    // are present (and not stale) or not and act accordingly.
+    this.model.payments.reset();
+    this.delegateEvents();
   },
 
   handleSync: function() {
