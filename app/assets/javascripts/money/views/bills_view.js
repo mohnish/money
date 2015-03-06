@@ -87,7 +87,7 @@ M.BillsView = M.BaseView.extend({
 
   toggleForm: function(e) {
     e.preventDefault();
-    this.$('#create-bill-form').toggle('slow');
+    this.$('#create-bill-form').toggle('fast');
   },
 
   togglePaymentSourceSelection: function(e) {
@@ -95,9 +95,9 @@ M.BillsView = M.BaseView.extend({
     var $paymentSourceEl = $(e.target);
     var interval = $paymentSourceEl.find(':selected').data('interval');
     if ('one_time' == interval) {
-      this.$('.select-card-form-group').show('slow');
+      this.$('.select-card-form-group').show('fast');
     } else {
-      this.$('.select-card-form-group').hide('slow');
+      this.$('.select-card-form-group').hide('fast');
     }
   }
 });

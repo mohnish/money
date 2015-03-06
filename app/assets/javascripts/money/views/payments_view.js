@@ -45,6 +45,6 @@ M.PaymentsView = M.BaseView.extend({
 
   toggleForm: function(e) {
     e.preventDefault();
-    this.$('#create-payment').toggle('slow');
+    this.$('#create-payment').toggle('fast');
   }
 });
