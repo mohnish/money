@@ -4,7 +4,7 @@ module Api
       before_action :doorkeeper_authorize!
 
       def index
-        @payment_sources = current_user.payment_sources
+        @payment_sources = current_user.payment_sources.order('updated_at desc')
       end
 
       def create

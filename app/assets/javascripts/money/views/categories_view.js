@@ -13,7 +13,7 @@ M.CategoriesView = M.BaseView.extend({
   },
 
   render: function() {
-    this.$el.html(this.template({ categories: this.collection.toJSON() }));
+    this.$el.html(this.template({ categories: this.collection.toJSON(), selectedId: this.selectedId  }));
     return this;
   },
 

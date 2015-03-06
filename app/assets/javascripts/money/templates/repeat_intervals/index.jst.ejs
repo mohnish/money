@@ -1,7 +1,7 @@
 <%
   _.each(repeatIntervals, function(repeatInterval) {
 %>
-<option class='repeat-interval' value='<%= repeatInterval.id %>' data-interval='<%= repeatInterval.interval %>'>
+<option class='repeat-interval' value='<%= repeatInterval.id %>' data-interval='<%= repeatInterval.interval %>' <%= (selectedId == repeatInterval.id) ? 'selected' : '' %>>
 <%= repeatInterval.label %>
 </option>
 <%
