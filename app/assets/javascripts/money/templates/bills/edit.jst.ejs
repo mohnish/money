@@ -1,0 +1,70 @@
+<form id="edit-bill-form" class="form-horizontal">
+  <div class="validation-response"></div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="name">
+      name*
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="name" name="name" placeholder="name" required value="<%= name %>" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="amount">
+      amount*
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control" type="number" step="any" id="amount" name="amount" placeholder="amount" required value="<%= amount %>" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="next-due-date">
+      next due date* (mm/dd/yyyy)
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control" type="date" id="next-due-date" name="next_due_date" placeholder="next due date" value="<%- moment(next_due_date).format('YYYY-MM-DD') %>" required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="repeat-intervals">
+      repeat interval*
+    </label>
+    <div class="col-sm-10">
+      <select class="form-control" class="repeat-intervals" id="repeat-intervals" name="repeat_interval" required>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="categories">
+      category*
+    </label>
+    <div class="col-sm-10">
+      <select class="form-control" class="categories" id="categories" name="category" required>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="tags">
+      tags
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="tags" name="tags" placeholder="optional comma separated tags: eg: tv, netflix, online" value="<%= _.pluck(tags, 'name') %>" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary" type="submit">
+        edit bill
+      </button>
+      <button class="btn btn-default cancel-edit-bill" type="reset">
+        cancel
+      </button>
+    </div>
+  </div>
+</form>
