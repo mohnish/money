@@ -6,8 +6,8 @@ Money is an app to manage your bills and payments. It helps you reach your finan
 ## Features
 
 - Add bills (recurring ones and one time)
-- Get reminders about bills
 - Reports. Neat graphs showing where your money went
+- Get reminders about bills [WIP]
 
 ## Development
 
