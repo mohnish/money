@@ -42,7 +42,7 @@ to login to the app.
 - Backbone 1.1.2
 - Bootstrap 3.3.2
 
-[<>](https://github.com/mohnish/money) with [<3](https://twitter.com/arrowgunz)
+[</>](https://github.com/mohnish/money) with [<3](https://twitter.com/arrowgunz)
 
 ## License
 
