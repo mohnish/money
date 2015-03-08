@@ -25,7 +25,7 @@ from the application root, run the following commands
 from the application root, run
 - `bin/rails s`
 
-This will start the server @ http://localhost:3000/
+This will start the server @ [http://localhost:3000/](http://localhost:3000/)
 
 If you had run the `bin/setup` earlier, you'll have access to
 seed data and you can use username: `bond` and password: `test1234`
