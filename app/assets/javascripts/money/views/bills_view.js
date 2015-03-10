@@ -49,11 +49,19 @@ M.BillsView = M.BaseView.extend({
 
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
     props = this.formatParams(props);
-    var newBill = this.collection.create(props, { wait: true });
+    var newBill = this.collection.create(props, this.validationOptions());
 
     newBill.on('sync', function(e) {
-      this.$('#create-bill-form')[0].reset();
+      this.resetForm(this.$('#create-bill-form')[0]);
     }, this);
+  },
+
+  validationOptions: function() {
+    return { wait: true, nonRecurringBill: this.isNonRecurringBill() };
+  },
+
+  isNonRecurringBill: function(e) {
+    return ('one_time' == this.$('#repeat-intervals option:selected').data('interval'))
   },
 
   populateCategories: function() {
