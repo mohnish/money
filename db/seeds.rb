@@ -210,7 +210,7 @@ netflix_bill = user.bills.create({
   name: 'Netflix',
   next_due_date: 5.days.since,
   amount: 9.99,
-  repeat_interval: repeat_intervals.first, # monthly
+  repeat_interval: repeat_intervals.second, # monthly
   category: categories.first # tv
 })
 
