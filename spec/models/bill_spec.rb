@@ -63,4 +63,24 @@ RSpec.describe Bill do
       end
     end
   end
+
+  describe '#update_bill' do
+    let(:bill) { create(:bill) }
+    let(:params) do
+      {
+        amount: 100.1,
+        name: 'Apple',
+        next_due_date: '03/23/2019',
+        category: create(:category).id,
+        repeat_interval: create(:repeat_interval).id
+      }
+
+      it 'updates the bill' do
+        bill.update_bill(params)
+        bill.reload
+        expect(bill.name).to eql('Apple')
+        expect(bill.amount).to eql(100.1)
+      end
+    end
+  end
 end

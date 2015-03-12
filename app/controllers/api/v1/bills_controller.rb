@@ -17,7 +17,7 @@ module Api
       end
 
       def update
-        update_bill
+        current_bill.update_bill params
         render status: (current_bill.valid? ? :ok : :unprocessable_entity)
       end
 
@@ -27,22 +27,6 @@ module Api
       end
 
       private
-        # TODO: Move this into the model
-        def update_bill
-          update_params = {}
-          update_params[:amount] = params[:amount] if params[:amount]
-          update_params[:name] = params[:name] if params[:name]
-          update_params[:next_due_date] = params[:next_due_date] if params[:next_due_date]
-          update_params[:category] = Category.find_by(id: params[:category]) if params[:category]
-          update_params[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
-
-          params[:tags].map do |tag|
-            current_bill.tags.find_or_initialize_by(name: tag)
-          end
-
-          current_bill.update(update_params)
-        end
-
         def current_bill
           @bill ||= current_user.bills.find_by(id: params[:id])
         end
