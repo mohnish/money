@@ -96,6 +96,16 @@ M.BillsView = M.BaseView.extend({
   toggleForm: function(e) {
     e.preventDefault();
     this.$('#create-bill-form').toggle('fast');
+    this.toggleText();
+  },
+
+  toggleText: function() {
+    var $link = this.$(e.target);
+    if ('+ create bill' == $link.text()) {
+      $link.text('- create bill');
+    } else {
+      $link.text('+ create bill');
+    }
   },
 
   togglePaymentSourceSelection: function(e) {
