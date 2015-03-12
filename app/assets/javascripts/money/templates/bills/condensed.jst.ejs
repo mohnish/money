@@ -5,6 +5,5 @@
 <div class="list-group-item-text">
   <i class="fa fa-<%- M.IconMap[category.name] %>"></i>
   <span><strong><%= name %></strong></span>
-  <span class="gray">Due on:</span>
-    <%= moment(next_due_date).format("MMMM Do YYYY") %>
+  <span class="small gray"><%= moment(next_due_date).format("MMMM Do YYYY") %></span>
 </div>
