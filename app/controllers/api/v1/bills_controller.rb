@@ -27,6 +27,7 @@ module Api
       end
 
       private
+        # TODO: Move this into the model
         def update_bill
           update_params = {}
           update_params[:amount] = params[:amount] if params[:amount]
