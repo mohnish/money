@@ -1,4 +1,10 @@
 
+1.7.5 / 2015-03-11
+==================
+
+  * reduce content on bills page
+  * refactor code in bills controller
+
 1.7.2 / 2015-02-09
 ==================
 
