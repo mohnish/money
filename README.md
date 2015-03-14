@@ -8,8 +8,8 @@ Introduction blog post [http://mohni.sh/posts/money/](http://mohni.sh/posts/mone
 ## Features
 
 - Add bills (recurring ones and one time)
-- Get reminders about bills [WIP]
 - Reports. Neat graphs showing where your money went [WIP]
+- Get reminders about bills [TODO]
 
 ## Development
 
