@@ -96,11 +96,10 @@ M.BillsView = M.BaseView.extend({
   toggleForm: function(e) {
     e.preventDefault();
     this.$('#create-bill-form').toggle('fast');
-    this.toggleText();
+    this.toggleText(this.$('#toggle-create-bill-form'));
   },
 
-  toggleText: function() {
-    var $link = this.$(e.target);
+  toggleText: function($link) {
     if ('+ create bill' == $link.text()) {
       $link.text('- create bill');
     } else {

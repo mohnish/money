@@ -46,11 +46,10 @@ M.PaymentsView = M.BaseView.extend({
   toggleForm: function(e) {
     e.preventDefault();
     this.$('#create-payment').toggle('fast');
-    this.toggleText();
+    this.toggleText(this.$('#toggle-create-payment-form'));
   },
 
-  toggleText: function() {
-    var $link = this.$(e.target);
+  toggleText: function($link) {
     if ('+ create payment' == $link.text()) {
       $link.text('- create payment');
     } else {
