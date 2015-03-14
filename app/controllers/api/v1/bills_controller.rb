@@ -4,7 +4,7 @@ module Api
       before_action :doorkeeper_authorize!
 
       def index
-        @bills = current_user.bills.order('next_due_date')
+        @bills = current_user.bills.order(status: :asc, next_due_date: :asc)
       end
 
       def show
