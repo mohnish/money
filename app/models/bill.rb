@@ -38,7 +38,7 @@ class Bill < ActiveRecord::Base
   end
 
   def update_tags tag_names
-    return unless tag_names
+    return unless tag_names.present?
     tag_names.each { |tag| tags.where(name: tag).first_or_create }
   end
 end
