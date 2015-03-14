@@ -12,12 +12,14 @@ module Api
       end
 
       def create
-        @bill = current_user.create_bill params
+        @bill = current_user.bills.create bill_params
+        @bill.update_tags(params[:tags])
         render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
 
       def update
-        current_bill.update_bill params
+        current_bill.update bill_params
+        current_bill.update_tags(params[:tags])
         render status: (current_bill.valid? ? :ok : :unprocessable_entity)
       end
 
@@ -27,6 +29,13 @@ module Api
       end
 
       private
+        def bill_params
+          hash = params.permit(:amount, :name, :next_due_date, :category, :repeat_interval)
+          hash[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
+          hash[:category] = Category.find_by(id: params[:category]) if params[:category]
+          hash
+        end
+
         def current_bill
           @bill ||= current_user.bills.find_by(id: params[:id])
         end

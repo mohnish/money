@@ -1,6 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe Bill do
+  describe '#update_tags' do
+    let(:bill) { create(:bill) }
+
+    context 'when tags are provided' do
+      let(:tags) { ['one', 'two', 'three'] }
+
+      it 'creates the tags' do
+        bill.update_tags(tags)
+        expect(bill.tags.size).to eql(3)
+        expect(bill.tags.map(&:name)).to include('one', 'two', 'three')
+      end
+    end
+
+    context 'when no tags are provided' do
+      let(:tags) { nil }
+
+      it 'does not create empty tags' do
+        bill.update_tags(tags)
+        expect(bill.tags.size).to eql(0)
+      end
+    end
+  end
+
   describe '#update_next_due_date' do
     context 'when the bill is non-recurring' do
       let(:bill) { Bill.new(repeat_interval: RepeatInterval.new(interval: 'one_time')) }
@@ -60,26 +83,6 @@ RSpec.describe Bill do
       it 'will not assign the value to the next_due_date attribute' do
         bill.next_due_date = date
         expect(bill.next_due_date).to be_nil
-      end
-    end
-  end
-
-  describe '#update_bill' do
-    let(:bill) { create(:bill) }
-    let(:params) do
-      {
-        amount: 100.1,
-        name: 'Apple',
-        next_due_date: '03/23/2019',
-        category: create(:category).id,
-        repeat_interval: create(:repeat_interval).id
-      }
-
-      it 'updates the bill' do
-        bill.update_bill(params)
-        bill.reload
-        expect(bill.name).to eql('Apple')
-        expect(bill.amount).to eql(100.1)
       end
     end
   end

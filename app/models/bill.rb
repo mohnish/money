@@ -37,18 +37,8 @@ class Bill < ActiveRecord::Base
     end
   end
 
-  def update_bill params
-    update_params = {}
-    update_params[:amount] = params[:amount] if params[:amount]
-    update_params[:name] = params[:name] if params[:name]
-    update_params[:next_due_date] = params[:next_due_date] if params[:next_due_date]
-    update_params[:category] = Category.find_by(id: params[:category]) if params[:category]
-    update_params[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
-
-    params[:tags].map do |tag|
-      tags.find_or_initialize_by(name: tag)
-    end
-
-    update(update_params)
+  def update_tags tag_names
+    return unless tag_names
+    tag_names.each { |tag| tags.where(name: tag).first_or_create }
   end
 end
