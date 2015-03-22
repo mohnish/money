@@ -1,4 +1,17 @@
 
+1.7.6 / 2015-03-22
+==================
+
+  * upgrade rails to 4.2.1
+  * add api docs to the wiki and link it to the readme later
+  * sort the bills in a smarter way. closes #56
+  * fix toggling text for the creation forms
+  * update readme
+  * add stronger presence check
+  * refactor code around the bills controller. fix issue with creating blank tags. closes #62
+  * remove due on text
+  * release
+
 1.7.5 / 2015-03-11
 ==================
 
