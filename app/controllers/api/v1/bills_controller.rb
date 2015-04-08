@@ -4,7 +4,7 @@ module Api
       before_action :doorkeeper_authorize!
 
       def index
-        @bills = current_user.bills.order('next_due_date')
+        @bills = current_user.bills.order(status: :asc, next_due_date: :asc)
       end
 
       def show
@@ -12,12 +12,14 @@ module Api
       end
 
       def create
-        @bill = current_user.create_bill params
+        @bill = current_user.bills.create bill_params
+        @bill.update_tags(params[:tags])
         render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
 
       def update
-        update_bill
+        current_bill.update bill_params
+        current_bill.update_tags(params[:tags])
         render status: (current_bill.valid? ? :ok : :unprocessable_entity)
       end
 
@@ -27,19 +29,11 @@ module Api
       end
 
       private
-        def update_bill
-          update_params = {}
-          update_params[:amount] = params[:amount] if params[:amount]
-          update_params[:name] = params[:name] if params[:name]
-          update_params[:next_due_date] = params[:next_due_date] if params[:next_due_date]
-          update_params[:category] = Category.find_by(id: params[:category]) if params[:category]
-          update_params[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
-
-          params[:tags].map do |tag|
-            current_bill.tags.find_or_initialize_by(name: tag)
-          end
-
-          current_bill.update(update_params)
+        def bill_params
+          hash = params.permit(:amount, :name, :next_due_date, :category, :repeat_interval)
+          hash[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
+          hash[:category] = Category.find_by(id: params[:category]) if params[:category]
+          hash
         end
 
         def current_bill

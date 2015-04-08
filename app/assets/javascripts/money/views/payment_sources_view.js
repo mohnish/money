@@ -41,7 +41,7 @@ M.PaymentSourcesView = M.BaseView.extend({
     var paymentSource = this.collection.create(props, { wait: true });
 
     paymentSource.on('sync', function(e) {
-      this.$('#create-payment-source')[0].reset();
+      this.resetForm(this.$('#create-payment-source')[0]);
     }, this);
   }
 });

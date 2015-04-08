@@ -1,17 +1,9 @@
 <span class="badge">
-  $<%= amount %>
+  $<%= parseFloat(amount).toFixed(2) %>
 </span>
 
-<h4 class="list-group-item-heading">
-  <i class="fa fa-<%- M.IconMap[category.name] %>"></i>
-  <%= name %>
-</h4>
-
 <div class="list-group-item-text">
-  <span class="gray">Due on:</span>
-  <strong>
-    <%= moment(next_due_date).format("dddd, MMMM Do YYYY") %>
-  </strong>
-
-  <span class="gray">(repeats:</span> <strong><%= repeat_interval.label %></strong><span class="gray">)</span>
+  <i class="fa fa-<%- M.IconMap[category.name] %>"></i>
+  <span><strong><%= name %></strong></span>
+  <span class="small gray"><%= moment(next_due_date).format("MMMM Do YYYY") %></span>
 </div>

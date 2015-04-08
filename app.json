@@ -2,6 +2,6 @@
   "name": "Money",
   "description": "Money is an app to manage your bills and payments.",
   "repository": "https://github.com/mohnish/money",
-  "website": "http://moola.rocks/",
+  "website": "http://moneyapp.me/",
   "keywords": ["money", "moola", "rails", "backbone", "bills", "manage"]
 }

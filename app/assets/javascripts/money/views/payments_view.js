@@ -39,12 +39,21 @@ M.PaymentsView = M.BaseView.extend({
     var payment = this.collection.create(props, { wait: true });
 
     payment.on('sync', function(e) {
-      this.$('#create-payment')[0].reset();
+      this.resetForm(this.$('#create-payment')[0]);
     }, this);
   },
 
   toggleForm: function(e) {
     e.preventDefault();
-    this.$('#create-payment').toggle('slow');
+    this.$('#create-payment').toggle('fast');
+    this.toggleText(this.$('#toggle-create-payment-form'));
+  },
+
+  toggleText: function($link) {
+    if ('+ create payment' == $link.text()) {
+      $link.text('- create payment');
+    } else {
+      $link.text('+ create payment');
+    }
   }
 });

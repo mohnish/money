@@ -1,7 +1,9 @@
 # Money
-[![Build Status](https://magnum.travis-ci.com/mohnish/money.svg?token=oQio4yxdq7cNymw16DPn&branch=master)](https://magnum.travis-ci.com/mohnish/money)
+[![Build Status](https://travis-ci.org/mohnish/money.svg)](https://travis-ci.org/mohnish/money)
 
 Money is an app to manage your bills and payments. It helps you reach your financial goals by showing you where you have been spending the most and where you can save.
+
+Introduction blog post [http://mohni.sh/posts/money/](http://mohni.sh/posts/money/)
 
 ## Features
 
@@ -10,6 +12,10 @@ Money is an app to manage your bills and payments. It helps you reach your finan
 - Get reminders about bills [WIP]
 
 ## Development
+
+Before you continue, make sure you have the correct version of
+Ruby installed on your machine. For Ruby installation information,
+please refer to the `docs/installing_ruby.md` file.
 
 from the application root, run the following commands
 - `bin/setup` - sets up the app
@@ -21,7 +27,7 @@ from the application root, run the following commands
 from the application root, run
 - `bin/rails s`
 
-This will start the server @ http://localhost:3000/
+This will start the server @ [http://localhost:3000/](http://localhost:3000/)
 
 If you had run the `bin/setup` earlier, you'll have access to
 seed data and you can use username: `bond` and password: `test1234`
@@ -31,14 +37,18 @@ to login to the app.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+## API
+
+API docs [TODO]
+
 ## Technologies Used
 
-- Rails 4.2.0
+- Rails 4.2.1
 - Ruby 2.2.1
 - Backbone 1.1.2
 - Bootstrap 3.3.2
 
-[<>](https://github.com/mohnish/money) with [<3](https://twitter.com/arrowgunz)
+[</>](https://github.com/mohnish/money) with [<3](https://twitter.com/arrowgunz)
 
 ## License
 

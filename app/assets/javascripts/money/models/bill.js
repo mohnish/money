@@ -41,6 +41,7 @@ M.Bill = Backbone.Model.extend({
     if(_.isEmpty(attrs.amount)) errors.push('amount is invalid');
     if(_.isEmpty(attrs.repeat_interval)) errors.push('repeat interval is invalid');
     if(_.isEmpty(attrs.category)) errors.push('category name is invalid');
+    if(options.nonRecurringBill && _.isEmpty(attrs.payment_source_id)) errors.push("please select a card for payment. if you haven't added one, please go to cards page to add one");
 
     if (!_.isEmpty(errors)) return errors;
   }

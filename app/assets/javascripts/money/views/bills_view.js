@@ -49,11 +49,19 @@ M.BillsView = M.BaseView.extend({
 
     var props = this.createAttributesObject(this.$('#create-bill-form').serializeArray());
     props = this.formatParams(props);
-    var newBill = this.collection.create(props, { wait: true });
+    var newBill = this.collection.create(props, this.validationOptions());
 
     newBill.on('sync', function(e) {
-      this.$('#create-bill-form')[0].reset();
+      this.resetForm(this.$('#create-bill-form')[0]);
     }, this);
+  },
+
+  validationOptions: function() {
+    return { wait: true, nonRecurringBill: this.isNonRecurringBill() };
+  },
+
+  isNonRecurringBill: function(e) {
+    return ('one_time' == this.$('#repeat-intervals option:selected').data('interval'))
   },
 
   populateCategories: function() {
@@ -87,7 +95,16 @@ M.BillsView = M.BaseView.extend({
 
   toggleForm: function(e) {
     e.preventDefault();
-    this.$('#create-bill-form').toggle('slow');
+    this.$('#create-bill-form').toggle('fast');
+    this.toggleText(this.$('#toggle-create-bill-form'));
+  },
+
+  toggleText: function($link) {
+    if ('+ create bill' == $link.text()) {
+      $link.text('- create bill');
+    } else {
+      $link.text('+ create bill');
+    }
   },
 
   togglePaymentSourceSelection: function(e) {
@@ -95,9 +112,9 @@ M.BillsView = M.BaseView.extend({
     var $paymentSourceEl = $(e.target);
     var interval = $paymentSourceEl.find(':selected').data('interval');
     if ('one_time' == interval) {
-      this.$('.select-card-form-group').show('slow');
+      this.$('.select-card-form-group').show('fast');
     } else {
-      this.$('.select-card-form-group').hide('slow');
+      this.$('.select-card-form-group').hide('fast');
     }
   }
 });

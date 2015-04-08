@@ -36,6 +36,11 @@ M.BaseView = M.AbstractView.extend({
     return localStorage.getItem('username');
   },
 
+  resetForm: function(form) {
+    form.reset();
+    this.$('.validation-response .alert-dismissible').alert('close');
+  },
+
   signout: function(e) {
     e.preventDefault();
     M.dispatcher.trigger('m:signout:user');

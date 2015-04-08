@@ -36,4 +36,9 @@ class Bill < ActiveRecord::Base
       self[:next_due_date] = Time.zone.parse("#{day}/#{month}/#{year}") if Date.valid_date?(year, month, day)
     end
   end
+
+  def update_tags tag_names
+    return unless tag_names.present?
+    tag_names.each { |tag| tags.where(name: tag).first_or_create }
+  end
 end
