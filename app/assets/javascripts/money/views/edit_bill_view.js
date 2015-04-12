@@ -39,12 +39,6 @@ M.EditBillView = M.BaseView.extend({
     repeatIntervalsView.render();
   },
 
-  // "yyyy-mm-dd" => "mm/dd/yyyy"
-  formatDate: function(date) {
-    var val = date.split('-');
-    return val.concat([val.shift()]).join('/');
-  },
-
   // format next_due_date: "yyyy-mm-dd" => "mm/dd/yyyy"
   // format tags: "one, two, three" => ["one", "two", "three"]
   formatParams: function(props) {
