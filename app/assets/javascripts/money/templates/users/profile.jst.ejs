@@ -47,7 +47,7 @@
 
 <div>
   <ul class="user-details">
-    <li><img src="http://www.gravatar.com/avatar/<%= md5(email_address) %>?s=200" alt="profile picture" /></li>
+    <li class="display-picture"><img src="http://www.gravatar.com/avatar/<%= md5(email_address) %>?s=200" alt="profile picture" /></li>
     <li><i class="fa fa-user"></i> <%= first_name %> <%= last_name %></li>
     <li><i class="fa fa-envelope-o"></i> <%= email_address %></li>
     <li><i class="fa fa-clock-o"></i> joined on <%= memberSince %></li>

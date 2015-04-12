@@ -1,5 +1,11 @@
 ul.user-details {
   li {
     list-style-type: none;
+    color: #666;
+    margin: 10px auto;
+
+    &.display-picture img {
+      border-radius: 10px;
+    }
   }
 }
