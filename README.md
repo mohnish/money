@@ -1,5 +1,5 @@
 # Money
-[![Build Status](https://travis-ci.org/mohnish/money.svg)](https://travis-ci.org/mohnish/money)
+[![Build Status](https://travis-ci.org/mohnish/money.svg?branch=master)](https://travis-ci.org/mohnish/money)
 
 Money is an app to manage your bills and payments. It helps you reach your financial goals by showing you where you have been spending the most and where you can save.
 
