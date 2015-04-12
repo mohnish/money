@@ -15,6 +15,7 @@
 //= require underscore-min
 //= require backbone-min
 //= require moment.min
+//= require md5.min
 //= require money/init
 //= require_directory ./money/models
 //= require_directory ./money/collections
