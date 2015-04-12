@@ -13,6 +13,7 @@ module Api
 
       def create
         @bill = current_user.bills.create bill_params
+        @bill.payments.create(payment_source_id: params[:payment_source_id], amount: params[:amount]) if repeat_interval.try(:one_time?)
         @bill.update_tags(params[:tags])
         render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
@@ -31,9 +32,22 @@ module Api
       private
         def bill_params
           hash = params.permit(:amount, :name, :next_due_date, :category, :repeat_interval)
-          hash[:repeat_interval] = RepeatInterval.find_by(id: params[:repeat_interval]) if params[:repeat_interval]
-          hash[:category] = Category.find_by(id: params[:category]) if params[:category]
+          hash[:next_due_date] = next_due_date if params[:next_due_date]
+          hash[:repeat_interval] = repeat_interval if params[:repeat_interval]
+          hash[:category] = category if params[:category]
           hash
+        end
+
+        def repeat_interval
+          RepeatInterval.find_by(id: params[:repeat_interval])
+        end
+
+        def category
+          Category.find_by(id: params[:category])
+        end
+
+        def next_due_date
+          Time.zone.parse(params[:next_due_date])
         end
 
         def current_bill

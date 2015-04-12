@@ -79,13 +79,15 @@ M.BillsView = M.BaseView.extend({
     this.$('#payment-source-id').html(paymentSourcesListView.render().el);
   },
 
-  // "yyyy-mm-dd" => "mm/dd/yyyy"
   formatDate: function(date) {
-    var val = date.split('-');
-    return val.concat([val.shift()]).join('/');
+    var currentTime = moment();
+    return moment(date).set({
+      hours: currentTime.get('hours'),
+      minutes: currentTime.get('minutes'),
+      seconds: currentTime.get('seconds')
+    }).toISOString();
   },
 
-  // format next_due_date: "yyyy-mm-dd" => "mm/dd/yyyy"
   // format tags: "one, two, three" => ["one", "two", "three"]
   formatParams: function(props) {
     props.next_due_date = this.formatDate(props.next_due_date);
