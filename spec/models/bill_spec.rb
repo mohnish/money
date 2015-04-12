@@ -44,46 +44,4 @@ RSpec.describe Bill do
       end
     end
   end
-
-  describe '#next_due_date' do
-    context 'when the passed in value is a ActiveSupport::TimeWithZone obj' do
-      let(:date) { Time.zone.now }
-      let(:bill) { Bill.new }
-
-      it 'assigns the value to the next_due_date attribute' do
-        bill.next_due_date = date
-        expect(bill.next_due_date).to eql(date)
-      end
-    end
-
-    context 'when the passed in value is a valid string' do
-      let(:date) { '10/01/1993' }
-      let(:bill) { Bill.new }
-
-      it 'assigns the value to the next_due_date attribute' do
-        bill.next_due_date = date
-        expect(bill.next_due_date.strftime("%m/%d/%Y")).to eql(date)
-      end
-    end
-
-    context 'when the passed in value is an invalid string' do
-      let(:date) { 'asfgasdfa' }
-      let(:bill) { Bill.new }
-
-      it 'will not assign the value to the next_due_date attribute' do
-        bill.next_due_date = date
-        expect(bill.next_due_date).to be_nil
-      end
-    end
-
-    context 'when the passed in value is a random value' do
-      let(:date) { 1213 }
-      let(:bill) { Bill.new }
-
-      it 'will not assign the value to the next_due_date attribute' do
-        bill.next_due_date = date
-        expect(bill.next_due_date).to be_nil
-      end
-    end
-  end
 end

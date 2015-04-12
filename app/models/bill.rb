@@ -25,18 +25,6 @@ class Bill < ActiveRecord::Base
     update(next_due_date: repeat_interval.calculate_next_due_date(next_due_date))
   end
 
-  # input format: '03/23/2015'
-  def next_due_date=(value)
-    if value.is_a?(ActiveSupport::TimeWithZone)
-      self[:next_due_date] = value
-    else
-      split_value = value.to_s.split('/')
-      return unless (3 == split_value.size)
-      month, day, year = split_value.map(&:to_i)
-      self[:next_due_date] = Time.zone.parse("#{day}/#{month}/#{year}") if Date.valid_date?(year, month, day)
-    end
-  end
-
   def update_tags tag_names
     return if tag_names.blank?
     tag_names.each { |tag| tags.where(name: tag).first_or_create }
