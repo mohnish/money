@@ -7,10 +7,10 @@ M.BillsView = M.BaseView.extend({
   templatePath: 'bills/index',
 
   events: {
+    'change #repeat-intervals': 'togglePaymentSourceSelection',
     'click #toggle-create-bill-form': 'toggleForm',
     'submit #create-bill-form': 'handleSubmit',
     'click .show-payment-sources': 'showCards',
-    'change #repeat-intervals': 'togglePaymentSourceSelection',
     'click .show-profile': 'showProfile',
     'click .show-bills': 'showBills',
     'click .signout': 'signout'
