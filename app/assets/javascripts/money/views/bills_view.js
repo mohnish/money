@@ -53,6 +53,7 @@ M.BillsView = M.BaseView.extend({
 
     newBill.on('sync', function(e) {
       this.resetForm(this.$('#create-bill-form')[0]);
+      this.$('#repeat-intervals').trigger('change');
     }, this);
   },
 
@@ -101,7 +102,6 @@ M.BillsView = M.BaseView.extend({
   },
 
   togglePaymentSourceSelection: function(e) {
-    e.preventDefault();
     var $paymentSourceEl = $(e.target);
     var interval = $paymentSourceEl.find(':selected').data('interval');
     if ('one_time' == interval) {
