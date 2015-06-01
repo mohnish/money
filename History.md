@@ -1,4 +1,17 @@
 
+1.8.0 / 2015-05-31
+==================
+
+  * update ruby on travis
+  * update ruby to 2.2.2
+  * use a single rake call
+  * fix broken bill form
+  * refactor formatDate
+  * handle bad timestamps while creating bills
+  * clean up the display
+  * profile pics support (gravatar)
+  * add gravatar profile pics
+
 1.7.6 / 2015-03-22
 ==================
 
