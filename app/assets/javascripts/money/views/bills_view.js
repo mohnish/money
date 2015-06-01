@@ -7,10 +7,10 @@ M.BillsView = M.BaseView.extend({
   templatePath: 'bills/index',
 
   events: {
+    'change #repeat-intervals': 'togglePaymentSourceSelection',
     'click #toggle-create-bill-form': 'toggleForm',
     'submit #create-bill-form': 'handleSubmit',
     'click .show-payment-sources': 'showCards',
-    'change #repeat-intervals': 'togglePaymentSourceSelection',
     'click .show-profile': 'showProfile',
     'click .show-bills': 'showBills',
     'click .signout': 'signout'
@@ -53,6 +53,7 @@ M.BillsView = M.BaseView.extend({
 
     newBill.on('sync', function(e) {
       this.resetForm(this.$('#create-bill-form')[0]);
+      this.$('#repeat-intervals').trigger('change');
     }, this);
   },
 
@@ -79,13 +80,6 @@ M.BillsView = M.BaseView.extend({
     this.$('#payment-source-id').html(paymentSourcesListView.render().el);
   },
 
-  // "yyyy-mm-dd" => "mm/dd/yyyy"
-  formatDate: function(date) {
-    var val = date.split('-');
-    return val.concat([val.shift()]).join('/');
-  },
-
-  // format next_due_date: "yyyy-mm-dd" => "mm/dd/yyyy"
   // format tags: "one, two, three" => ["one", "two", "three"]
   formatParams: function(props) {
     props.next_due_date = this.formatDate(props.next_due_date);
@@ -108,7 +102,6 @@ M.BillsView = M.BaseView.extend({
   },
 
   togglePaymentSourceSelection: function(e) {
-    e.preventDefault();
     var $paymentSourceEl = $(e.target);
     var interval = $paymentSourceEl.find(':selected').data('interval');
     if ('one_time' == interval) {

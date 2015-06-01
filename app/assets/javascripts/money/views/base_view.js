@@ -14,6 +14,15 @@ M.BaseView = M.AbstractView.extend({
     });
   },
 
+  formatDate: function(date) {
+    var currentTime = moment();
+    return moment(date).set({
+      hours: currentTime.get('hours'),
+      minutes: currentTime.get('minutes'),
+      seconds: currentTime.get('seconds')
+    }).toISOString();
+  },
+
   handleSync: function(model, response, options) {
     throw new Error('FIXME: implement handleSync in the subclass');
   },

@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
   def username=(value)
     self[:username] = value.downcase
   end
+
+  def email_address=(value)
+    self[:email_address] = value.downcase
+  end
 end

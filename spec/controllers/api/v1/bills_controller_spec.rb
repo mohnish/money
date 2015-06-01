@@ -52,14 +52,13 @@ RSpec.describe Api::V1::BillsController do
       let(:category) { create(:category) }
 
       let(:params) do
-        time = 5.days.since
 
         {
           format: 'json',
           user_id: user.id,
           tags: ['phone', 'at&t'],
           repeat_interval: repeat_interval.id,
-          next_due_date: "#{time.month}/#{time.day}/#{time.year}",
+          next_due_date: Time.zone.now.to_json,
           category: category.id,
           amount: '176.50',
           name: 'AT&T'
@@ -76,12 +75,11 @@ RSpec.describe Api::V1::BillsController do
 
     context 'with invalid data' do
       let(:params) do
-        time = 5.days.since
 
         {
           format: 'json',
           user_id: user.id,
-          next_due_date: "#{time.month}/#{time.day}/#{time.year}",
+          next_due_date: Time.zone.now.to_json,
           amount: '176.50',
           name: 'AT&T',
           tags: ['test', 'test1']
@@ -102,14 +100,13 @@ RSpec.describe Api::V1::BillsController do
       let(:bill) { create(:bill, user: user) }
 
       let(:params) do
-        time = 15.days.since
 
         {
           format: 'json',
           id: bill.id,
           user_id: user.id,
           tags: ['phone', 'google', 'test'],
-          next_due_date: "#{time.month}/#{time.day}/#{time.year}",
+          next_due_date: Time.zone.now.to_json,
           amount: '170.00',
           name: 'T-Mobile'
         }
