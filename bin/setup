@@ -17,8 +17,7 @@ Dir.chdir APP_ROOT do
   system "bin/rake db:test:prepare"
 
   puts "\n== Removing old logs and tempfiles =="
-  system "bin/rake log:clear"
-  system "bin/rake tmp:clear"
+  system "bin/rake log:clear tmp:clear"
 
   puts "\n== Restarting application server =="
   system "touch tmp/restart.txt"
