@@ -44,7 +44,7 @@ API docs [TODO]
 ## Technologies Used
 
 - Rails 4.2.1
-- Ruby 2.2.1
+- Ruby 2.2.2
 - Backbone 1.1.2
 - Bootstrap 3.3.2
 
