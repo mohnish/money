@@ -12,9 +12,10 @@ module Api
       end
 
       def create
+        # TODO (MT): Refactor this
         @bill = current_user.bills.create bill_params
-        @bill.payments.create(payment_source_id: params[:payment_source_id], amount: params[:amount]) if repeat_interval.try(:one_time?)
-        @bill.update_tags(params[:tags])
+        @bill.payments.create(payment_source_id: params[:payment_source_id], amount: params[:amount]) if repeat_interval.try(:one_time?) && @bill.valid?
+        @bill.update_tags(params[:tags]) if @bill.valid?
         render status: (@bill.valid? ? :created : :unprocessable_entity)
       end
 
