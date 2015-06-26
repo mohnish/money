@@ -267,3 +267,6 @@ DEPENDENCIES
   terminal-notifier-guard
   uglifier
   web-console
+
+BUNDLED WITH
+   1.10.3
