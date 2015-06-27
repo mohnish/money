@@ -1,4 +1,10 @@
 
+1.10.0 / 2015-06-26
+==================
+
+  * upgrade backbone, underscore and moment
+  * upgrade to rails 4.2.3
+
 1.9.1 / 2015-06-26
 ==================
 
