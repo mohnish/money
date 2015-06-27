@@ -45,8 +45,8 @@ API docs [TODO]
 
 - Rails 4.2.3
 - Ruby 2.2.2
-- Backbone 1.1.2
-- Bootstrap 3.3.2
+- Backbone 1.2.1
+- Bootstrap 3.3.5
 
 [</>](https://github.com/mohnish/money) with [<3](https://twitter.com/arrowgunz)
 
