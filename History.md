@@ -1,4 +1,10 @@
 
+1.10.1 / 2015-06-26
+==================
+
+  * update other gems
+  * mention the right version numbers
+
 1.10.0 / 2015-06-26
 ==================
 
