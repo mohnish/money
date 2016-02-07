@@ -18,15 +18,12 @@ group :development do
   gem 'web-console'
 end
 
-group :test do
-  gem 'jasmine'
-  gem 'guard-jasmine'
+group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
-end
-
-group :test, :development do
+  gem 'jasmine'
+  gem 'guard-jasmine'
   gem 'byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
