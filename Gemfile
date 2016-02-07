@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
+ruby '2.3.0'
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5'
 gem 'awesome_print'
 gem 'bcrypt'
 gem 'jbuilder'
@@ -14,17 +14,20 @@ gem 'font-awesome-sass'
 gem 'ejs'
 gem 'bootstrap-sass'
 
+group :development do
+  gem 'web-console'
+end
+
 group :test, :development do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
   gem 'jasmine'
   gem 'guard-jasmine'
-  gem 'factory_girl_rails'
+  gem 'byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'guard'
-  gem 'rspec-rails'
-  gem 'guard-rspec', require: false
-  gem 'byebug'
-  gem 'web-console'
   gem 'benchmark-ips'
 end
 
