@@ -26,7 +26,7 @@ class Bill < ActiveRecord::Base
   end
 
   def update_tags tag_names
-    tag_names = tag_names.select { |tag_name| tag_name.present? }
+    tag_names = (tag_names || []).select { |tag_name| tag_name.present? }
 
     return if tag_names.blank?
 
