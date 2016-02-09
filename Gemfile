@@ -21,17 +21,17 @@ end
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'guard-rspec', require: false
   gem 'jasmine'
-  gem 'guard-jasmine'
   gem 'byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'guard'
   gem 'benchmark-ips'
 end
 
 group :osx do
+  gem 'guard-jasmine'
+  gem 'guard-rspec', require: false
+  gem 'guard'
   gem 'rb-fsevent'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
