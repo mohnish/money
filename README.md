@@ -1,7 +1,7 @@
 # Money
-[![Build Status](https://travis-ci.org/mohnish/money.svg?branch=master)](https://travis-ci.org/mohnish/money) [![Code Climate](https://codeclimate.com/github/mohnish/money/badges/gpa.svg)](https://codeclimate.com/github/mohnish/money)
 
-Money (beta) is an app to manage your bills and payments. It helps you reach your financial goals by showing you where you have been spending the most and where you can save.
+[![Build Status](https://travis-ci.org/mohnish/money.svg?branch=master)](https://travis-ci.org/mohnish/money) [![Code Climate](https://codeclimate.com/github/mohnish/money/badges/gpa.svg)](https://codeclimate.com/github/mohnish/money)
+> Money (beta) is an app to manage your bills and payments. It helps you reach your financial goals by showing you where you have been spending the most and where you can save.
 
 Introduction blog post [http://mohni.sh/posts/money/](http://mohni.sh/posts/money/)
 
@@ -43,10 +43,10 @@ API docs [TODO]
 
 ## Technologies Used
 
-- Rails 4.2.3
-- Ruby 2.2.2
-- Backbone 1.2.1
-- Bootstrap 3.3.5
+- Rails 4.2.5
+- Ruby 2.3.0
+- Backbone 1.2.3
+- Bootstrap 3.3.6
 
 [</>](https://github.com/mohnish/money) with [<3](https://twitter.com/arrowgunz)
 
@@ -54,7 +54,7 @@ API docs [TODO]
 
 (The MIT License)
 
-Copyright (c) 2015 Mohnish Thallavajhula &lt;i@mohni.sh&gt;
+Copyright (c) 2016 Mohnish Thallavajhula &lt;i@mohni.sh&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
