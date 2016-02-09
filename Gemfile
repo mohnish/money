@@ -1,31 +1,33 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '4.2.5'
 gem 'awesome_print'
 gem 'bcrypt'
-gem 'jbuilder'
-gem 'mysql2'
-gem 'uglifier'
-gem 'doorkeeper'
-gem 'jquery-rails'
-gem 'sass-rails'
-gem 'font-awesome-sass'
-gem 'ejs'
 gem 'bootstrap-sass'
+gem 'doorkeeper'
+gem 'ejs'
+gem 'font-awesome-sass'
+gem 'jbuilder'
+gem 'jquery-rails'
+gem 'mysql2'
+gem 'rack-timeout'
+gem 'rails', '4.2.5'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'unicorn'
 
 group :development do
   gem 'web-console'
 end
 
 group :test, :development do
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-  gem 'jasmine'
-  gem 'byebug'
-  gem 'spring'
-  gem 'spring-commands-rspec'
   gem 'benchmark-ips'
+  gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'jasmine'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'spring'
 end
 
 group :osx do
@@ -33,12 +35,12 @@ group :osx do
   gem 'guard-rspec', require: false
   gem 'guard'
   gem 'rb-fsevent'
-  gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
+  gem 'terminal-notifier'
 end
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'pg'
   gem 'rails_12factor'
-  gem 'newrelic_rpm'
 end
