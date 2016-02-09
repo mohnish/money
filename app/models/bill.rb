@@ -26,7 +26,10 @@ class Bill < ActiveRecord::Base
   end
 
   def update_tags tag_names
+    tag_names = tag_names.select { |tag_name| tag_name.present? }
+
     return if tag_names.blank?
+
     tag_names.each { |tag| tags.where(name: tag).first_or_create }
   end
 end
