@@ -10,11 +10,11 @@ gem 'font-awesome-sass'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'puma'
 gem 'rack-timeout'
 gem 'rails', '4.2.5'
 gem 'sass-rails'
 gem 'uglifier'
-gem 'unicorn'
 
 group :development do
   gem 'web-console'
