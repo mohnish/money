@@ -9,7 +9,7 @@ Introduction blog post [http://mohni.sh/posts/money/](http://mohni.sh/posts/mone
 
 - Add bills (recurring ones and one time)
 - Reports. Neat graphs showing where your money went
-- Get reminders about bills [WIP]
+- Get reminders about bills
 
 ## Development
 
