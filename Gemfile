@@ -16,27 +16,11 @@ gem 'rails', '4.2.5'
 gem 'sass-rails'
 gem 'uglifier'
 
-group :development do
-  gem 'web-console'
-end
-
 group :test, :development do
-  gem 'benchmark-ips'
   gem 'byebug'
   gem 'factory_girl_rails'
   gem 'jasmine'
   gem 'rspec-rails'
-  gem 'spring-commands-rspec'
-  gem 'spring'
-end
-
-group :osx do
-  gem 'guard-jasmine'
-  gem 'guard-rspec', require: false
-  gem 'guard'
-  gem 'rb-fsevent'
-  gem 'terminal-notifier-guard'
-  gem 'terminal-notifier'
 end
 
 group :production do

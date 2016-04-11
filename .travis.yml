@@ -1,7 +1,6 @@
 language: ruby
 rvm:
   - 2.3.0
-bundler_args: --without osx
 before_script:
   - bin/rake db:setup --trace
   - bin/rake db:test:prepare --trace
