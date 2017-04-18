@@ -9,7 +9,7 @@ Introduction blog post [https://mt.cx/money](https://mt.cx/money)
 
 - Add bills (recurring ones and one time)
 - Reports. Neat graphs showing where your money went
-- Get reminders about bills [WIP]
+- Get reminders about bills
 
 ## Development
 
