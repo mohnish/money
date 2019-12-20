@@ -93,7 +93,7 @@ GEM
     pg (0.18.4)
     phantomjs (2.1.1.0)
     puma (2.16.0)
-    rack (1.6.4)
+    rack (1.6.12)
     rack-test (0.6.3)
       rack (>= 1.0)
     rack-timeout (0.3.2)
